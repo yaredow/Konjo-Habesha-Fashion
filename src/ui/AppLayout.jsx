@@ -6,7 +6,7 @@ function AppLayout() {
   return (
     <div className=" flex flex-col min-h-screen">
       <Navigation />
-      <div className="flex-grow">
+      <div className="flex-grow w-[90%] mx-auto">
         <Outlet />
       </div>
       <Footer />

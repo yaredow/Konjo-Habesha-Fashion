@@ -1,65 +1,32 @@
-import {
-  AiFillFacebook,
-  AiFillGithub,
-  AiFillLinkedin,
-  AiFillTwitterCircle,
-  AiOutlineInstagram,
-} from "react-icons/ai";
-import { FaGoodreads } from "react-icons/fa6";
+import { AiOutlineInstagram } from "react-icons/ai";
+import { CiFacebook } from "react-icons/ci";
+import { FaXTwitter } from "react-icons/fa6";
+import PaymentIcons from "./PaymentIcons";
 
 function Footer() {
   return (
-    <footer className="h-40 w-auto bg-stone-900 dark:bg-stone-200 ">
-      <div className=" md:pt-18 mx-auto flex h-36 w-[80%] flex-col items-center gap-8 pt-6 md:flex-row md:justify-between">
-        <div className="h-18">
-          <p className=" tracking-w ide text-center text-xl font-bold text-white dark:text-stone-800">
-            Copyright &copy; 2023. All rights are reserved
-          </p>
+    <footer className=" shadow-md bg-stone-100 ">
+      <div className=" flex flex-col gap-6 md:flex-row items-center justify-between my-8 w-[90%] mx-auto">
+        <div>
+          <PaymentIcons />
         </div>
 
-        <div className="h-18 flex gap-6">
-          <div className="h-9 w-8">
-            <a
-              className=" inline-block text-3xl text-white hover:text-4xl dark:text-stone-800"
-              href="https://github.com/yaredow"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AiFillTwitterCircle />
-            </a>
-          </div>
+        <div className=" flex flex-col gap-4 items-center">
+          <div className=" flex flex-row gap-2">
+            <div className=" h-12 w-12">
+              <CiFacebook className=" text-3xl hover:text-4xl " />
+            </div>
 
-          <div className="h-9 w-8">
-            <a
-              className="inline-block text-3xl text-white hover:text-4xl dark:text-stone-800"
-              href="https://www.linkedin.com/in/yared-yilma-37b586221/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AiFillLinkedin />
-            </a>
-          </div>
+            <div className=" h-12 w-12">
+              <FaXTwitter className=" text-3xl hover:text-4xl " />
+            </div>
 
-          <div className="h-9 w-8">
-            <a
-              className="inline-block text-3xl text-white hover:text-4xl dark:text-stone-800"
-              href=""
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AiFillFacebook />
-            </a>
+            <div className=" h-12 w-12">
+              <AiOutlineInstagram className=" text-3xl hover:text-4xl " />
+            </div>
           </div>
-
-          <div className="h-9 w-8">
-            <a
-              className="inline-block text-3xl text-white hover:text-4xl dark:text-stone-800"
-              href=""
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <AiOutlineInstagram />
-            </a>
+          <div className=" text-lg text-stone-800">
+            Copyright &copy; 2023. All rights are reserved
           </div>
         </div>
       </div>
