@@ -22,7 +22,7 @@ function Navigation() {
   const sectionNames = ["Home", "Shop", "Men", "Women"];
 
   return (
-    <header className=" bg-stone-50 shadow-sm">
+    <header className=" bg-white shadow-md sticky top-0 left-0">
       <nav className="w-[90%] mx-auto mt-6">
         <div className="flex items-center justify-between">
           <div>

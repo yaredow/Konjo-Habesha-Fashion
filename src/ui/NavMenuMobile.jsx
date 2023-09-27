@@ -12,7 +12,7 @@ function NavMenuMobile({
 
   return (
     <div
-      className={` fixed left-0  top-0 mt-[6rem] flex w-full origin-top flex-col items-center gap-12  bg-stone-50 duration-300 dark:bg-stone-700 md:hidden ${
+      className={` fixed left-0  top-0 mt-[6rem] flex w-full origin-top flex-col items-center gap-12  bg-white duration-300 dark:bg-stone-700 md:hidden ${
         !toggleMenu ? "h-0" : "h-full"
       }`}
     >
