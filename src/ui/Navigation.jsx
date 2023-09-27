@@ -1,73 +1,73 @@
-import { NavLink } from "react-router-dom";
 import { BiSearch } from "react-icons/bi";
 import DarkModeToggle from "./darkModeToggle";
-import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
+import {
+  AiOutlineClose,
+  AiOutlineMenu,
+  AiOutlineShoppingCart,
+  AiOutlineUser,
+} from "react-icons/ai";
+import NavMenuDesktop from "./NavMenuDesktop";
+import { useState } from "react";
+import NavMenuMobile from "./NavMenuMobile";
 
 function Navigation() {
+  const [toggleMenu, setToggleMenu] = useState(false);
+
+  const sectionPaths = [
+    "/home",
+    "/collections",
+    "/collections/men",
+    "/collections/women",
+  ];
+  const sectionNames = ["Home", "Shop", "Men", "Women"];
+
   return (
     <header className=" bg-stone-50 shadow-sm">
-      <nav className=" w-[90%] mx-auto mt-6 ">
-        <div className=" flex items-center justify-between">
+      <nav className="w-[90%] mx-auto mt-6">
+        <div className="flex items-center justify-between">
           <div>
             <a href="/">
               <img
-                className=" h-16 w-16 mb-4"
+                className="h-16 w-16 mb-4"
                 src="/images/logo.png"
                 alt="Konjo Habesha Logo"
               />
             </a>
           </div>
 
-          <div className=" hidden md:block">
-            <ul className=" flex flex-row gap-6 text-xl hover:da">
-              <li>
-                <NavLink
-                  className=" hover:underline hover:underline-offset-[6px]"
-                  activeClassName=" underline underline-offset-[6px]"
-                  exact
-                  to="/"
-                >
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className=" hover:underline hover:underline-offset-[6px]"
-                  to="/collections"
-                  activeClassName=" underline underline-offset-[6px]"
-                  exact
-                >
-                  Shope
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className=" hover:underline hover:underline-offset-[6px]"
-                  to="/collections/men"
-                  activeClassName=" underline underline-offset-[6px]"
-                  exact={true}
-                >
-                  Men
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  className=" hover:underline hover:underline-offset-[6px]"
-                  to="/collections/women"
-                  activeClassName=" underline underline-offset-[6px]"
-                  exact={true}
-                >
-                  Women
-                </NavLink>
-              </li>
-            </ul>
+          <div>
+            <NavMenuDesktop
+              sectionPaths={sectionPaths}
+              sectionName={sectionNames}
+            />
           </div>
-          <div className=" flex flex-row gap-4 md:gap-6 ">
-            <BiSearch className=" text-2xl" />
-            <AiOutlineUser className=" text-2xl" />
-            <AiOutlineShoppingCart className=" text-2xl" />
-            <DarkModeToggle />
+          <div className=" flex flex-row gap-8">
+            <div className="flex flex-row gap-4 md:gap-6">
+              <BiSearch className="text-2xl" />
+              <AiOutlineUser className="text-2xl" />
+              <AiOutlineShoppingCart className="text-2xl" />
+              <DarkModeToggle />
+            </div>
+
+            <div className="flex md:hidden">
+              {/* Mobile navigation toggle */}
+              <button onClick={() => setToggleMenu(!toggleMenu)}>
+                {toggleMenu ? (
+                  <AiOutlineClose className="text-2xl dark:text-stone-200" />
+                ) : (
+                  <AiOutlineMenu className="text-2xl dark:text-stone-200" />
+                )}
+              </button>
+            </div>
           </div>
+
+          {/* Apply conditional classes to control mobile menu visibility */}
+          <NavMenuMobile
+            sectionNames={sectionNames}
+            sectionPaths={sectionPaths}
+            toggleMenu={toggleMenu}
+            setToggleMenu={setToggleMenu}
+          />
         </div>
       </nav>
     </header>

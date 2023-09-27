@@ -1,5 +1,7 @@
+import { Outlet } from "react-router-dom";
+
 function AllProducts() {
-  return <div>AllProducts</div>;
+  return <div>product</div>;
 }
 
 export default AllProducts;

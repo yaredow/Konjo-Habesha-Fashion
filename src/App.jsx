@@ -18,11 +18,14 @@ function App() {
           <Route element={<AppLayout />}>
             <Route index element={<Navigate replace to="home" />} />
             <Route path="home" element={<Home />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />} />
             <Route path="collections" element={<Collections />}>
               <Route index element={<AllProducts />} />
               <Route path="men" element={<Male />} />
               <Route path="women" element={<Women />} />
             </Route>
+
             <Route path="cart" element={<Cart />} />
             <Route path="order" element={<Order />} />
             <Route path="checkout" element={<Checkout />} />
