@@ -9,6 +9,7 @@ import {
 import NavMenuDesktop from "./NavMenuDesktop";
 import { useState } from "react";
 import NavMenuMobile from "./NavMenuMobile";
+import CartToggle from "./CartToggle";
 
 function Navigation() {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -45,7 +46,7 @@ function Navigation() {
             <div className="flex flex-row gap-4 md:gap-6">
               <BiSearch className="text-2xl" />
               <AiOutlineUser className="text-2xl" />
-              <AiOutlineShoppingCart className="text-2xl" />
+              <CartToggle />
               <DarkModeToggle />
             </div>
 
