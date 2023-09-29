@@ -1,24 +1,24 @@
-import React, { useState } from "react";
 import CartItem from "./CartItem";
+import { useCart } from "../../context/cartContext";
+import useClickOutside from "../../hook/useClickOutside";
 
 function CartComponent() {
-  const [cartOpen, setCartOpen] = useState(false);
-
-  const toggleCart = () => {
-    setCartOpen(!cartOpen);
-  };
+  const { cartOpen, handleCartToggle } = useCart();
+  const { ref } = useClickOutside();
 
   return (
     <div
-      className={`fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 border-gray-300 ${
-        cartOpen ? "translate-x-0 ease-out" : "translate-x-full ease-in"
+      ref={ref}
+      className={`fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 shadow-lg ${
+        cartOpen ? "-translate-x-0 ease-out" : "translate-x-full ease-in"
       }`}
     >
       <div className="flex items-center justify-between">
         <h3 className="text-2xl font-medium text-gray-700">Your cart</h3>
         <button
-          onClick={toggleCart}
+          onClick={handleCartToggle}
           className="text-gray-600 focus:outline-none"
+          type="button"
         >
           <svg
             className="h-5 w-5"

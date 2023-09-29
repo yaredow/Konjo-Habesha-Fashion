@@ -11,7 +11,7 @@ function DarkModeToggle() {
       {isDarkMode ? (
         <BsMoonFill className=" text-2xl" />
       ) : (
-        <BsFillSunFill className=" text-2xl" />
+        <BsFillSunFill className=" text-2xl text-yellow-500" />
       )}
     </button>
   );

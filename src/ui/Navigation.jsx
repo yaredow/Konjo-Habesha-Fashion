@@ -1,11 +1,6 @@
 import { BiSearch } from "react-icons/bi";
 import DarkModeToggle from "./darkModeToggle";
-import {
-  AiOutlineClose,
-  AiOutlineMenu,
-  AiOutlineShoppingCart,
-  AiOutlineUser,
-} from "react-icons/ai";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import NavMenuDesktop from "./NavMenuDesktop";
 import { useState } from "react";
 import NavMenuMobile from "./NavMenuMobile";
@@ -44,8 +39,8 @@ function Navigation() {
           </div>
           <div className=" flex flex-row gap-8">
             <div className="flex flex-row gap-4 md:gap-6">
-              <BiSearch className="text-2xl" />
-              <AiOutlineUser className="text-2xl" />
+              <BiSearch className="text-2xl hover:text-blue-500" />
+              <AiOutlineUser className="text-2xl hover:text-blue-500" />
               <CartToggle />
               <DarkModeToggle />
             </div>

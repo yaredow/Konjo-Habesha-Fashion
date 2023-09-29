@@ -14,15 +14,15 @@ function Footer() {
         <div className=" flex flex-col gap-4 items-center">
           <div className=" flex flex-row gap-2">
             <div className=" h-12 w-12">
-              <CiFacebook className=" text-3xl hover:text-4xl " />
+              <CiFacebook className=" text-3xl hover:text-4xl  text-blue-500 " />
             </div>
 
             <div className=" h-12 w-12">
-              <FaXTwitter className=" text-3xl hover:text-4xl " />
+              <FaXTwitter className=" text-3xl hover:text-4xl  text-blue-500 " />
             </div>
 
             <div className=" h-12 w-12">
-              <AiOutlineInstagram className=" text-3xl hover:text-4xl " />
+              <AiOutlineInstagram className=" text-3xl hover:text-4xl text-blue-500 " />
             </div>
           </div>
           <div className=" text-lg text-stone-800">

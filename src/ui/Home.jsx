@@ -17,18 +17,18 @@ const fashionItems = [
     price: "$12",
   },
   {
-    name: "Female Habesha Kemis",
+    name: "Male Habesha Tee-shirt",
     label: "Women",
     imageUrl:
       "https://i.pinimg.com/564x/b4/20/fb/b420fb95575a10193685dedbef00fce5.jpg",
-    price: "$12",
+    price: "$11",
   },
   {
-    name: "Female Habesha Kemis",
+    name: "Male Habesha Tee-shirt",
     label: "Women",
     imageUrl:
       "https://i.pinimg.com/564x/f4/21/f3/f421f36d0b5d711d8d4b0e14b0431d6b.jpg",
-    price: "$12",
+    price: "$10",
   },
 ];
 
@@ -41,7 +41,7 @@ function Home() {
           backgroundImage: `url('/images/background.jpeg')`,
         }}
       >
-        <div className="bg-gray-800 bg-opacity-50 flex items-center h-full">
+        <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">
           <div className="px-10 max-w-xl">
             <h2 className="text-2xl text-white font-semibold">
               Habesha Clothes
@@ -64,7 +64,7 @@ function Home() {
             backgroundImage: `url('${"/images/men-medium.png"}')`,
           }}
         >
-          <div className="bg-gray-800 bg-opacity-50 flex items-center h-full">
+          <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">
             <div className="px-10 max-w-xl">
               <h2 className="text-2xl text-white font-semibold">Male</h2>
               <p className="mt-2 text-gray-100">
@@ -83,7 +83,7 @@ function Home() {
             backgroundImage: `url('${"/images/women-medium.png"}')`,
           }}
         >
-          <div className="bg-gray-800 bg-opacity-50 flex items-center h-full">
+          <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">
             <div className="px-10 max-w-xl">
               <h2 className="text-2xl text-white font-semibold">Female</h2>
               <p className="mt-2 text-gray-100">

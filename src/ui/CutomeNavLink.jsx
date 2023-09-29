@@ -7,7 +7,7 @@ function CustomeNavLink({ to, children, onClick }) {
       onClick={onClick}
       to={to}
       className={`${
-        isActive ? "underline underline-offset-4" : ""
+        isActive ? "underline text-blue-500 underline-offset-4" : ""
       } hover:underline underline-offset-4`}
     >
       {children}
