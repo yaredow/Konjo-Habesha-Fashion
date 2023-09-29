@@ -3,6 +3,7 @@ import ShopButton from "./ShopButton";
 
 const fashionItems = [
   {
+    id: "1",
     name: "Female Habesha Kemis",
     label: "Women",
     imageUrl:
@@ -30,6 +31,30 @@ const fashionItems = [
       "https://i.pinimg.com/564x/f4/21/f3/f421f36d0b5d711d8d4b0e14b0431d6b.jpg",
     price: "$10",
   },
+  {
+    name: "Male and Female clothes",
+    label: "Women",
+    imageUrl: "/images/collections/collection-1.jpg",
+    price: "$10",
+  },
+  {
+    name: "Male and Female clothes",
+    label: "Women",
+    imageUrl: "/images/collections/collection-2.jpg",
+    price: "$10",
+  },
+  {
+    name: "Male and Female clothes",
+    label: "Women",
+    imageUrl: "/images/collections/collection-3.jpg",
+    price: "$10",
+  },
+  {
+    name: "Male and Female clothes",
+    label: "Women",
+    imageUrl: "/images/collections/collection-4.jpg",
+    price: "$10",
+  },
 ];
 
 function Home() {
@@ -38,7 +63,7 @@ function Home() {
       <div
         className="h-64 rounded-md overflow-hidden bg-cover bg-center"
         style={{
-          backgroundImage: `url('/images/background.jpeg')`,
+          backgroundImage: `url('/images/home-background/background.jpeg')`,
         }}
       >
         <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">
@@ -61,7 +86,7 @@ function Home() {
         <div
           className="w-full h-64 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:w-1/2"
           style={{
-            backgroundImage: `url('${"/images/men-medium.png"}')`,
+            backgroundImage: `url('${"/images/home-background/men-medium.png"}')`,
           }}
         >
           <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">
@@ -80,7 +105,7 @@ function Home() {
         <div
           className="w-full h-64 mt-8 md:mx-4 rounded-md overflow-hidden bg-cover bg-center md:mt-0 md:w-1/2"
           style={{
-            backgroundImage: `url('${"/images/women-medium.png"}')`,
+            backgroundImage: `url('${"/images/home-background/women-medium.png"}')`,
           }}
         >
           <div className="bg-gray-900 bg-opacity-50 flex items-center h-full">

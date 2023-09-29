@@ -1,8 +1,8 @@
 function HabeshaFashionItem({ imageUrl, name, price }) {
   return (
-    <div className="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden">
+    <div className="w-full max-w-sm mx-auto hover:scale-105 cursor-pointer z-10 rounded-md shadow-md overflow-hidden">
       <div
-        className="flex items-end justify-end h-64 w-full bg-cover"
+        className="flex items-end justify-end  h-64 w-full bg-cover"
         style={{ backgroundImage: `url('${imageUrl}')` }}
       >
         <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">

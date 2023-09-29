@@ -14,18 +14,19 @@ function Navigation() {
     "/collections",
     "/collections/men",
     "/collections/women",
+    "/collections/Kids",
   ];
-  const sectionNames = ["Home", "Shop", "Men", "Women"];
+  const sectionNames = ["Home", "Shop", "Men", "Women", "Kids"];
 
   return (
-    <header className=" bg-white shadow-md sticky top-0 left-0">
+    <header className=" bg-white shadow-md sticky top-0 left-0 z-20">
       <nav className="w-[90%] mx-auto mt-6">
         <div className="flex items-center justify-between">
           <div>
             <a href="/">
               <img
                 className="h-16 w-16 mb-4"
-                src="/images/logo.png"
+                src="/images/logo/logo.png"
                 alt="Konjo Habesha Logo"
               />
             </a>
