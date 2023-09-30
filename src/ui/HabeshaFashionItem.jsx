@@ -1,11 +1,39 @@
-function HabeshaFashionItem({ imageUrl, name, price }) {
+import { useDispatch, useSelector } from "react-redux";
+import { formatCurrency } from "../utils/helpers";
+import { addItem, getCart } from "../features/cart/cartSlice";
+import toast from "react-hot-toast";
+
+function HabeshaFashionItem({ fashionItem }) {
+  const cart = useSelector(getCart);
+  const dispatch = useDispatch();
+  const { id, name, img, price } = fashionItem;
+  const isItemInCart = cart.some((item) => item.id === id);
+
+  function handleAddToCart() {
+    const newItem = {
+      img,
+      id,
+      name,
+      quantity: 1,
+      price,
+    };
+    if (!isItemInCart) {
+      dispatch(addItem(newItem));
+    } else {
+      toast.error("Item is already in the cart");
+    }
+  }
+
   return (
     <div className="w-full max-w-sm mx-auto hover:scale-105 cursor-pointer z-10 rounded-md shadow-md overflow-hidden">
       <div
         className="flex items-end justify-end  h-64 w-full bg-cover"
-        style={{ backgroundImage: `url('${imageUrl}')` }}
+        style={{ backgroundImage: `url('${img}')` }}
       >
-        <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+        <button
+          onClick={handleAddToCart}
+          className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500"
+        >
           <svg
             className="h-5 w-5"
             fill="none"
@@ -21,7 +49,7 @@ function HabeshaFashionItem({ imageUrl, name, price }) {
       </div>
       <div className="px-5 py-3">
         <h3 className="text-gray-700 uppercase">{name}</h3>
-        <span className="text-gray-500 mt-2">{price}</span>
+        <span className="text-gray-500 mt-2">{formatCurrency(price)}</span>
       </div>
     </div>
   );

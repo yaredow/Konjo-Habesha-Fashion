@@ -1,44 +1,40 @@
 import CartItem from "./CartItem";
 import { useCart } from "../../context/cartContext";
 import useClickOutside from "../../hook/useClickOutside";
+import { AiOutlineClose } from "react-icons/ai";
+import { useSelector } from "react-redux";
+import { getCart } from "./cartSlice";
 
 function CartComponent() {
   const { cartOpen, handleCartToggle } = useCart();
   const { ref } = useClickOutside();
-
+  const cart = useSelector(getCart);
   return (
     <div
       ref={ref}
-      className={`fixed right-0 top-0 max-w-xs w-full h-full px-6 py-4 transition duration-300 transform overflow-y-auto bg-white border-l-2 shadow-lg ${
+      className={`fixed right-0 top-0 max-w-md w-full flex flex-col h-full px-6 py-4 transition duration-300 transform  bg-white border-l-2 shadow-lg ${
         cartOpen ? "-translate-x-0 ease-out" : "translate-x-full ease-in"
       }`}
     >
-      <div className="flex items-center justify-between">
-        <h3 className="text-2xl font-medium text-gray-700">Your cart</h3>
+      <div className="flex items-center justify-between mx-6">
+        <h3 className="text-2xl font-custom font-medium text-gray-700">
+          Your cart
+        </h3>
         <button
           onClick={handleCartToggle}
-          className="text-gray-600 focus:outline-none"
+          className="text-gray-600 focus:outline-none text-2xl"
           type="button"
         >
-          <svg
-            className="h-5 w-5"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
+          <AiOutlineClose />
         </button>
       </div>
       <hr className="my-3" />
 
-      {/* Sample cart item */}
-      <CartItem />
-      <CartItem />
-      <CartItem />
+      <div className=" cart-item-component overflow-a">
+        {cart.map((item) => (
+          <CartItem item={item} key={item.img} />
+        ))}
+      </div>
 
       <div className="mt-8">
         <form className="flex items-center justify-center">

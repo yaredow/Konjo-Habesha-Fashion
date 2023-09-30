@@ -1,6 +1,6 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import CartComponent from "../features/cart/cartComponent";
 import { useCart } from "../context/cartContext";
+import Cart from "../features/cart/Cart";
 
 function CartToggle() {
   const { cartOpen, handleCartToggle } = useCart();
@@ -10,7 +10,7 @@ function CartToggle() {
         onClick={handleCartToggle}
         className="text-2xl cursor-pointer hover:text-blue-500"
       />
-      {cartOpen && <CartComponent />}
+      {cartOpen && <Cart />}
     </div>
   );
 }

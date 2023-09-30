@@ -19,7 +19,16 @@ export default {
         "cursive",
       ],
     },
-    extend: {},
+    extend: {
+      colors: {
+        blue: {
+          500: "#3b82f6",
+        },
+        gray: {
+          700: "616161",
+        },
+      },
+    },
   },
   plugins: [],
 };

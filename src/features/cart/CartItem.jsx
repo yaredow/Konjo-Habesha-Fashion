@@ -1,47 +1,44 @@
-function CartItem() {
+import { formatCurrency } from "../../utils/helpers";
+import UpdateItemQuantity from "./UpdateItemQuantity";
+
+function CartItem({ item }) {
+  const { img, id, name, quantity, totalPrice } = item;
+
   return (
-    <div className="flex justify-between mt-6">
-      <div className="flex">
+    <li className="flex py-6">
+      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
         <img
-          className="h-20 w-20 object-cover rounded"
-          src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80"
-          alt=""
+          src={img}
+          alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+          className="h-full w-full object-cover object-center"
         />
-        <div className="mx-3">
-          <h3 className="text-sm text-gray-600">Mac Book Pro</h3>
-          <div className="flex items-center mt-2">
-            <button className="text-gray-500 focus:outline-none focus:text-gray-600">
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </button>
-            <span className="text-gray-700 mx-2">2</span>
-            <button className="text-gray-500 focus:outline-none focus:text-gray-600">
-              <svg
-                className="h-5 w-5"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
+      </div>
+      <div className="ml-4 flex flex-1 flex-col">
+        <div>
+          <div className="flex justify-between text-base font-medium text-gray-900">
+            <h3>
+              <a href="#">{name}</a>
+            </h3>
+            <p className="ml-4">{formatCurrency(totalPrice)}</p>
+          </div>
+          <p className="mt-1 text-sm text-gray-500">Salmon</p>
+        </div>
+        <div className="flex flex-1 items-end justify-between text-sm">
+          <div className="flex items-center space-x-2">
+            <UpdateItemQuantity id={id} quantity={quantity} />
+          </div>
+
+          <div className="flex">
+            <button
+              type="button"
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+            >
+              Remove
             </button>
           </div>
         </div>
       </div>
-      <span className="text-gray-600">20$</span>
-    </div>
+    </li>
   );
 }
 

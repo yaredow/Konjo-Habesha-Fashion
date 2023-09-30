@@ -1,39 +1,49 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  cart: [
-    {
-      clothId: "1",
-      name: "Female Habesha Kemis",
-      label: "Women",
-      imageUrl:
-        "https://i.pinimg.com/564x/8a/10/85/8a1085beaeebe10277eae34f3acb2b38.jpg",
-      price: "$12",
-    },
-  ],
+  cart: [],
 };
 
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addItem: (state, action) => {
-      const { clothId, name, price } = action.payload;
-      const existingItem = state.items.find((item) => item.id === clothId);
-
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        existingItem.push({ id, name, price, quantity: 1 });
-      }
-      state.totalItem += 1;
+    addItem(state, action) {
+      state.cart.push(action.payload);
     },
-    deleteItem: () => {},
-    increaseItemQuantity: () => {},
-    decreaseItemQuantity: () => {},
-    clearCart: () => {},
+    deleteItem: (state, action) => {
+      state.cart = state.cart.filter((item) => item.id === action.payload);
+    },
+    increaseItemQuantity: (state, action) => {
+      const item = state.cart.find((item) => item.id === action.payload);
+      item.quantity++;
+      item.Price = item.price * item.quantity;
+    },
+    decreaseItemQuantity: (state, action) => {
+      const item = state.cart.find((item) => item.id === action.payload);
+      item.quantity--;
+      item.totalPrice = item.price * item.quantity;
+    },
+    clearCart: (state) => {
+      state.cart = [];
+    },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const {
+  addItem,
+  deleteItem,
+  increaseItemQuantity,
+  decreaseItemQuantity,
+  clearCart,
+} = cartSlice.actions;
+
+export const getCart = (state) => state.cart.cart;
+export const getTotalCartQuantity = (state) =>
+  state.cart.cart.reduce((sum, item) => sum + item.quantity, 0);
+export const getTotalCartPrice = (state) =>
+  state.cart.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+export const getCurrentQuantityById = (id) => (state) =>
+  state.cart.cart.find((item) => item.pizzaId === id)?.quantity ?? 0;
+
 export default cartSlice.reducer;

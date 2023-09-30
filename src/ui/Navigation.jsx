@@ -5,9 +5,13 @@ import NavMenuDesktop from "./NavMenuDesktop";
 import { useState } from "react";
 import NavMenuMobile from "./NavMenuMobile";
 import CartToggle from "./CartToggle";
+import { useSelector } from "react-redux";
+import { getTotalCartQuantity } from "../features/cart/cartSlice";
 
 function Navigation() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const cartQuantity = useSelector(getTotalCartQuantity);
+  console.log(cartQuantity);
 
   const sectionPaths = [
     "/home",
@@ -42,7 +46,16 @@ function Navigation() {
             <div className="flex flex-row gap-4 md:gap-6">
               <BiSearch className="text-2xl hover:text-blue-500" />
               <AiOutlineUser className="text-2xl hover:text-blue-500" />
-              <CartToggle />
+
+              <div className=" relative">
+                <CartToggle />
+                {cartQuantity > 0 && (
+                  <div className=" absolute bottom-5 left-5 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center shadow-md">
+                    {cartQuantity}
+                  </div>
+                )}
+              </div>
+
               <DarkModeToggle />
             </div>
 
