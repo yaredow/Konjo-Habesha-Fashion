@@ -17,6 +17,7 @@ function HabeshaFashionItem({ fashionItem }) {
       quantity: 1,
       price,
     };
+
     if (!isItemInCart) {
       dispatch(addItem(newItem));
     } else {

@@ -4,9 +4,11 @@ import useClickOutside from "../../hook/useClickOutside";
 import { AiOutlineClose } from "react-icons/ai";
 import { getCart } from "./cartSlice";
 import CartItem from "./CartItem";
+import { useNavigate } from "react-router-dom";
 
 function Cart() {
   const { handleCartToggle } = useCart();
+  const navigate = useNavigate();
   const { ref } = useClickOutside();
   const cart = useSelector(getCart);
 
@@ -71,6 +73,10 @@ function Cart() {
                     <p>
                       or
                       <button
+                        onClick={() => {
+                          navigate("/");
+                          handleCartToggle();
+                        }}
                         type="button"
                         className="font-medium mx-2 text-indigo-600 hover:text-indigo-500"
                       >
