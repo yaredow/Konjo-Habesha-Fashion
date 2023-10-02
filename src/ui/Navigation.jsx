@@ -11,7 +11,6 @@ import { getTotalCartQuantity } from "../features/cart/cartSlice";
 function Navigation() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const cartQuantity = useSelector(getTotalCartQuantity);
-  console.log(cartQuantity);
 
   const sectionPaths = [
     "/home",

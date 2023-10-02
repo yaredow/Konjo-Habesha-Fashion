@@ -1,8 +1,12 @@
+import { useSelector } from "react-redux";
 import { formatCurrency } from "../../utils/helpers";
 import UpdateItemQuantity from "./UpdateItemQuantity";
+import { getCurrentQuantityById } from "./cartSlice";
+import DeleteItem from "./DeleteItem";
 
 function CartItem({ item }) {
   const { img, id, name, quantity, totalPrice } = item;
+  const currentQuantity = useSelector(getCurrentQuantityById(id));
 
   return (
     <li className="flex py-6">
@@ -25,17 +29,10 @@ function CartItem({ item }) {
         </div>
         <div className="flex flex-1 items-end justify-between text-sm">
           <div className="flex items-center space-x-2">
-            <UpdateItemQuantity id={id} quantity={quantity} />
+            <UpdateItemQuantity id={id} currentQuantity={currentQuantity} />
           </div>
 
-          <div className="flex">
-            <button
-              type="button"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              Remove
-            </button>
-          </div>
+          <DeleteItem id={id} />
         </div>
       </div>
     </li>

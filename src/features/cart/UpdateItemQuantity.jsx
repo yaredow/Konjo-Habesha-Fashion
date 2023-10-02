@@ -2,16 +2,14 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { decreaseItemQuantity, increaseItemQuantity } from "./cartSlice";
 
-function UpdateItemQuantity({ id, quantity }) {
+function UpdateItemQuantity({ id, currentQuantity }) {
   const dispatch = useDispatch();
 
   return (
     <>
       <button
         onClick={() => {
-          if (quantity > 1) {
-            dispatch(decreaseItemQuantity(id));
-          }
+          dispatch(decreaseItemQuantity(id));
         }}
         className="bg-gray-200 px-3 py-1 rounded"
       >
@@ -31,7 +29,7 @@ function UpdateItemQuantity({ id, quantity }) {
         </svg>
       </button>
 
-      <p className="font-custom text-lg inline-block">{quantity}</p>
+      <p className="font-custom text-lg inline-block">{currentQuantity}</p>
 
       <button
         onClick={() => dispatch(increaseItemQuantity(id))}

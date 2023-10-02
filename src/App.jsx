@@ -13,6 +13,7 @@ import { CartProvider } from "./context/cartContext";
 import Kids from "./features/collections/Kids";
 import PageNotFound from "./ui/PageNotFound";
 import { Toaster } from "react-hot-toast";
+import Home2 from "./ui/Home2";
 
 function App() {
   return (
@@ -22,9 +23,9 @@ function App() {
           <Routes>
             <Route element={<AppLayout />}>
               <Route index element={<Navigate replace to="home" />} />
-              <Route path="home" element={<Home />} />
-              <Route path="/" element={<Home />} />
-              <Route path="/" element={<Home />} />
+              <Route path="home" element={<Home2 />} />
+              <Route path="/" element={<Home2 />} />
+              <Route path="/" element={<Home2 />} />
               <Route path="collections" element={<Collections />}>
                 <Route index element={<AllProducts />} />
                 <Route path="men" element={<Male />} />

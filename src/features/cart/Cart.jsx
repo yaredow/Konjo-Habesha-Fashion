@@ -2,15 +2,20 @@ import { useSelector } from "react-redux";
 import { useCart } from "../../context/cartContext";
 import useClickOutside from "../../hook/useClickOutside";
 import { AiOutlineClose } from "react-icons/ai";
-import { getCart } from "./cartSlice";
+import { getCart, getTotalCartPrice, getTotalCartQuantity } from "./cartSlice";
 import CartItem from "./CartItem";
 import { useNavigate } from "react-router-dom";
+import { formatCurrency } from "../../utils/helpers";
+import EmptyCart from "./EmptyCart";
 
 function Cart() {
   const { handleCartToggle } = useCart();
   const navigate = useNavigate();
   const { ref } = useClickOutside();
   const cart = useSelector(getCart);
+  const totalCartPrice = useSelector(getTotalCartPrice);
+  const totalCartQuantity = useSelector(getTotalCartQuantity);
+  console.log(totalCartQuantity);
 
   return (
     <div
@@ -22,7 +27,10 @@ function Cart() {
       <div className="fixed inset-0 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
           <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-            <div ref={ref} className="pointer-events-auto w-screen max-w-md">
+            <div
+              ref={ref}
+              className="pointer-events-auto w-full md:w-screen md:max-w-md"
+            >
               <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
                 <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                   <div className="flex items-start justify-between">
@@ -33,7 +41,7 @@ function Cart() {
                       Shopping cart
                     </h2>
                     <div className="ml-3 flex h-7 items-center">
-                      <button onClick={handleCartToggle} className=" text-2xl">
+                      <button onClick={handleCartToggle} className="text-2xl">
                         <AiOutlineClose />
                       </button>
                     </div>
@@ -46,46 +54,54 @@ function Cart() {
                         className="-my-6 divide-y divide-gray-200"
                       >
                         {cart.map((item) => (
-                          <CartItem item={item} key={item.img} />
+                          <CartItem item={item} key={item.id} />
                         ))}
                       </ul>
                     </div>
                   </div>
                 </div>
 
-                <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-                  <div className="flex justify-between text-base font-medium text-gray-900">
-                    <p>Subtotal</p>
-                    <p>$262.00</p>
-                  </div>
-                  <p className="mt-0.5 text-sm text-gray-500">
-                    Shipping and taxes calculated at checkout.
-                  </p>
-                  <div className="mt-6">
-                    <a
-                      href="#"
-                      className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                    >
-                      Checkout
-                    </a>
-                  </div>
-                  <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                    <p>
-                      or
-                      <button
-                        onClick={() => {
-                          navigate("/");
-                          handleCartToggle();
-                        }}
-                        type="button"
-                        className="font-medium mx-2 text-indigo-600 hover:text-indigo-500"
-                      >
-                        Continue Shopping
-                        <span aria-hidden="true"> &rarr;</span>
-                      </button>
+                {totalCartQuantity > 0 ? (
+                  <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                    <div className="flex justify-between text-base font-medium text-gray-900">
+                      {totalCartPrice > 0 && (
+                        <>
+                          <p>Subtotal</p>
+                          <p>{formatCurrency(totalCartPrice)}</p>
+                        </>
+                      )}
+                    </div>
+                    <p className="mt-0.5 text-sm text-gray-500">
+                      Shipping and taxes calculated at checkout.
                     </p>
+                    <div className="mt-6">
+                      <a
+                        href="#"
+                        className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                      >
+                        Checkout
+                      </a>
+                    </div>
+                    <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+                      <p>
+                        or
+                        <button
+                          onClick={() => {
+                            navigate("/");
+                            handleCartToggle();
+                          }}
+                          type="button"
+                          className="font-medium mx-2 text-indigo-600 hover:text-indigo-500"
+                        >
+                          Continue Shopping
+                          <span aria-hidden="true"> &rarr;</span>
+                        </button>
+                      </p>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <EmptyCart />
+                )}
               </div>
             </div>
           </div>
