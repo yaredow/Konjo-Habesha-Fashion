@@ -1,23 +1,18 @@
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { items } from "./AllData";
-import HabeshaFashionItem from "./HabeshaFashionItem";
 import ShopButton from "./ShopButton";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import CollectionItem from "../features/collections/CollectionItem";
 
 function Home2() {
   const navigate = useNavigate();
-  const maleItems = items
+  const [showPhoneNumber, setShowPhoneNumber] = useState(false);
 
-    .filter((item) => item.catagory === "male")
-    .slice(0, 2);
-  const femaleItems = items
-    .filter((item) => item.catagory === "female")
-    .slice(0, 2);
-  const collectionItems = items.filter(
-    (item) => item.catagory === "collection"
-  );
+  function handleShowPhoneNumber() {
+    setShowPhoneNumber((phoneNumber) => !phoneNumber);
+  }
 
-  const homeItems = [...maleItems, ...femaleItems, ...collectionItems];
   return (
     <>
       <div className="mx-auto ">
@@ -49,15 +44,20 @@ function Home2() {
             </p>
           </div>
           <div className="">
-            <button className="flex whitespace-nowrap rounded-lg bg-blue-500 px-6 py-2 font-bold text-white transition hover:translate-y-1">
+            <button
+              onClick={handleShowPhoneNumber}
+              className="flex whitespace-nowrap rounded-lg bg-blue-500 px-6 py-2 font-bold text-white transition hover:translate-y-1"
+            >
               <div className=" flex flex-row gap-2">
                 <BiSolidPhoneCall className=" text-2xl" />
                 <h4>Call Us</h4>
               </div>
             </button>
-            <p className="mt-4 flex items-center whitespace-nowrap text-gray-500 sm:justify-end">
-              +1 432 923 0001
-            </p>
+            {showPhoneNumber && (
+              <p className="mt-4 flex items-center whitespace-nowrap text-gray-500 sm:justify-end">
+                +1 432 923 0001
+              </p>
+            )}
           </div>
         </div>
 
@@ -103,14 +103,12 @@ function Home2() {
         </div>
 
         <div className="mt-16">
-          <h3 className="text-gray-600 text-2xl font-medium">Collections</h3>
+          <h3 className="text-gray-600 text-2xl text-center font-medium">
+            FEATURED COLLECTION
+          </h3>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-            {/* Fashion items */}
-            {homeItems.map((fashionItem) => (
-              <HabeshaFashionItem
-                key={fashionItem.img}
-                fashionItem={fashionItem}
-              />
+            {items.slice(0, 8).map((item) => (
+              <CollectionItem key={item.img} item={item} />
             ))}
           </div>
         </div>

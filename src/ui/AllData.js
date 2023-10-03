@@ -141,6 +141,7 @@ export const items = [
     catagory: "kids",
     name: "Kids Habesha Dress",
     img: kids1,
+    material: "Shema",
     description:
       "Adorable kids' Habesha traditional dress perfect for birthdays and holidays.",
     price: 20,
@@ -151,6 +152,7 @@ export const items = [
     catagory: "kids",
     name: "Cute Kids Habesha Attire",
     img: kids2,
+    material: "Shema",
     description:
       "Cuteness overload! Dress up your little one in this adorable kids' Habesha attire.",
     price: 25,
@@ -161,6 +163,7 @@ export const items = [
     catagory: "kids",
     name: "Festive Kids Habesha Dress",
     img: kids3,
+    material: "Shema",
     description:
       "Celebrate special moments with this festive kids' Habesha traditional dress.",
     price: 20,
@@ -171,6 +174,7 @@ export const items = [
     catagory: "kids",
     name: "Stylish Kids Habesha Attire",
     img: kids4,
+    material: "Shema",
     description:
       "Dress your little one in style with this stylish kids' Habesha attire.",
     price: 20,
@@ -181,6 +185,7 @@ export const items = [
     catagory: "kids",
     name: "Joyful Kids Habesha Dress",
     img: kids5,
+    material: "Shema",
     description: "Spread joy with this joyful kids' Habesha traditional dress.",
     price: 20,
     size: "sm, xs",
@@ -190,6 +195,7 @@ export const items = [
     catagory: "kids",
     name: "Charming Kids Habesha Attire",
     img: kids6,
+    material: "Shema",
     description:
       "Charm everyone with this charming kids' Habesha attire for special occasions.",
     price: 20,
@@ -199,6 +205,7 @@ export const items = [
     id: 17,
     catagory: "kids",
     name: "Playful Kids Habesha Dress",
+    material: "Shema",
     img: kids7,
     description:
       "Let your little one play in style with this playful kids' Habesha traditional dress.",
@@ -209,6 +216,7 @@ export const items = [
     id: 18,
     catagory: "kids",
     name: "Adventurous Kids Habesha Attire",
+    material: "Shema",
     img: kids8,
     description:
       "Ignite adventure with this adventurous kids' Habesha attire for all occasions.",
@@ -219,6 +227,7 @@ export const items = [
     id: 19,
     catagory: "kids",
     name: "Innocent Kids Habesha Dress",
+    material: "Shema",
     img: kids9,
     description:
       "Innocence meets style with this innocent kids' Habesha traditional dress.",
@@ -229,36 +238,44 @@ export const items = [
     id: 20,
     catagory: "collection",
     name: "Family Collection",
+    material: "Shema",
     img: collection1,
     description:
       "A curated collection of Habesha clothes for the entire family, celebrating tradition and style.",
     price: 150,
+    size: "md", // Added size property for collection items
   },
   {
     id: 21,
     catagory: "collection",
     name: "Elegant Family Collection",
+    material: "Shema",
     img: collection2,
     description:
       "Elevate family occasions with this exquisite family collection of Habesha clothes.",
     price: 180,
+    size: "md, lg", // Added size property for collection items
   },
   {
     id: 22,
     catagory: "collection",
     name: "Timeless Family Collection",
     img: collection3,
+    material: "Shema",
     description:
       "Create lasting memories with this carefully curated family collection of Habesha clothes.",
     price: 160,
+    size: "xl", // Added size property for collection items
   },
   {
     id: 23,
     catagory: "collection",
     name: "Stylish Family Collection",
     img: collection4,
+    material: "Shema",
     description:
       "Transform family gatherings with this stylish family collection of Habesha clothes.",
     price: 200,
+    size: "md, xl, xxl", // Added size property for collection items
   },
 ];
