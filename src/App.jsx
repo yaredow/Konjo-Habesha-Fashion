@@ -15,7 +15,6 @@ import PageNotFound from "./ui/PageNotFound";
 import { Toaster } from "react-hot-toast";
 import Home2 from "./ui/Home2";
 import ProductDetail from "./features/product/ProductDetail";
-import Collection from "./features/collections/Collection";
 
 function App() {
   return (
@@ -28,7 +27,7 @@ function App() {
               <Route path="home" element={<Home2 />} />
               <Route path="/" element={<Home2 />} />
               <Route path="/" element={<Home2 />} />
-              <Route path="collections" element={<Collection />}>
+              <Route path="collections" element={<Collections />}>
                 <Route index element={<AllProducts />} />
                 <Route path="men" element={<Male />} />
                 <Route path="women" element={<Women />} />

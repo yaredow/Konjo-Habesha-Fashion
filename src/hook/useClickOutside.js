@@ -1,24 +1,21 @@
-import { useEffect } from "react";
-import { useRef } from "react";
-import { useCart } from "../context/cartContext";
+import { useEffect, useRef } from "react";
 
-export default function () {
-  const { handleCartToggle } = useCart();
+export default function useClickOutside(onClickOutside) {
   const ref = useRef();
 
-  useEffect(
-    function () {
-      function handleClick(e) {
-        if (ref.current && !ref.current.contains(e.target)) {
-          handleCartToggle();
+  useEffect(() => {
+    function handleClick(e) {
+      if (ref.current && !ref.current.contains(e.target)) {
+        if (onClickOutside) {
+          onClickOutside();
         }
       }
+    }
 
-      document.addEventListener("click", handleClick, true);
+    document.addEventListener("click", handleClick, true);
 
-      return () => document.removeEventListener("click", handleClick, true);
-    },
-    [handleCartToggle]
-  );
+    return () => document.removeEventListener("click", handleClick, true);
+  }, [onClickOutside]);
+
   return { ref };
 }

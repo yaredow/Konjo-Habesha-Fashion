@@ -11,11 +11,15 @@ import EmptyCart from "./EmptyCart";
 function Cart() {
   const { handleCartToggle } = useCart();
   const navigate = useNavigate();
-  const { ref } = useClickOutside();
+
   const cart = useSelector(getCart);
   const totalCartPrice = useSelector(getTotalCartPrice);
   const totalCartQuantity = useSelector(getTotalCartQuantity);
-  console.log(totalCartQuantity);
+
+  const onClickCart = () => {
+    handleCartToggle();
+  };
+  const { ref } = useClickOutside(onClickCart);
 
   return (
     <div
