@@ -3,12 +3,15 @@ import { items } from "../../ui/AllData";
 import { formatCurrency } from "../../utils/helpers";
 import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import useAddToCart from "../../hook/useAddToCart";
+import { useEffect } from "react";
 
 const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedMaterial, setSelectedMaterial] = useState("");
   const { id } = useParams();
   const productItem = items.find((item) => item.id === parseInt(id));
+  const { handleAddToCart } = useAddToCart(productItem);
 
   const { name, catagory, img, description, material, price, size } =
     productItem;
@@ -26,6 +29,9 @@ const ProductDetail = () => {
     console.log(e.target.value);
     setSelectedSize(e.target.value);
   }
+  useEffect(function () {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="container mx-auto px-6">
@@ -114,7 +120,10 @@ const ProductDetail = () => {
               </button>
             </div>
             <div className=" flex-1">
-              <button className="bg-gray-300 py-4 text-xl w-full hover:bg-gray-400 text-gray-800 font-bold px-4 rounded  items-center">
+              <button
+                onClick={handleAddToCart}
+                className="bg-gray-300 py-4 text-xl w-full hover:bg-gray-400 text-gray-800 font-bold px-4 rounded  items-center"
+              >
                 <div className=" flex flex-row gap-2 justify-center">
                   <h2>Add to cart</h2>
                   <AiOutlineShoppingCart className=" text-xl mt-[6px]" />

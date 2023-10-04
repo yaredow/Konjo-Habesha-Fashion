@@ -19,7 +19,7 @@ function EmptyCart() {
       <div className="mt-6">
         <a
           onClick={() => {
-            navigate("/collections");
+            navigate("/products");
             handleCartToggle();
           }}
           href="#"

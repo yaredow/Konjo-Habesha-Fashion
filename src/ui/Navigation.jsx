@@ -12,13 +12,7 @@ function Navigation() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const cartQuantity = useSelector(getTotalCartQuantity);
 
-  const sectionPaths = [
-    "/home",
-    "/collections",
-    "/collections/men",
-    "/collections/women",
-    "/collections/Kids",
-  ];
+  const sectionPaths = ["/home", "/products"];
   const sectionNames = ["Home", "Shop", "Men", "Women", "Kids"];
 
   return (

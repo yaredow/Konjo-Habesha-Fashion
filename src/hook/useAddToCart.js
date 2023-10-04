@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { addItem, getCart } from "../features/cart/cartSlice";
 import toast from "react-hot-toast";
 
-export default function useAddToCart({ item }) {
+export default function useAddToCart(item) {
   const dispatch = useDispatch();
   const cart = useSelector(getCart);
   const { img, id, name, price } = item;

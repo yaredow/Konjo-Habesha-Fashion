@@ -3,7 +3,7 @@ import { items } from "./AllData";
 import ShopButton from "./ShopButton";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import CollectionItem from "../features/collections/CollectionItem";
+import CollectionItem from "../features/product/ProductsItem";
 
 function Home2() {
   const navigate = useNavigate();
@@ -116,7 +116,7 @@ function Home2() {
 
       <div className=" mt-6 flex justify-center">
         <a
-          onClick={() => navigate("/collections")}
+          onClick={() => navigate("/products")}
           href="#"
           className=" rounded-md transition-all border border-transparent bg-blue-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-600"
         >

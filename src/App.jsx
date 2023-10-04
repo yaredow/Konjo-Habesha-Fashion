@@ -1,20 +1,15 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import Home from "./ui/Home";
 import Cart from "./pages/Cart";
 import Order from "./pages/Order";
 import Checkout from "./pages/Checkout";
-import Collections from "./pages/Collections";
 import AppLayout from "./ui/AppLayout";
-import Male from "./features/collections/Men";
-import Women from "./features/collections/Women";
 import { DarkModeProvider } from "./context/darkModeContext";
-import AllProducts from "./features/product/AllProducts";
 import { CartProvider } from "./context/cartContext";
-import Kids from "./features/collections/Kids";
 import PageNotFound from "./ui/PageNotFound";
 import { Toaster } from "react-hot-toast";
 import Home2 from "./ui/Home2";
 import ProductDetail from "./features/product/ProductDetail";
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -25,20 +20,13 @@ function App() {
             <Route element={<AppLayout />}>
               <Route index element={<Navigate replace to="home" />} />
               <Route path="home" element={<Home2 />} />
-              <Route path="/" element={<Home2 />} />
-              <Route path="/" element={<Home2 />} />
-              <Route path="collections" element={<Collections />}>
-                <Route index element={<AllProducts />} />
-                <Route path="men" element={<Male />} />
-                <Route path="women" element={<Women />} />
-                <Route path="kids" element={<Kids />} />
-              </Route>
-              <Route path="product/:id" element={<ProductDetail />} />
+              <Route path="products" element={<Products />} />
               <Route path="cart" element={<Cart />} />
               <Route path="order" element={<Order />} />
               <Route path="checkout" element={<Checkout />} />
-              <Route path="*" element={<PageNotFound />} />
+              <Route path="product/:id" element={<ProductDetail />} />
             </Route>
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
         <Toaster
@@ -50,7 +38,7 @@ function App() {
               duration: 3000,
             },
             error: {
-              duration: 5000,
+              duration: 3000,
             },
             style: {
               fontSize: "16px",

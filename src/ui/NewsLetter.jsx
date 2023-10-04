@@ -4,11 +4,11 @@ import { GiAmpleDress } from "react-icons/gi";
 
 function NewsLetter() {
   return (
-    <div className="relative overflow-hidden bg-stone-100 py-16 sm:py-24 lg:py-32 border-b border-stone-200">
+    <div className="relative overflow-hidden bg-stone-100 py-16 md:py-24 border-b border-stone-200">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
           <div className="max-w-xl lg:max-w-lg">
-            <h2 className="text-3xl font-bold tracking-tight font-custom     text-stone-800 sm:text-4xl">
+            <h2 className="text-3xl font-bold tracking-tight font-custom text-stone-800 sm:text-4xl">
               Subscribe to our newsletter.
             </h2>
             <p className="mt-4 text-lg leading-8 text-stone-600">

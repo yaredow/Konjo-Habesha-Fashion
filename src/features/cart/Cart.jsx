@@ -91,7 +91,7 @@ function Cart() {
                         or
                         <button
                           onClick={() => {
-                            navigate("/");
+                            navigate("/products", { replace: true });
                             handleCartToggle();
                           }}
                           type="button"
