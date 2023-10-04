@@ -2,10 +2,12 @@ import { AiOutlineInstagram } from "react-icons/ai";
 import { CiFacebook } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import PaymentIcons from "./PaymentIcons";
+import NewsLetter from "./NewsLetter.jsx";
 
 function Footer() {
   return (
     <footer className=" shadow-md bg-stone-100 ">
+      <NewsLetter />
       <div className=" flex flex-col gap-6 md:flex-row items-center justify-between my-8 w-[90%] mx-auto">
         <div>
           <PaymentIcons />
