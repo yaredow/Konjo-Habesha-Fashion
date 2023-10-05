@@ -4,6 +4,7 @@ import ShopButton from "./ShopButton";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import CollectionItem from "../features/product/ProductsItem";
+import { useEffect } from "react";
 
 function Home2() {
   const navigate = useNavigate();
@@ -12,6 +13,12 @@ function Home2() {
   function handleShowPhoneNumber() {
     setShowPhoneNumber((phoneNumber) => !phoneNumber);
   }
+
+  useEffect(function () {
+    window.scrollTo(0, 0);
+
+    return () => window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -77,7 +84,7 @@ function Home2() {
                   pariatur.
                 </p>
 
-                <ShopButton path="/collections/men" label="Men" />
+                <ShopButton path="/products?category=men" label="Men" />
               </div>
             </div>
           </div>
@@ -96,7 +103,7 @@ function Home2() {
                   pariatur.
                 </p>
 
-                <ShopButton path="/collections/women" label="Women" />
+                <ShopButton path="/products?category=women" label="Women" />
               </div>
             </div>
           </div>

@@ -16,7 +16,7 @@ function ProductCard({ item }) {
   return (
     <div
       onClick={handleClick}
-      className="w-full max-w-sm mx-auto rounded-md hover:scale-105 shadow-md overflow-hidden"
+      className="w-full max-w-sm mx-auto cursor-pointer rounded-md hover:scale-105 shadow-md overflow-hidden"
     >
       <div
         className="flex items-end justify-end h-56 w-full bg-cover"

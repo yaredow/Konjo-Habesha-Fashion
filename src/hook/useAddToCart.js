@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 export default function useAddToCart(item) {
   const dispatch = useDispatch();
   const cart = useSelector(getCart);
-  const { img, id, name, price } = item;
+  const { img, id, name, material, price } = item;
 
   const handleAddToCart = () => {
     const isItemInCart = cart.some((it) => it.id === id);
@@ -15,6 +15,7 @@ export default function useAddToCart(item) {
       img,
       id,
       name,
+      material,
       quantity: 1,
       price,
     };

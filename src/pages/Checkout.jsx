@@ -1,5 +1,11 @@
+import CheckoutOrder from "../features/checkout/CheckoutOrder";
+
 function Checkout() {
-  return <div>Checkout</div>;
+  return (
+    <div>
+      <CheckoutOrder />
+    </div>
+  );
 }
 
 export default Checkout;

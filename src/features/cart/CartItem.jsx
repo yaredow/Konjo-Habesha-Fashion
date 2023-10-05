@@ -5,7 +5,8 @@ import { getCurrentQuantityById } from "./cartSlice";
 import DeleteItem from "./DeleteItem";
 
 function CartItem({ item }) {
-  const { img, id, name, quantity, totalPrice } = item;
+  const { img, id, name, totalPrice, material } = item;
+
   const currentQuantity = useSelector(getCurrentQuantityById(id));
 
   return (
@@ -25,7 +26,7 @@ function CartItem({ item }) {
             </h3>
             <p className="ml-4">{formatCurrency(totalPrice)}</p>
           </div>
-          <p className="mt-1 text-sm text-gray-500">Salmon</p>
+          <p className="mt-1 text-sm text-gray-500">{material}</p>
         </div>
         <div className="flex flex-1 items-end justify-between text-sm">
           <div className="flex items-center space-x-2">

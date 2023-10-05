@@ -5,7 +5,6 @@ function ProductsCollection() {
   const [searchParams] = useSearchParams();
 
   const filterValue = searchParams.get("category") || "all";
-
   let filteredItems;
   if (filterValue === "all") filteredItems = items;
   if (filterValue === "men")
@@ -15,10 +14,17 @@ function ProductsCollection() {
   if (filterValue === "kids")
     filteredItems = items.filter((item) => item.catagory === "kids");
 
+  const sortValue = searchParams.get("sortBy") || "";
+  const [field, direction] = sortValue.split("-");
+  const modifier = direction === "asc" ? 1 : -1;
+  const sortedItems = filteredItems.sort(
+    (a, b) => (a[field] - b[field]) * modifier
+  );
+
   return (
     <div className="container mx-auto px-6">
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-        {filteredItems.map((item, index) => (
+        {sortedItems.map((item, index) => (
           <ProductCard key={index} item={item} />
         ))}
       </div>
