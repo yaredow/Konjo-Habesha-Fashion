@@ -90,8 +90,8 @@ function CheckoutForm() {
           />
         </div>
       </div>
-      <div className="flex gap-4">
-        <div className="w-3/4 mt-2 mb-6">
+      <div className="flex ">
+        <div className="w-1/2 mt-2 mb-6">
           <label className="block mb-2 text-md font-custom text-gray-90">
             Expiration date
           </label>
@@ -105,7 +105,7 @@ function CheckoutForm() {
           />
         </div>
 
-        <div className="w-1/4 mt-2 mb-6">
+        <div className="w-1/2 mt-2 mb-6">
           <label className="block mb-2 text-md font-custom text-gray-90">
             Security code
           </label>
