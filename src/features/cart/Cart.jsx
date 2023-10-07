@@ -85,7 +85,7 @@ function Cart() {
                           handleCartToggle();
                         }}
                         href="#"
-                        className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                        className="flex items-center justify-center rounded-md border border-transparent bg-blue-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-600"
                       >
                         Checkout
                       </a>
@@ -99,7 +99,7 @@ function Cart() {
                             handleCartToggle();
                           }}
                           type="button"
-                          className="font-medium mx-2 text-indigo-600 hover:text-indigo-500"
+                          className="font-medium mx-2 text-blue-500 hover:text-blue-600"
                         >
                           Continue Shopping
                           <span aria-hidden="true"> &rarr;</span>

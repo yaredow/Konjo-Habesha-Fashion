@@ -70,13 +70,13 @@ const ProductDetail = () => {
             <div className=" flex md:flex-row flex-col gap-4">
               <div className=" flex-1">
                 <label
-                  className=" text-md text-stone-600 font-medium  dark:text-white"
+                  className=" text-md text-stone-600 font-medium"
                   htmlFor="size"
                 >
                   Size:
                 </label>
                 <select
-                  className=" bg-gray-50 border border-gray-400 mt-2 text-gray-900 text-md font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className=" bg-gray-50 border border-gray-400 mt-2 text-gray-900 text-md font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                   id="size"
                 >
                   {sizeArray.map((si) => (
@@ -93,13 +93,13 @@ const ProductDetail = () => {
 
               <div className=" flex-1">
                 <label
-                  className=" mb-4 text-md font-medium text-stone-600 dark:text-white"
+                  className=" mb-4 text-md font-medium text-stone-600 "
                   htmlFor="material"
                 >
                   Material:
                 </label>
                 <select
-                  className=" bg-gray-50 border border-gray-300 mt-2 text-gray-900 text-md font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full w p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  className=" bg-gray-50 border border-gray-300 mt-2 text-gray-900 text-md font-semibold rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full w p-2.5 "
                   id="material"
                 >
                   <option

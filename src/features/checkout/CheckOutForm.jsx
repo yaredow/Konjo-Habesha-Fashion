@@ -4,6 +4,7 @@ import DatePicker from "react-datepicker";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearCart } from "../cart/cartSlice";
+import { IoIosArrowBack } from "react-icons/io";
 import "react-datepicker/dist/react-datepicker.css";
 
 function CheckoutForm() {
@@ -52,7 +53,7 @@ function CheckoutForm() {
           Email
         </label>
         <input
-          className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+          className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
           id="cus_email"
           name="cus_email"
           type="text"
@@ -69,7 +70,7 @@ function CheckoutForm() {
           Name on card
         </label>
         <input
-          className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+          className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
           id="cus_name"
           name="cus_name"
           type="text"
@@ -84,7 +85,7 @@ function CheckoutForm() {
         </label>
         <div>
           <input
-            className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors"
+            className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors"
             placeholder="0000 0000 0000 0000"
             type="text"
           />
@@ -101,7 +102,7 @@ function CheckoutForm() {
             onChange={(date) => setExpirationDate(date)}
             dateFormat="MM/yyyy"
             showMonthYearPicker
-            className=" w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+            className=" w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
           />
         </div>
 
@@ -111,7 +112,7 @@ function CheckoutForm() {
           </label>
           <div>
             <input
-              className=" w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors"
+              className=" w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors"
               placeholder="000"
               type="text"
             />
@@ -127,7 +128,7 @@ function CheckoutForm() {
           Address
         </label>
         <input
-          className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+          className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
           id="cus_address"
           name="cus_address"
           type="text"
@@ -144,7 +145,7 @@ function CheckoutForm() {
           City
         </label>
         <input
-          className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+          className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
           id="cus_city"
           name="cus_city"
           type="text"
@@ -166,7 +167,7 @@ function CheckoutForm() {
           <select
             value={selectedCountry ? selectedCountry.value : ""}
             onChange={handleSelect}
-            className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+            className="w-full py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
           >
             <option value="" disabled>
               Select a country
@@ -187,7 +188,7 @@ function CheckoutForm() {
             Zip
           </label>
           <input
-            className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+            className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
             id="cus_zip"
             name="cus_zip"
             type="text"
@@ -197,13 +198,23 @@ function CheckoutForm() {
           />
         </div>
       </div>
-      <div>
+      <div className=" flex flex-row items-center">
+        <button
+          onClick={() => {
+            navigate("/products");
+          }}
+          className="w-full px-3 py-2 font-semibold mb-1 rounded-md transition-colors cursor-pointer flex items-center"
+        >
+          <IoIosArrowBack className="text-black mr-2" />
+          <span className=" text-stone-600">Return to shopping</span>
+        </button>
+
         <button
           onClick={() => {
             navigate("/products");
             handleClearCart();
           }}
-          className="w-full px-3 py-2 font-semibold hover:bg-blue-600 mb-1 bg-blue-500 border-2 border-gray-200 rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+          className="w-full px-3 py-2 font-semibold hover:bg-blue-600 mb-1 bg-blue-500 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
         >
           PAY NOW
         </button>

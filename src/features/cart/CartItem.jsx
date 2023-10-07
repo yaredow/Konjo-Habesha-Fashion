@@ -4,9 +4,8 @@ import UpdateItemQuantity from "./UpdateItemQuantity";
 import { getCurrentQuantityById } from "./cartSlice";
 import DeleteItem from "./DeleteItem";
 
-function CartItem({ item }) {
+function CartItem({ item, showDelete = true }) {
   const { img, id, name, totalPrice, material } = item;
-
   const currentQuantity = useSelector(getCurrentQuantityById(id));
 
   return (
@@ -33,7 +32,7 @@ function CartItem({ item }) {
             <UpdateItemQuantity id={id} currentQuantity={currentQuantity} />
           </div>
 
-          <DeleteItem id={id} />
+          {showDelete && <DeleteItem id={id} />}
         </div>
       </div>
     </li>
