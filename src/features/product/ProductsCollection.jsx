@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import ProductCard from "./ProductsItem";
 import { items } from "../../ui/AllData";
+import Pagination from "../../ui/Pagination";
 function ProductsCollection() {
   const [searchParams] = useSearchParams();
 
@@ -35,21 +36,9 @@ function ProductsCollection() {
           <ProductCard key={index} item={item} />
         ))}
       </div>
-      <div className="flex justify-center">
-        <div className="flex rounded-md mt-8">
-          <a
-            href="#"
-            className="py-2 px-4 leading-tight bg-white border border-gray-200 text-blue-700 border-r-0 ml-0 rounded-l hover:bg-blue-500 hover:text-white"
-          >
-            <span>Previous</span>
-          </a>
-          {/* Add pagination links */}
-          <a
-            href="#"
-            className="py-2 px-4 leading-tight bg-white border border-gray-200 text-blue-700 rounded-r hover:bg-blue-500 hover:text-white"
-          >
-            <span>Next</span>
-          </a>
+      <div className="justify-center">
+        <div className="mt-8">
+          <Pagination />
         </div>
       </div>
     </div>
