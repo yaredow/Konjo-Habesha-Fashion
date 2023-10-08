@@ -10,6 +10,8 @@ import { Toaster } from "react-hot-toast";
 import Home2 from "./ui/Home2";
 import ProductDetail from "./features/product/ProductDetail";
 import Products from "./pages/Products";
+import ContactUs from "./pages/ContactUs";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
               <Route path="cart" element={<Cart />} />
               <Route path="order" element={<Order />} />
               <Route path="product/:id" element={<ProductDetail />} />
+              <Route path="contact-us" element={<ContactUs />} />
+              <Route path="about-us" element={<AboutUs />} />
             </Route>
             <Route path="checkout" element={<Checkout />} />
             <Route path="*" element={<PageNotFound />} />

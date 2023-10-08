@@ -13,7 +13,7 @@ function useMaskedCreditCard(initialValue = "") {
     // Display only the last 4 digits and replace the rest with "*"
     const displayedDigits = sanitizedCardNumber
       .slice(-4)
-      .padStart(sanitizedCardNumber.length, "*");
+      .padEnd(sanitizedCardNumber.length, "*");
     setDisplayedCardNumber(displayedDigits);
   };
 

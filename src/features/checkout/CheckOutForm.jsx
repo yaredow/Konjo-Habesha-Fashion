@@ -76,9 +76,7 @@ function CheckoutForm() {
           Email
         </label>
         <input
-          className={`w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer ${
-            errors.email ? "border-red-500" : ""
-          }`}
+          className={`input ${errors.email ? "border-red-500" : ""}`}
           id="email"
           name="cus_email"
           type="text"
@@ -97,9 +95,7 @@ function CheckoutForm() {
           Name on card
         </label>
         <input
-          className={`w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer ${
-            errors.name ? "border-red-500" : ""
-          }`}
+          className={`input ${errors.name ? "border-red-500" : ""}`}
           id="name"
           {...register("name", {
             required: "This field required",
@@ -117,7 +113,7 @@ function CheckoutForm() {
         </label>
         <div>
           <input
-            className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors"
+            className={`input ${errors.cardNumber ? "border-red-500" : ""}`}
             id="cardNumber"
             {...register("cardNumber", {
               required: "This field required",
@@ -144,7 +140,7 @@ function CheckoutForm() {
             onChange={(date) => setExpirationDate(date)}
             dateFormat="MM/yyyy"
             showMonthYearPicker
-            className=" w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+            className=" input"
           />
         </div>
 
@@ -154,7 +150,7 @@ function CheckoutForm() {
           </label>
           <div>
             <input
-              className=" w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors"
+              className={`input ${errors.securityCode ? "border-red-500" : ""}`}
               id="securityCode"
               {...register("securityCode", {
                 required: "This field required",
@@ -178,7 +174,7 @@ function CheckoutForm() {
           Address
         </label>
         <input
-          className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+          className={`input ${errors.address ? "border-red-500" : ""}`}
           id="address"
           {...register("address", {
             required: "This field required",
@@ -198,7 +194,7 @@ function CheckoutForm() {
           City
         </label>
         <input
-          className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+          className={`input ${errors.city ? "border-red-500" : ""}`}
           id="city"
           {...register("city", {
             required: "This field required",
@@ -222,8 +218,9 @@ function CheckoutForm() {
 
           <select
             value={selectedCountry ? selectedCountry.value : ""}
+            id="country"
             onChange={handleSelect}
-            className="w-full py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+            className={`input ${errors.country ? "border-red-500" : ""}`}
           >
             <option value="" disabled>
               Select a country
@@ -244,12 +241,12 @@ function CheckoutForm() {
             Zip
           </label>
           <input
-            className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+            className={`input ${errors.zip ? "border-red-500" : ""}`}
             id="zip"
             {...register("zip", {
               required: "This field required",
             })}
-            name="cus_zip"
+            name="zip"
             type="text"
             required=""
             placeholder="Zip"

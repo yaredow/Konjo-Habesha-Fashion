@@ -1,71 +1,58 @@
-import React from "react";
-import { FaTshirt } from "react-icons/fa";
-import { GiAmpleDress } from "react-icons/gi";
+import React, { useState } from "react";
 
-function NewsLetter() {
+const Newsletter = () => {
+  const [email, setEmail] = useState("");
+
+  const handleInputChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your logic for handling the submitted email
+    console.log("Submitted email:", email);
+    // Reset the email input after submission
+    setEmail("");
+  };
+
   return (
-    <div className="relative overflow-hidden bg-stone-100 py-16 md:py-24 border-b border-stone-200">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-2">
-          <div className="max-w-xl lg:max-w-lg">
-            <h2 className="text-3xl font-bold tracking-tight font-custom text-stone-800 sm:text-4xl">
-              Subscribe to our newsletter.
+    <div className="mx-auto border-b w-[90%]">
+      <div className="bg-gray-100 py-12">
+        <div className="container mx-auto px-4 text-center md:text-left gap-6 flex flex-col md:flex-row justify-between items-center">
+          <div className="">
+            <h2 className="text-2xl font-bold mb-4 text-stone-600">
+              Subscribe to Our Newsletter
             </h2>
-            <p className="mt-4 text-lg leading-8 text-stone-600">
-              Nostrud amet eu ullamco nisi aute in ad minim nostrud adipisicing
-              velit quis. Duis tempor incididunt dolore.
+            <p className="text-stone-600 mb-6">
+              Stay updated with our latest products and promotions. Subscribe to
+              our newsletter!
             </p>
-            <div className="mt-6 flex max-w-md gap-x-4">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
+          </div>
+          <div className="">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col sm:flex-row items-center max-w-md"
+            >
               <input
-                id="email-address"
-                name="email"
                 type="email"
-                autoComplete="email"
+                value={email}
+                onChange={handleInputChange}
+                placeholder="Your email"
+                className="w-full sm:w-auto px-4 py-2 mb-2 sm:mb-0 mr-2 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
                 required
-                className="min-w-0 flex-auto rounded-md border-0 bg-white px-3.5 py-2 text-stone-600 shadow-sm ring-1 ring-inset ring-stone-400 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                placeholder="Enter your email"
               />
               <button
                 type="submit"
-                className="flex-none rounded-md bg-blue-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                className="bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition-all duration-300"
               >
                 Subscribe
               </button>
-            </div>
+            </form>
           </div>
-
-          <dl className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:pt-2">
-            <div className="flex flex-col items-start">
-              <div className="rounded-md bg-stone-100 p-2 ring-1 ring-white/10">
-                <FaTshirt className=" text-2xl text-blue-500" />
-              </div>
-              <dt className="mt-4 font-semibold text-stone-800">
-                Weekly articles
-              </dt>
-              <dd className="mt-2 leading-7 text-stone-600">
-                Non laboris consequat cupidatat laborum magna. Eiusmod non irure
-                cupidatat duis commodo amet.
-              </dd>
-            </div>
-
-            <div className="flex flex-col items-start">
-              <div className="rounded-md bg-white/5 p-2 ring-1 ring-white/10">
-                <GiAmpleDress className=" text-2xl text-blue-500" />
-              </div>
-              <dt className="mt-4 font-semibold">No spam</dt>
-              <dd className="mt-2 leading-7 text-stone-600">
-                Officia excepteur ullamco ut sint duis proident non adipisicing.
-                Voluptate incididunt anim.
-              </dd>
-            </div>
-          </dl>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default NewsLetter;
+export default Newsletter;

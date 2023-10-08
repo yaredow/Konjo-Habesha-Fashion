@@ -12,8 +12,8 @@ function Navigation() {
   const [toggleMenu, setToggleMenu] = useState(false);
   const cartQuantity = useSelector(getTotalCartQuantity);
 
-  const sectionPaths = ["/home", "/products"];
-  const sectionNames = ["Home", "Shop", "Men", "Women", "Kids"];
+  const sectionPaths = ["/home", "/products", "/contact-us", "/about-us"];
+  const sectionNames = ["Home", "Shop", "Contact us", "About us"];
 
   return (
     <header className=" bg-white shadow-md sticky top-0 left-0 z-20">
