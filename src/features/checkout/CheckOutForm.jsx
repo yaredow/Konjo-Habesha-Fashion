@@ -6,11 +6,22 @@ import { useNavigate } from "react-router-dom";
 import { clearCart } from "../cart/cartSlice";
 import { IoIosArrowBack } from "react-icons/io";
 import "react-datepicker/dist/react-datepicker.css";
+import { useForm } from "react-hook-form";
+import useMaskedCreditCard from "../../hook/useMaskedCreditCard";
 
 function CheckoutForm() {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [expirationDate, setExpirationDate] = useState(new Date());
+  const { cardNumber, displayedCardNumber, handleCardNumberChange } =
+    useMaskedCreditCard();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -42,9 +53,21 @@ function CheckoutForm() {
     setSelectedCountry(country);
     onselect(country);
   };
+  function onSubmit(data) {
+    console.log("Form data submitted:", data);
+    navigate("/products");
+    handleClearCart();
+    reset();
+  }
+  function onErrors(errors) {
+    console.error(errors);
+  }
 
   return (
-    <form className="w-full mx-auto m-4  bg-white rounded">
+    <form
+      onSubmit={handleSubmit(onSubmit, onErrors)}
+      className="w-full mx-auto m-4  bg-white rounded"
+    >
       <div className="mt-2 mb-6">
         <label
           className="block mb-2 text-md font-custom text-gray-90"
@@ -53,11 +76,15 @@ function CheckoutForm() {
           Email
         </label>
         <input
-          className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
-          id="cus_email"
+          className={`w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer ${
+            errors.email ? "border-red-500" : ""
+          }`}
+          id="email"
           name="cus_email"
           type="text"
-          required=""
+          {...register("email", {
+            required: "This field required",
+          })}
           placeholder="Your Email"
           aria-label="Email"
         />
@@ -70,9 +97,14 @@ function CheckoutForm() {
           Name on card
         </label>
         <input
-          className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
-          id="cus_name"
-          name="cus_name"
+          className={`w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer ${
+            errors.name ? "border-red-500" : ""
+          }`}
+          id="name"
+          {...register("name", {
+            required: "This field required",
+          })}
+          name="name"
           type="text"
           required=""
           placeholder="Your Name"
@@ -86,6 +118,16 @@ function CheckoutForm() {
         <div>
           <input
             className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors"
+            id="cardNumber"
+            {...register("cardNumber", {
+              required: "This field required",
+              max: {
+                value: 16,
+                message: "The number of degits have to be 16",
+              },
+            })}
+            value={displayedCardNumber}
+            onChange={(e) => handleCardNumberChange(e.target.value)}
             placeholder="0000 0000 0000 0000"
             type="text"
           />
@@ -113,6 +155,14 @@ function CheckoutForm() {
           <div>
             <input
               className=" w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors"
+              id="securityCode"
+              {...register("securityCode", {
+                required: "This field required",
+                min: {
+                  value: 3,
+                  message: "Security number code has to be three degit",
+                },
+              })}
               placeholder="000"
               type="text"
             />
@@ -129,8 +179,11 @@ function CheckoutForm() {
         </label>
         <input
           className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
-          id="cus_address"
-          name="cus_address"
+          id="address"
+          {...register("address", {
+            required: "This field required",
+          })}
+          name="address"
           type="text"
           required=""
           placeholder="Street"
@@ -146,8 +199,11 @@ function CheckoutForm() {
         </label>
         <input
           className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
-          id="cus_city"
-          name="cus_city"
+          id="city"
+          {...register("city", {
+            required: "This field required",
+          })}
+          name="city"
           type="text"
           required=""
           placeholder="City"
@@ -189,7 +245,10 @@ function CheckoutForm() {
           </label>
           <input
             className="w-full px-3 py-2 mb-1 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
-            id="cus_zip"
+            id="zip"
+            {...register("zip", {
+              required: "This field required",
+            })}
             name="cus_zip"
             type="text"
             required=""
@@ -210,10 +269,7 @@ function CheckoutForm() {
         </button>
 
         <button
-          onClick={() => {
-            navigate("/products");
-            handleClearCart();
-          }}
+          type="submit"
           className="w-full px-3 py-2 font-semibold hover:bg-blue-600 mb-1 bg-blue-500 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
         >
           PAY NOW
