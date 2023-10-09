@@ -1,18 +1,18 @@
-import { HiChevronLeft, HiChevronRight } from "react-icons/hi2";
+import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { useSearchParams } from "react-router-dom";
 import { PAGE_SIZE } from "../utils/Config";
-import { useSelector } from "react-redux";
-import { getCart } from "../features/cart/cartSlice";
-import { items } from "./AllData";
+import { items } from "./AllData"; // Import your items or fetch them from somewhere
+import useFilterAndSort from "../hook/useFilterAndSort";
 
 function Pagination() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const count = items.length;
   const currentPage = !searchParams.get("page")
     ? 1
     : Number(searchParams.get("page"));
 
-  const pageCount = Math.ceil(count / PAGE_SIZE);
+  const { totalCount } = useFilterAndSort(items, currentPage);
+
+  const pageCount = Math.ceil(totalCount / PAGE_SIZE);
 
   function nextPage() {
     const next = currentPage === pageCount ? currentPage : currentPage + 1;
@@ -30,45 +30,49 @@ function Pagination() {
 
   return (
     <div className="flex flex-row gap-4 justify-between items-center">
-      <div className="">
-        <p className="text-base mb-2 sm:mb-0">
+      <div className=" font-custom text-lg">
+        <p className=" mb-2 sm:mb-0">
           Showing{" "}
           <span className="font-semibold">
             {(currentPage - 1) * PAGE_SIZE + 1}
           </span>{" "}
           to{" "}
           <span className="font-semibold">
-            {currentPage === pageCount ? count : currentPage * PAGE_SIZE}
+            {currentPage === pageCount ? totalCount : currentPage * PAGE_SIZE}
           </span>{" "}
-          of <span className="font-semibold">{count}</span> results
+          of <span className="font-semibold">{totalCount}</span> results
         </p>
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex gap-4 font-custom text-lg">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
-          className={` text-base font-semibold rounded ${
+          className={` py-2 px-2 text-base font-semibold rounded ${
             currentPage === 1
-              ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-blue-500 text-white hover:bg-blue-600 hover:text-white"
+              ? " text-gray-600 cursor-not-allowed"
+              : " hover:bg-blue-600 hover:text-white"
           }`}
         >
-          <HiChevronLeft className="h-6 w-6" />
-          <span>Previous</span>
+          <div className=" flex flex-row">
+            <HiChevronLeft className="h-6 w-6 " />
+            <span>Previous</span>
+          </div>
         </button>
 
         <button
           onClick={nextPage}
           disabled={currentPage === pageCount}
-          className={`py-2 px-4 text-base font-semibold rounded ${
+          className={`py-2 px-2 text-base font-semibold rounded ${
             currentPage === pageCount
-              ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-              : "bg-blue-500 text-white hover:bg-blue-600 hover:text-white"
+              ? " text-gray-600 cursor-not-allowed"
+              : " hover:bg-blue-600 hover:text-white"
           }`}
         >
-          <span>Next</span>
-          <HiChevronRight className="h-6 w-6" />
+          <div className=" flex flex-row">
+            <span>Next</span>
+            <HiChevronRight className="h-6 w-6" />
+          </div>
         </button>
       </div>
     </div>

@@ -1,27 +1,20 @@
-import { useSearchParams } from "react-router-dom";
 import ProductCard from "./ProductsItem";
 import { items } from "../../ui/AllData";
 import Pagination from "../../ui/Pagination";
+import useFilterAndSort from "../../hook/useFilterAndSort";
+import { useSearchParams } from "react-router-dom";
 function ProductsCollection() {
   const [searchParams] = useSearchParams();
-
-  const filterValue = searchParams.get("category") || "all";
-  let filteredItems;
-  if (filterValue === "all") filteredItems = items;
-  if (filterValue === "men")
-    filteredItems = items.filter((item) => item.catagory === "male");
-  if (filterValue === "women")
-    filteredItems = items.filter((item) => item.catagory === "female");
-  if (filterValue === "kids")
-    filteredItems = items.filter((item) => item.catagory === "kids");
-
-  const sortValue = searchParams.get("sortBy") || "";
-  const [field, direction] = sortValue.split("-");
-  const modifier = direction === "asc" ? 1 : -1;
-  const sortedItems = filteredItems.sort(
-    (a, b) => (a[field] - b[field]) * modifier
+  const currentPage = !searchParams.get("page")
+    ? 1
+    : Number(searchParams.get("page"));
+  // Adjust the page size as needed
+  const { filteredAndSortedItems, totalCount, filterValue } = useFilterAndSort(
+    items,
+    currentPage
   );
 
+  console.log(filteredAndSortedItems);
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -32,7 +25,7 @@ function ProductsCollection() {
         {capitalizeFirstLetter(filterValue)}
       </h1>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
-        {sortedItems.map((item, index) => (
+        {filteredAndSortedItems.map((item, index) => (
           <ProductCard key={index} item={item} />
         ))}
       </div>
