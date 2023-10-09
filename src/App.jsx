@@ -7,11 +7,11 @@ import { DarkModeProvider } from "./context/darkModeContext";
 import { CartProvider } from "./context/cartContext";
 import PageNotFound from "./ui/PageNotFound";
 import { Toaster } from "react-hot-toast";
-import Home2 from "./ui/Home2";
 import ProductDetail from "./features/product/ProductDetail";
 import Products from "./pages/Products";
 import ContactUs from "./pages/ContactUs";
 import AboutUs from "./pages/AboutUs";
+import Home from "./ui/Home";
 
 function App() {
   return (
@@ -21,7 +21,7 @@ function App() {
           <Routes>
             <Route element={<AppLayout />}>
               <Route index element={<Navigate replace to="home" />} />
-              <Route path="home" element={<Home2 />} />
+              <Route path="home" element={<Home />} />
               <Route path="products" element={<Products />} />
               <Route path="cart" element={<Cart />} />
               <Route path="order" element={<Order />} />

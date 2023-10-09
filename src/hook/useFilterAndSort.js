@@ -22,10 +22,21 @@ function useFilterAndSort(originalItems, currentPage) {
 
     const sortValue = searchParams.get("sortBy") || "";
     const [field, direction] = sortValue.split("-");
-    const modifier = direction === "asc" ? 1 : -1;
-    const sortedItems = filteredItems.sort(
-      (a, b) => (a[field] - b[field]) * modifier
-    );
+    const sortedItems = filteredItems.sort((a, b) => {
+      if (field === "name") {
+        const nameA = a[field].toUpperCase();
+        const nameB = b[field].toUpperCase();
+        if (direction === "asc") {
+          return nameA.localeCompare(nameB);
+        } else if (direction === "desc") {
+          return nameB.localeCompare(nameA);
+        }
+      } else {
+        // Default sorting for other fields
+        const modifier = direction === "asc" ? 1 : -1;
+        return (a[field] - b[field]) * modifier;
+      }
+    });
 
     const startIndex = (currentPage - 1) * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;

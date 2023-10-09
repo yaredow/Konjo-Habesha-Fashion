@@ -9,7 +9,7 @@ function ProductsCollection() {
     ? 1
     : Number(searchParams.get("page"));
   // Adjust the page size as needed
-  const { filteredAndSortedItems, totalCount, filterValue } = useFilterAndSort(
+  const { filteredAndSortedItems, filterValue } = useFilterAndSort(
     items,
     currentPage
   );
@@ -21,10 +21,10 @@ function ProductsCollection() {
 
   return (
     <div className="container mx-auto px-6">
-      <h1 className=" text-xl font-bold text-stone-800">
+      <h1 className=" text-2xl font-bold text-stone-800 mb-3">
         {capitalizeFirstLetter(filterValue)}
       </h1>
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredAndSortedItems.map((item, index) => (
           <ProductCard key={index} item={item} />
         ))}
