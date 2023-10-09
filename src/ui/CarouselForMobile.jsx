@@ -8,8 +8,8 @@ function CarouselForMobile({ visibleSlides }) {
       className="block md:hidden "
       naturalSlideWidth={100}
       isIntrinsicHeight={true}
-      totalSlides={12}
-      visibleSlides={visibleSlides}
+      totalSlides={14}
+      visibleSlides={1}
       step={1}
       infinite={true}
     >

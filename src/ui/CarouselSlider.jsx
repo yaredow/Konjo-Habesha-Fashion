@@ -3,7 +3,7 @@ import { Slide, Slider } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { carouselImages } from "./AllData";
 
-const CarouselSlider = ({ totalSlides }) => {
+const CarouselSlider = () => {
   return (
     <Slider>
       <div
