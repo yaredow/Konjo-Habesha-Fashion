@@ -1,21 +1,21 @@
 import React from "react";
 import { Slide, Slider } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
+import { carouselImages } from "./AllData";
 
 const CarouselSlider = ({ totalSlides }) => {
   return (
     <Slider>
       <div
-        id="slider"
-        className={`h-full flex gap-8 md:gap-6 items-center justify-start transition ease-out duration-700`}
+        className={`h-full flex gap-4 md:gap-6 items-center justify-start transition ease-out duration-700`}
       >
-        {[...Array(totalSlides)].map((_, index) => (
+        {carouselImages.map((image, index) => (
           <Slide index={index} key={index}>
-            <div className="w-full h-full flex items-center justify-center">
+            <div className="w-auto h-full flex items-center justify-center">
               <img
-                src={`https://i.ibb.co/rFsGfr5/carosel-${index + 1}.png`}
+                src={image}
                 alt={`Catalog ${index + 1}`}
-                className="object-cover object-center w-full"
+                className="object-cover object-center w-full h-full md:w-96 md:h-96"
               />
             </div>
           </Slide>

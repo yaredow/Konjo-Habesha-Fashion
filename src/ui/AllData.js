@@ -25,6 +25,38 @@ import collection2 from "/images/collections/collection-2.jpg";
 import collection3 from "/images/collections/collection-3.jpg";
 import collection4 from "/images/collections/collection-4.jpg";
 
+import car1 from "/images/carousel-images/car-1.jpg";
+import car2 from "/images/carousel-images/car-2.jpg";
+import car3 from "/images/carousel-images/car-3.jpg";
+import car4 from "/images/carousel-images/car-4.jpg";
+import car5 from "/images/carousel-images/car-5.jpg";
+import car6 from "/images/carousel-images/car-6.jpg";
+import car7 from "/images/carousel-images/car-7.jpg";
+import car8 from "/images/carousel-images/car-8.jpg";
+import car9 from "/images/carousel-images/car-9.jpg";
+import car10 from "/images/carousel-images/car-10.jpg";
+import car11 from "/images/carousel-images/car-11.jpg";
+import car12 from "/images/carousel-images/car-12.jpg";
+import car13 from "/images/carousel-images/car-13.jpg";
+import car14 from "/images/carousel-images/car-14.jpg";
+
+export const carouselImages = [
+  car1,
+  car2,
+  car3,
+  car4,
+  car5,
+  car6,
+  car7,
+  car8,
+  car9,
+  car10,
+  car11,
+  car12,
+  car13,
+  car14,
+];
+
 export const items = [
   {
     id: 1,

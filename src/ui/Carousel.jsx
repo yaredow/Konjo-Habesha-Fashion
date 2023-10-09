@@ -2,8 +2,11 @@ import { ButtonBack, ButtonNext, CarouselProvider } from "pure-react-carousel";
 import CarouselSlider from "./CarouselSlider";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import CarouselForMobile from "./CarouselForMobile";
+import { useMediaQuery } from "react-responsive";
 
 function Carousel() {
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
+  const visibleSlides = isDesktop ? 4 : 1;
   return (
     <>
       <CarouselProvider
@@ -11,7 +14,7 @@ function Carousel() {
         naturalSlideWidth={100}
         isIntrinsicHeight={true}
         totalSlides={12}
-        visibleSlides={4}
+        visibleSlides={visibleSlides}
         step={1}
         infinite={true}
       >
@@ -37,7 +40,7 @@ function Carousel() {
           </ButtonNext>
         </div>
       </CarouselProvider>
-      <CarouselForMobile />
+      <CarouselForMobile visibleSlides={visibleSlides} />
     </>
   );
 }

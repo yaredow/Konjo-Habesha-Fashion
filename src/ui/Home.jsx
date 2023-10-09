@@ -23,7 +23,22 @@ function Home2() {
   return (
     <>
       <div className="mx-auto ">
-        <Carousel />
+        <div
+          className="relative md:mb-8 mb-3 h-56 rounded-b-lg bg-cover bg-center bg-no-repeat shadow-lg"
+          style={{
+            backgroundImage: `url('/images/home-background/background.jpeg')`,
+          }}
+        >
+          <div className="px-4 pt-8 pb-10">
+            <div className="absolute inset-x-0 -bottom-10 mx-auto w-36 rounded-full border-8 border-white shadow-lg shadow-stone-400">
+              <img
+                className="mx-auto h-auto w-full bg-stone-400 rounded-full"
+                src="/images/logo/logo.png"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
 
         <div className="mt-6 flex flex-col items-start justify-center space-y-4 py-8 px-4 sm:flex-row sm:space-y-0 md:justify-between lg:px-0">
           <div className="max-w-lg">
@@ -51,6 +66,10 @@ function Home2() {
               </p>
             )}
           </div>
+        </div>
+
+        <div className=" w-full md:mt-6">
+          <Carousel totalSlides={12} />
         </div>
 
         <div className="mt-16">
