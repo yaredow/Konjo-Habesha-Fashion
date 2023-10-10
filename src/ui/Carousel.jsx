@@ -13,7 +13,7 @@ function Carousel() {
         className="lg:block hidden"
         naturalSlideWidth={100}
         isIntrinsicHeight={true}
-        totalSlides={14}
+        totalSlides={13}
         visibleSlides={4}
         step={1}
         infinite={true}

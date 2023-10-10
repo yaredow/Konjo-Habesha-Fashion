@@ -1,4 +1,4 @@
-import ProductCard from "./ProductsItem";
+import ProductItem from "./ProductsItem";
 import { items } from "../../ui/AllData";
 import Pagination from "../../ui/Pagination";
 import useFilterAndSort from "../../hook/useFilterAndSort";
@@ -14,7 +14,6 @@ function ProductsCollection() {
     currentPage
   );
 
-  console.log(filteredAndSortedItems);
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -26,7 +25,7 @@ function ProductsCollection() {
       </h1>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {filteredAndSortedItems.map((item, index) => (
-          <ProductCard key={index} item={item} />
+          <ProductItem key={index} item={item} />
         ))}
       </div>
       <div className="justify-center">

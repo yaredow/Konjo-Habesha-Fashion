@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import useAddToCart from "../../hook/useAddToCart";
 
-function ProductCard({ item }) {
+function ProductItem({ item }) {
   const navigate = useNavigate();
   const { handleAddToCart } = useAddToCart(item);
 
@@ -47,4 +47,4 @@ function ProductCard({ item }) {
   );
 }
 
-export default ProductCard;
+export default ProductItem;

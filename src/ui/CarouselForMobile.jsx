@@ -2,13 +2,13 @@ import { ButtonBack, ButtonNext, CarouselProvider } from "pure-react-carousel";
 import CarouselSlider from "./CarouselSlider";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 
-function CarouselForMobile({ visibleSlides }) {
+function CarouselForMobile() {
   return (
     <CarouselProvider
       className="block md:hidden "
       naturalSlideWidth={100}
       isIntrinsicHeight={true}
-      totalSlides={14}
+      totalSlides={13}
       visibleSlides={1}
       step={1}
       infinite={true}

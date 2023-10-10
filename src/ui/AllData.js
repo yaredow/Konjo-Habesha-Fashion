@@ -34,28 +34,10 @@ import car6 from "/images/carousel-images/car-6.jpg";
 import car7 from "/images/carousel-images/car-7.jpg";
 import car8 from "/images/carousel-images/car-8.jpg";
 import car9 from "/images/carousel-images/car-9.jpg";
-import car10 from "/images/carousel-images/car-10.jpg";
 import car11 from "/images/carousel-images/car-11.jpg";
 import car12 from "/images/carousel-images/car-12.jpg";
 import car13 from "/images/carousel-images/car-13.jpg";
 import car14 from "/images/carousel-images/car-14.jpg";
-
-export const carouselImages = [
-  car1,
-  car2,
-  car3,
-  car4,
-  car5,
-  car6,
-  car7,
-  car8,
-  car9,
-  car10,
-  car11,
-  car12,
-  car13,
-  car14,
-];
 
 export const items = [
   {
@@ -293,7 +275,6 @@ export const items = [
     catagory: "collection",
     name: "Timeless Family Collection",
     img: collection3,
-    material: "Shema",
     description:
       "Create lasting memories with this carefully curated family collection of Habesha clothes.",
     price: 160,
@@ -304,10 +285,166 @@ export const items = [
     catagory: "collection",
     name: "Stylish Family Collection",
     img: collection4,
-    material: "Shema",
     description:
       "Transform family gatherings with this stylish family collection of Habesha clothes.",
     price: 200,
-    size: "md, xl, xxl", // Added size property for collection items
+    size: "md, xl, xxl",
+  },
+  {
+    id: 24,
+    catagory: "female",
+    name: "Elegant Women's Dress",
+    img: car2,
+    description:
+      "Elegance meets style with this elegant women's Habesha dress, designed for weddings and special events.",
+    price: 230,
+    material: "Shema",
+    size: "md, xl, xxl",
+    carousel: true,
+  },
+  {
+    id: 25,
+    catagory: "male",
+    name: "Modern Men's Attire",
+    img: car1,
+    description:
+      "Step into modernity with this stylish men's Habesha attire, perfect for special occasions.",
+    price: 120,
+    material: "Shema",
+    size: "md, lg, xl, xxl",
+    carousel: true,
+  },
+  {
+    id: 26,
+    catagory: "collection",
+    name: "Royal Collection",
+    img: car3,
+    description:
+      "Experience royalty with this royal collection of Habesha clothes, carefully curated for special occasions.",
+    price: 230,
+    material: "Shema",
+    size: "md, xl, xxl",
+    carousel: true,
+  },
+  {
+    id: 27,
+    catagory: "collection",
+    name: "Timeless Collection",
+    img: car4,
+    description:
+      "Create timeless memories with this timeless collection of Habesha clothes, perfect for family gatherings.",
+    price: 270,
+    material: "Shema",
+    size: "md, xl, xxl",
+    carousel: true,
+  },
+  {
+    id: 28,
+    catagory: "collection",
+    name: "Chic Collection",
+    img: car5,
+    description:
+      "Chic and stylish, this collection of Habesha clothes adds a touch of sophistication to your wardrobe.",
+    price: 215,
+    material: "Shema",
+    size: "md, xl, xxl",
+    carousel: true,
+  },
+  {
+    id: 29,
+    catagory: "female",
+    name: "Trendy Women's Dress",
+    img: car6,
+    description:
+      "Stay on trend with this trendy women's Habesha dress, perfect for modern fashion enthusiasts.",
+    price: 230,
+    material: "Shema",
+    size: "md, xxl",
+    carousel: true,
+  },
+  {
+    id: 30,
+    catagory: "male",
+    name: "Classic Men's Attire",
+    img: car7,
+    description:
+      "A classic choice for men, this classic men's Habesha attire is suitable for various special occasions.",
+    price: 120,
+    material: "Shema",
+    size: "md, xl, xxl",
+    carousel: true,
+  },
+  {
+    id: 31,
+    catagory: "female",
+    name: "Stylish Women's Dress",
+    img: car8,
+    description:
+      "Transform your style with this stylish women's Habesha dress, designed for elegance and grace.",
+    price: 250,
+    material: "Shema",
+    size: "md, xl, xxl",
+    carousel: true,
+  },
+  {
+    id: 32,
+    catagory: "female",
+    name: "Modern Women's Dress",
+    material: "shema",
+    img: car9,
+    description:
+      "Step into modernity with this modern women's Habesha dress, perfect for contemporary fashion lovers.",
+    price: 250,
+    size: "md, lg, xl, xxl",
+    carousel: true,
+  },
+
+  {
+    id: 33,
+    catagory: "male",
+    name: "Casual Men's Attire",
+    material: "shema",
+    img: car11,
+    description:
+      "Keep it casual with this casual men's Habesha attire, perfect for laid-back occasions.",
+    price: 75,
+    size: "md, lg, xl, xxl",
+    carousel: true,
+  },
+  {
+    id: 34,
+    catagory: "collection",
+    name: "Royal Family Collection",
+    material: "shema",
+    img: car12,
+    description:
+      "Experience royalty with the royal family collection of Habesha clothes, fit for kings and queens.",
+    price: 300,
+    size: "md, lg, xl, xxl",
+    carousel: true,
+  },
+  {
+    id: 35,
+    catagory: "female",
+    name: "Chic Women's Dress",
+    material: "shema",
+    img: car13,
+    description:
+      "Add a touch of chic to your wardrobe with this chic women's Habesha dress, perfect for fashionistas.",
+    price: 200,
+    size: "lg, xl, xxl",
+    carousel: true,
+  },
+  {
+    id: 36,
+    catagory: "male",
+    name: "Classic Men's Tee-Shirt",
+    material: "shema",
+    img: car14,
+    description:
+      "Keep it classic with this classic men's Habesha tee-shirt, suitable for various occasions.",
+    price: 120,
+    size: "lg, xl, xxl",
+    carousel: true,
   },
 ];

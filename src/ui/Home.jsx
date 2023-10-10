@@ -68,12 +68,15 @@ function Home2() {
           </div>
         </div>
 
-        <div className=" w-full md:mt-6">
-          <Carousel totalSlides={12} />
+        <div className=" w-full md:mt-6 ">
+          <h3 className=" mb-6 text-gray-900 text-2xl text-start font-medium">
+            TRENDING NOW
+          </h3>
+          <Carousel />
         </div>
 
         <div className="mt-16">
-          <h3 className="text-gray-600 text-2xl text-center font-medium">
+          <h3 className="text-gray-900 text-2xl text-start font-medium">
             FEATURED COLLECTION
           </h3>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
@@ -84,7 +87,7 @@ function Home2() {
         </div>
       </div>
 
-      <div className=" mt-6 flex justify-center">
+      <div className=" mt-12 flex justify-center">
         <a
           onClick={() => navigate("/products")}
           href="#"
