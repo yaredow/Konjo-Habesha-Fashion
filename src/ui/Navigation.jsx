@@ -1,4 +1,3 @@
-import { BiSearch } from "react-icons/bi";
 import DarkModeToggle from "./darkModeToggle";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineUser } from "react-icons/ai";
 import NavMenuDesktop from "./NavMenuDesktop";
@@ -7,22 +6,26 @@ import NavMenuMobile from "./NavMenuMobile";
 import CartToggle from "./CartToggle";
 import { useSelector } from "react-redux";
 import { getTotalCartQuantity } from "../features/cart/cartSlice";
+import ToggleSearchForm from "./ToggleSearchForm";
+import { useSearchForm } from "../context/searchFormContext";
+import Search from "./Search";
+import { useNavigate } from "react-router-dom";
 
 function Navigation() {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const navigate = useNavigate();
   const cartQuantity = useSelector(getTotalCartQuantity);
-
   const sectionPaths = ["/home", "/products", "/contact-us", "/about-us"];
   const sectionNames = ["Home", "Shop", "Contact us", "About us"];
 
   return (
-    <header className=" bg-white shadow-md sticky top-0 left-0 z-20">
+    <header className=" bg-white shadow-md sticky top-0 left-0 z-50">
       <nav className="w-[90%] mx-auto mt-6">
         <div className="flex items-center justify-between">
           <div>
             <a href="/">
               <img
-                className="h-16 w-16 mb-4"
+                className="h-16 w-16 mb-2 bg-blue-200 bg-gradient-to-r from-blue-200 to-blue-400 rounded-full"
                 src="/images/logo/logo.png"
                 alt="Konjo Habesha Logo"
               />
@@ -35,11 +38,13 @@ function Navigation() {
               sectionName={sectionNames}
             />
           </div>
-          <div className=" flex flex-row gap-8">
+          <div className=" flex flex-row gap-8 relative">
             <div className="flex flex-row gap-4 md:gap-6">
-              <BiSearch className="text-2xl hover:text-blue-500" />
-              <AiOutlineUser className="text-2xl hover:text-blue-500" />
-
+              <ToggleSearchForm />
+              <AiOutlineUser
+                onClick={() => navigate("/account")}
+                className="text-2xl hover:text-blue-500 cursor-pointer"
+              />
               <div className=" relative">
                 <CartToggle />
                 {cartQuantity > 0 && (

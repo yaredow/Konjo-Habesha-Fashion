@@ -22,7 +22,7 @@ function useFilterAndSort(originalItems, currentPage) {
 
     const sortValue = searchParams.get("sortBy") || "";
     const [field, direction] = sortValue.split("-");
-    const sortedItems = filteredItems.sort((a, b) => {
+    const sortedItems = [...filteredItems].sort((a, b) => {
       if (field === "name") {
         const nameA = a[field].toUpperCase();
         const nameB = b[field].toUpperCase();
@@ -38,9 +38,12 @@ function useFilterAndSort(originalItems, currentPage) {
       }
     });
 
+    // Shuffle the copy of sorted items randomly
+    const shuffledItems = [...sortedItems].sort(() => Math.random() - 0.5);
+
     const startIndex = (currentPage - 1) * PAGE_SIZE;
     const endIndex = startIndex + PAGE_SIZE;
-    const itemsForCurrentPage = sortedItems.slice(startIndex, endIndex);
+    const itemsForCurrentPage = shuffledItems.slice(startIndex, endIndex);
 
     setFilteredAndSortedItems(itemsForCurrentPage);
     setTotalCount(sortedItems.length);

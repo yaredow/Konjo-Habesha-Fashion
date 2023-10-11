@@ -8,7 +8,6 @@ import useAddToCart from "../hook/useAddToCart";
 const CarouselSlider = () => {
   const navigate = useNavigate();
   const carouselItems = items.filter((item) => item.carousel);
-  const { handleAddToCart } = useAddToCart(carouselItems);
 
   return (
     <Slider>
