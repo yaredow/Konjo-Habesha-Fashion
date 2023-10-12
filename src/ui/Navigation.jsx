@@ -7,8 +7,6 @@ import CartToggle from "./CartToggle";
 import { useSelector } from "react-redux";
 import { getTotalCartQuantity } from "../features/cart/cartSlice";
 import ToggleSearchForm from "./ToggleSearchForm";
-import { useSearchForm } from "../context/searchFormContext";
-import Search from "./Search";
 import { useNavigate } from "react-router-dom";
 
 function Navigation() {

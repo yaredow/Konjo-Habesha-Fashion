@@ -8,7 +8,7 @@ const QuickAccess = () => {
   return (
     <div className="bg-gray-100 border-b text-stone-600 py-6">
       <div className="container mx-auto flex gap-8 items-center flex-col">
-        <nav className="flex space-x-4 font-custom text-lg">
+        <nav className="flex md:space-x-4 px-6 md:px-0 flex-wrap justify-center gap-2 font-custom text-lg">
           <Link to="/search">Search</Link>
           <Link to="/home">Terms of Service</Link>
           <Link to="/home">Shipping & Returns</Link>
