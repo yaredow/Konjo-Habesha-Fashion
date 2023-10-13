@@ -1,6 +1,5 @@
 // ToggleSearchForm.jsx
 
-import React from "react";
 import { BiSearch } from "react-icons/bi";
 import { useSearchForm } from "../context/searchFormContext";
 import Search from "./Search";

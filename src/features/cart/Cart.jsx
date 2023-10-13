@@ -30,13 +30,13 @@ function Cart() {
     >
       <div className="fixed inset-0 overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
+          <div className="pointer-events-none fixed inset-y-0 right-0 left-0 md:left-auto flex">
             <div
               ref={ref}
-              className="pointer-events-auto w-full md:w-screen md:max-w-md"
+              className="pointer-events-auto min-w-full  md:min-w-[30rem]"
             >
-              <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+              <div className="flex h-full flex-col bg-white shadow-xl">
+                <div className="flex-1 md:px-4 py-6 px-8">
                   <div className="flex items-start justify-between">
                     <h2
                       className="text-lg font-medium text-gray-900"
@@ -66,7 +66,7 @@ function Cart() {
                 </div>
 
                 {totalCartQuantity > 0 ? (
-                  <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+                  <div className="border-t border-gray-200 px-8 py-6 ">
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       {totalCartPrice > 0 && (
                         <>
