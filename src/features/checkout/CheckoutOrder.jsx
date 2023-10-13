@@ -14,7 +14,7 @@ function CheckoutOrder() {
   const subTotal = useSelector(getTotalCartPrice);
   const tax = subTotal <= 200 ? 20 : 30;
   const discount = appliedCoupon ? 15 : 0;
-  const total = tax + discount + subTotal;
+  const total = tax + subTotal - discount;
 
   function handleApplyCoupon() {
     setAppliedCoupon(coupon);
@@ -26,11 +26,35 @@ function CheckoutOrder() {
       <p className=" font-custom text-2xl border-b">Konjo Habesha Fashion</p>
       <div className="flex gap-16 flex-col lg:flex-row mt-8">
         <div className="w-full md:w-1/2 order-2 flex flex-col">
-          <div className="flex items-center">
-            <div className=" px-2 py-2 bg-black w-full text-xl text-white flex flex-row items-center justify-center font-semibold rounded-lg">
-              <RiAppleFill className=" " />
-              <span>Pay</span>
-            </div>
+          <div className="flex items-center justify-center gap-4 md:gap-2">
+            <button>
+              <img
+                className=" h-24 w-28"
+                src="/icons/PayPal.svg"
+                alt="PayPal svg icon"
+              />
+            </button>
+            <button>
+              <img
+                className=" h-24 w-28"
+                src="/icons/ApplePay.svg"
+                alt="PayPal svg icon"
+              />
+            </button>
+            <button>
+              <img
+                className=" h-24 w-28"
+                src="/icons/Amex.svg"
+                alt="PayPal svg icon"
+              />
+            </button>
+            <button>
+              <img
+                className=" h-24 w-28"
+                src="/icons/Discover.svg"
+                alt="PayPal svg icon"
+              />
+            </button>
           </div>
 
           <div className="flex items-center justify-center pt-6">
@@ -87,7 +111,7 @@ function CheckoutOrder() {
                   <p>
                     {appliedCoupon ? `Discount (${appliedCoupon})` : "Discount"}
                   </p>
-                  <h3>{appliedCoupon ? formatCurrency(discount) : 0}</h3>
+                  <h3>{appliedCoupon ? formatCurrency(-discount) : 0}</h3>
                 </div>
                 <div className="flex mb-4 flex-row justify-between">
                   <p>Taxes</p>

@@ -129,7 +129,7 @@ function CheckoutForm() {
           />
         </div>
       </div>
-      <div className="flex ">
+      <div className="flex gap-2">
         <div className="w-1/2 mt-2 mb-6">
           <label className="block mb-2 text-md font-custom text-gray-90">
             Expiration date
@@ -140,7 +140,7 @@ function CheckoutForm() {
             onChange={(date) => setExpirationDate(date)}
             dateFormat="MM/yyyy"
             showMonthYearPicker
-            className=" input"
+            className={`input ${errors.securityCode ? "border-red-500" : ""}`}
           />
         </div>
 
@@ -259,7 +259,7 @@ function CheckoutForm() {
           onClick={() => {
             navigate("/products");
           }}
-          className="w-full px-3 py-2 font-semibold mb-1 rounded-md transition-colors cursor-pointer flex items-center"
+          className="w-full md:px-3 py-2 font-semibold mb-1 rounded-md transition-colors cursor-pointer flex items-center"
         >
           <IoIosArrowBack className="text-black mr-2" />
           <span className=" text-stone-600">Return to shopping</span>

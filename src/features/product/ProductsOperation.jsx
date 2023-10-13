@@ -3,7 +3,7 @@ import SortBy from "../../ui/SortBy";
 
 function ProductsOperation() {
   return (
-    <div className=" flex flex-row mx-auto justify-end gap-8 mb-16">
+    <div className=" flex mx-2  md:flex-row flex-col md:mx-auto  md:justify-end md:gap-8 gap-4 mb-16 justify-center">
       <div className="">
         <Filter
           filterField="category"
