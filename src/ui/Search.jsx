@@ -1,6 +1,5 @@
 // Search.jsx
 
-import React from "react";
 import { useSearchForm } from "../context/searchFormContext";
 import useClickOutside from "../hook/useClickOutside";
 import { BiSearch, BiX } from "react-icons/bi";

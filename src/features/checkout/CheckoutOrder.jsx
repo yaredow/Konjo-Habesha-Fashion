@@ -1,4 +1,3 @@
-import { RiAppleFill } from "react-icons/ri";
 import CheckoutForm from "./CheckOutForm";
 import CartItem from "../cart/CartItem";
 import { useSelector } from "react-redux";
