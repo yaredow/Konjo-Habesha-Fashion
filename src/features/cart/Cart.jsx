@@ -42,7 +42,7 @@ function Cart() {
                       className="text-lg font-medium text-gray-900"
                       id="slide-over-title"
                     >
-                      Shopping cart
+                      Your cart
                     </h2>
                     <div className="ml-3 flex h-7 items-center">
                       <button onClick={handleCartToggle} className="text-2xl">

@@ -275,6 +275,7 @@ export const items = [
     catagory: "collection",
     name: "Timeless Family Collection",
     img: collection3,
+    material: "shema",
     description:
       "Create lasting memories with this carefully curated family collection of Habesha clothes.",
     price: 160,
