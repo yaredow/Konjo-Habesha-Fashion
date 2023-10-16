@@ -10,7 +10,7 @@ function ToggleSearchForm() {
   return (
     <div>
       <button onClick={handleSearchFormToggle}>
-        <BiSearch className="text-2xl hover:text-blue-500" />
+        <BiSearch className="text-2xl dark:text-white dark:hover:text-blue-400 hover:text-blue-500" />
       </button>
 
       {isSearchFormOpen && (

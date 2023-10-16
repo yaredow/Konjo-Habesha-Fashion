@@ -17,7 +17,7 @@ function Navigation() {
   const sectionNames = ["Home", "Shop", "Contact us", "About us"];
 
   return (
-    <header className=" bg-white shadow-md sticky top-0 left-0 z-50">
+    <header className=" bg-white dark:bg-gray-900 shadow-md sticky top-0 left-0 z-50">
       <nav className="w-[90%] mx-auto mt-6">
         <div className="flex items-center justify-between">
           <div>
@@ -41,7 +41,7 @@ function Navigation() {
               <ToggleSearchForm />
               <AiOutlineUser
                 onClick={() => navigate("/account")}
-                className="text-2xl hover:text-blue-500 cursor-pointer"
+                className="text-2xl hover:text-blue-500 dark:hover:text-blue-400 dark:text-white cursor-pointer"
               />
               <div className=" relative">
                 <CartToggle />
@@ -56,7 +56,6 @@ function Navigation() {
             </div>
 
             <div className="flex md:hidden">
-              {/* Mobile navigation toggle */}
               <button onClick={() => setToggleMenu(!toggleMenu)}>
                 {toggleMenu ? (
                   <AiOutlineClose className="text-2xl dark:text-stone-200" />

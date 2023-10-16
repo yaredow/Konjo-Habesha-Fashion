@@ -45,7 +45,7 @@ const ProductDetail = () => {
         </div>
 
         <div className="w-full mx-auto mt-5 md:ml-8 md:mt-0  ">
-          <h1 className="text-gray-700 font-custom font-semibold uppercase text-2xl">
+          <h1 className="text-gray-700 font-custom font-semibold uppercase text-2xl dark:text-gray-200">
             {name}
           </h1>
           <span className="text-stone-700 font-semibold mt-3">

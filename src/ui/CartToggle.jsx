@@ -8,7 +8,7 @@ function CartToggle() {
     <div>
       <AiOutlineShoppingCart
         onClick={handleCartToggle}
-        className="text-2xl cursor-pointer hover:text-blue-500"
+        className="text-2xl cursor-pointer dark:hover:text-blue-400 dark:text-white hover:text-blue-500"
       />
       {cartOpen && <Cart />}
     </div>

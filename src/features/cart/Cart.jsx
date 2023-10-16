@@ -23,7 +23,7 @@ function Cart() {
 
   return (
     <div
-      className="relative z-10"
+      className="relative z-10 "
       aria-labelledby="slide-over-title"
       role="dialog"
       aria-modal="true"
@@ -33,19 +33,22 @@ function Cart() {
           <div className="pointer-events-none fixed inset-y-0 right-0 left-0 md:left-auto flex">
             <div
               ref={ref}
-              className="pointer-events-auto min-w-full  md:min-w-[30rem]"
+              className="pointer-events-auto min-w-full  md:min-w-[30rem] "
             >
-              <div className="flex h-full flex-col bg-white shadow-xl">
+              <div className="flex h-full flex-col bg-white shadow-xl dark:bg-gray-800">
                 <div className="flex-1 md:px-4 py-6 px-8">
                   <div className="flex items-start justify-between">
                     <h2
-                      className="text-lg font-medium text-gray-900"
+                      className="text-lg dark:text-gray-100 border-l dark:border-gray-400 font-medium text-gray-900"
                       id="slide-over-title"
                     >
                       Your cart
                     </h2>
                     <div className="ml-3 flex h-7 items-center">
-                      <button onClick={handleCartToggle} className="text-2xl">
+                      <button
+                        onClick={handleCartToggle}
+                        className="text-2xl dark:text-gray-100"
+                      >
                         <AiOutlineClose />
                       </button>
                     </div>
@@ -67,7 +70,7 @@ function Cart() {
 
                 {totalCartQuantity > 0 ? (
                   <div className="border-t border-gray-200 px-8 py-6 ">
-                    <div className="flex justify-between text-base font-medium text-gray-900">
+                    <div className="flex justify-between text-base dark:text-gray-100 font-medium text-gray-900">
                       {totalCartPrice > 0 && (
                         <>
                           <p>Subtotal</p>
@@ -75,7 +78,7 @@ function Cart() {
                         </>
                       )}
                     </div>
-                    <p className="mt-0.5 text-sm text-gray-500">
+                    <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-300">
                       Shipping and taxes calculated at checkout.
                     </p>
                     <div className="mt-6">

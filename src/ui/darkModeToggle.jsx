@@ -9,9 +9,9 @@ function DarkModeToggle() {
       onClick={toggleDarkMode}
     >
       {isDarkMode ? (
-        <BsMoonFill className=" text-2xl" />
+        <BsFillSunFill className=" text-2xl text-yellow-300" />
       ) : (
-        <BsFillSunFill className=" text-2xl text-yellow-500" />
+        <BsMoonFill className=" text-2xl" />
       )}
     </button>
   );

@@ -19,7 +19,7 @@ function CartItem({ item, showDelete = true }) {
       </div>
       <div className="ml-4 flex flex-1 flex-col">
         <div>
-          <div className="flex justify-between text-base font-medium text-gray-900">
+          <div className="flex justify-between text-base dark:text-gray-100 font-medium text-gray-900">
             <h3>
               <a href="#">{name}</a>
             </h3>

@@ -22,7 +22,7 @@ function Home2() {
 
   return (
     <>
-      <div className="mx-auto ">
+      <div className="mx-auto">
         <div
           className="relative md:mb-8 mb-3 h-56 rounded-b-lg bg-cover bg-center bg-no-repeat shadow-lg"
           style={{
@@ -42,10 +42,10 @@ function Home2() {
 
         <div className="mt-6 flex flex-col items-start justify-center space-y-4 py-8 px-4 sm:flex-row sm:space-y-0 md:justify-between lg:px-0">
           <div className="max-w-lg">
-            <h1 className="text-2xl font-custom font-semibold text-gray-800">
+            <h1 className="text-2xl font-custom font-semibold text-gray-800 dark:text-gray-100">
               Konjo Habesha Clothing
             </h1>
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2 text-gray-600 dark:text-gray-200">
               Lorem, ipsum dolor sit amet consectetur adipisicing elit.
               Explicabo, alias. Quas necessitatibus exercitationem praesentium.
             </p>
@@ -61,7 +61,7 @@ function Home2() {
               </div>
             </button>
             {showPhoneNumber && (
-              <p className="mt-4 flex items-center whitespace-nowrap text-gray-500 sm:justify-end">
+              <p className="mt-4 flex items-center whitespace-nowrap text-gray-500 dark:text-gray-200 sm:justify-end">
                 +251 92 923 0001
               </p>
             )}
@@ -69,14 +69,14 @@ function Home2() {
         </div>
 
         <div className=" w-full md:mt-6 ">
-          <h3 className=" mb-6 text-gray-900 text-2xl text-start font-medium">
+          <h3 className=" mb-6 text-gray-900 text-2xl dark:text-gray-100 text-start font-medium">
             TRENDING NOW
           </h3>
           <Carousel />
         </div>
 
         <div className="mt-16">
-          <h3 className="text-gray-900 text-2xl text-start font-medium">
+          <h3 className="text-gray-900 text-2xl text-start dark:text-gray-100 font-medium">
             FEATURED COLLECTION
           </h3>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
