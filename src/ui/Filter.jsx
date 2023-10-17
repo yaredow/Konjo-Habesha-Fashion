@@ -12,7 +12,7 @@ const Filter = ({ filterField, options }) => {
   };
 
   return (
-    <div className="border border-gray-100 max-w-screen-sm justify-center bg-gray-0 space-x-2 shadow-md shadow-stone-400 items-center rounded-md p-1 flex gap-1">
+    <div className="border border-gray-600 max-w-screen-sm justify-center dark:bg-white space-x-2 shadow-md shadow-stone-400 items-center rounded-md p-1 flex gap-1">
       {options.map((option) => (
         <button
           key={option.label}
@@ -21,7 +21,7 @@ const Filter = ({ filterField, options }) => {
             option.value === currentFilter
               ? "bg-blue-500"
               : "bg-gray-0 text-stone-800"
-          } rounded-sm text-sm md:text-md font-semibold px-2 md:px-4 py-2 transition-all duration-300 ${
+          } rounded-sm text-sm md:text-md dark:text-gray-900 font-semibold px-2 md:px-4 py-2 transition-all duration-300 ${
             option.value !== currentFilter &&
             "hover:bg-blue-600 hover:text-brand-50"
           }`}

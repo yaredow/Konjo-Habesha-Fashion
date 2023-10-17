@@ -16,7 +16,7 @@ function ProductItem({ item }) {
   return (
     <div
       onClick={handleClick}
-      className="w-full max-w-sm mx-auto cursor-pointer rounded-md hover:scale-105 shadow-md overflow-hidden"
+      className="w-full max-w-sm mx-auto cursor-pointer rounded-md hover:scale-105 shadow-md overflow-hidden dark:bg-gray-600"
     >
       <div
         className="flex items-end justify-end h-56 w-full bg-cover"
@@ -40,8 +40,12 @@ function ProductItem({ item }) {
         </button>
       </div>
       <div className="px-5 py-3">
-        <h3 className="text-gray-700 uppercase">{item.name}</h3>
-        <span className="text-gray-500 mt-2">${item.price}</span>
+        <h3 className="text-gray-700 dark:text-gray-100 uppercase">
+          {item.name}
+        </h3>
+        <span className="text-gray-500 dark:text-gray-300 mt-2">
+          ${item.price}
+        </span>
       </div>
     </div>
   );

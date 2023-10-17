@@ -29,7 +29,9 @@ function UpdateItemQuantity({ id, currentQuantity }) {
         </svg>
       </button>
 
-      <p className="font-custom text-lg inline-block">{currentQuantity}</p>
+      <p className="font-custom text-lg inline-block dark:text-gray-200">
+        {currentQuantity}
+      </p>
 
       <button
         onClick={() => dispatch(increaseItemQuantity(id))}

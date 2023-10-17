@@ -8,7 +8,7 @@ function DeleteItem({ id }) {
       <button
         onClick={() => dispatch(deleteItem(id))}
         type="button"
-        className="font-medium text-indigo-600 hover:text-indigo-500"
+        className="font-medium text-blue-500 hover:text-blue-600"
       >
         Remove
       </button>

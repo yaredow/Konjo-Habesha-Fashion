@@ -30,7 +30,7 @@ function Pagination() {
 
   return (
     <div className="flex flex-row gap-4 justify-between items-center">
-      <div className=" font-custom text-lg">
+      <div className=" font-custom text-lg dark:text-gray-100">
         <p className=" mb-2 sm:mb-0">
           Showing{" "}
           <span className="font-semibold">
@@ -44,7 +44,7 @@ function Pagination() {
         </p>
       </div>
 
-      <div className="flex gap-4 font-custom text-lg">
+      <div className="flex gap-4 font-custom text-lg dark:text-gray-100">
         <button
           onClick={prevPage}
           disabled={currentPage === 1}
@@ -65,7 +65,7 @@ function Pagination() {
           disabled={currentPage === pageCount}
           className={`py-2 px-2 text-base font-semibold rounded ${
             currentPage === pageCount
-              ? " text-gray-600 cursor-not-allowed"
+              ? " text-gray-200 cursor-not-allowed"
               : " hover:bg-blue-600 hover:text-white"
           }`}
         >

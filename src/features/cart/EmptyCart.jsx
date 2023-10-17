@@ -13,7 +13,7 @@ function EmptyCart() {
           alt="an image of an empty cart"
         />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 dark:text-gray-100">
         <p>Your cart is empty</p>
       </div>
       <div className="mt-6">

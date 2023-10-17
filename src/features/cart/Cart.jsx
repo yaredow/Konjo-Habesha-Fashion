@@ -94,7 +94,7 @@ function Cart() {
                       </a>
                     </div>
                     <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                      <p>
+                      <p className=" dark:text-stone-200">
                         or
                         <button
                           onClick={() => {

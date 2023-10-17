@@ -20,7 +20,7 @@ function ProductsCollection() {
 
   return (
     <div className="container mx-auto px-6">
-      <h1 className=" text-2xl font-bold text-stone-800 mb-3">
+      <h1 className=" text-2xl font-bold text-stone-800 mb-3 dark:text-gray-100">
         {capitalizeFirstLetter(filterValue)}
       </h1>
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

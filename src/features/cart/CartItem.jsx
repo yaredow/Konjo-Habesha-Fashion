@@ -25,7 +25,9 @@ function CartItem({ item, showDelete = true }) {
             </h3>
             <p className="ml-4">{formatCurrency(totalPrice)}</p>
           </div>
-          <p className="mt-1 text-sm text-gray-500">{material}</p>
+          <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">
+            {material}
+          </p>
         </div>
         <div className="flex flex-1 items-end justify-between text-sm">
           <div className="flex items-center space-x-2">
