@@ -13,8 +13,7 @@ function CheckoutForm() {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [expirationDate, setExpirationDate] = useState(new Date());
-  const { cardNumber, displayedCardNumber, handleCardNumberChange } =
-    useMaskedCreditCard();
+  const { displayedCardNumber, handleCardNumberChange } = useMaskedCreditCard();
 
   const {
     register,

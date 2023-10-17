@@ -7,21 +7,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Implement your login logic here
-    console.log("Login with:", email, password);
-  };
-
   return (
-    <div className="flex fixed inset-0 top-0 items-center justify-center h-screen bg-white">
-      <div className="bg-white p-8 rounded-lg  w-96">
-        <h2 className="text-4xl font-bold text-center mb-8 font-custom  text-gray-800">
+    <div className="flex fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800">
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg  w-96">
+        <h2 className="text-4xl font-bold text-center mb-8 font-custom text-gray-800 dark:text-gray-200">
           Login
         </h2>
         <form>
           <label
             htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-800 dark:text-gray-200"
           >
             Email
           </label>
@@ -32,12 +27,11 @@ const Login = () => {
             placeholder="Your Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            required
           />
 
           <label
             htmlFor="password"
-            className="block text-sm font-medium text-gray-700 mt-4"
+            className="block text-sm font-medium text-gray-800 dark:text-gray-200 mt-4"
           >
             Password
           </label>
@@ -48,19 +42,17 @@ const Login = () => {
             placeholder="Your Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            required
           />
 
           <button
-            type="button"
-            onClick={handleLogin}
+            type="submit"
             className="w-full mt-4 p-2 bg-blue-700 text-white rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
           >
             Login
           </button>
         </form>
 
-        <p className="text-sm mt-4 text-gray-600">
+        <p className="text-sm mt-4 text-gray-600 dark:text-gray-200">
           Don&apos;t have an account?{" "}
           <Link
             to="/account/register"
@@ -72,7 +64,7 @@ const Login = () => {
 
         <button
           onClick={() => navigate("/products")}
-          className=" text-gray-600 hover:text-blue-600 mt-4 text-sm"
+          className=" text-gray-600 dark:text-gray-200 hover:text-blue-600 mt-4 text-sm"
         >
           Return to store
         </button>

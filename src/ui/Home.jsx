@@ -30,7 +30,7 @@ function Home2() {
           }}
         >
           <div className="px-4 pt-8 pb-10">
-            <div className="absolute inset-x-0 -bottom-10 mx-auto w-36 rounded-full border-8 border-white shadow-lg shadow-stone-400">
+            <div className="absolute inset-x-0 -bottom-10 mx-auto w-36 rounded-full border-8 border-white shadow-lg shadow-gray-400 dark:shadow-gray-800">
               <img
                 className="mx-auto h-auto w-full bg-gray-400 rounded-full"
                 src="/images/logo/logo.png"

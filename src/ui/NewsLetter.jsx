@@ -17,13 +17,13 @@ const Newsletter = () => {
 
   return (
     <div className="mx-auto border-b w-[90%]">
-      <div className="bg-gray-100 py-12">
+      <div className="bg-gray-100 dark:bg-gray-900 py-12">
         <div className="container mx-auto px-4 text-center md:text-left gap-6 flex flex-col md:flex-row justify-between items-center">
           <div className="">
-            <h2 className="text-2xl font-bold mb-4 text-stone-600">
+            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-gray-200">
               Subscribe to Our Newsletter
             </h2>
-            <p className="text-stone-600 mb-6">
+            <p className="text-stone-600 dark:text-gray-300 mb-6">
               Stay updated with our latest products and promotions. Subscribe to
               our newsletter!
             </p>
