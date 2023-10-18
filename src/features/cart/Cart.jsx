@@ -28,7 +28,7 @@ function Cart() {
           <div className="pointer-events-none fixed inset-y-0 left-0 md:left-auto right-0 flex max-w-full">
             <div
               ref={ref}
-              className="pointer-events-auto w-screen md:max-w-md md:border-l-2 md:border-gray-500"
+              className="pointer-events-auto w-screen md:max-w-md dark:border-l-2  dark:border-gray-500"
             >
               <div className="flex h-full flex-col overflow-y-scroll dark:bg-gray-800 bg-white shadow-xl">
                 <div className="flex-1 overflow-y-auto px-4 py-6 sm:px-6">

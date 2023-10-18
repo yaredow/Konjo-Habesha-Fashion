@@ -16,8 +16,8 @@ const ContactUs = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 my-12">
-      <div className=" text-center text-md mb-6 text-gray-800 dark:text-gray-200 max-w-md flex justify-center flex-col mx-auto">
+    <div className="container mx-auto px-4 my-12 text-gray-800 dark:bg-gr">
+      <div className=" text-center text-md mb-6  dark:text-gray-200 max-w-md flex justify-center flex-col mx-auto">
         <h2 className="text-3xl font-custom font-semibold mb-6 ">Contact Us</h2>
         <p>
           Contact us through a info@Konjohabesha.com for a quicker response.

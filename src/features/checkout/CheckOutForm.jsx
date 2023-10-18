@@ -66,11 +66,11 @@ function CheckoutForm() {
     <div className=" bg-white dark:bg-gray-800">
       <form
         onSubmit={handleSubmit(onSubmit, onErrors)}
-        className="w-full mx-auto m-4   rounded"
+        className="w-full mx-auto m-4 rounded"
       >
         <div className="mt-2 mb-6">
           <label
-            className="block mb-2 text-md font-custom text-gray-90"
+            className="block mb-2 dark:text-gray-200 text-md font-custom text-gray-90"
             htmlFor="cus_email"
           >
             Email
@@ -89,7 +89,7 @@ function CheckoutForm() {
         </div>
         <div className="mt-2 mb-6">
           <label
-            className="block mb-2 text-md font-custom text-gray-90"
+            className="block dark:text-gray-200 mb-2 text-md font-custom text-gray-90"
             htmlFor="cus_name"
           >
             Name on card
@@ -108,7 +108,7 @@ function CheckoutForm() {
           />
         </div>
         <div className="mb-3">
-          <label className="block mb-2 text-md font-custom text-gray-90">
+          <label className="block dark:text-gray-200 mb-2 text-md font-custom text-gray-90">
             Card number
           </label>
           <div>
@@ -132,7 +132,7 @@ function CheckoutForm() {
 
         <div className="flex gap-2">
           <div className="w-1/2 mt-2 mb-6">
-            <label className="block mb-2 text-md font-custom text-gray-90">
+            <label className="block dark:text-gray-200 mb-2 text-md font-custom text-gray-90">
               Expiration date
             </label>
 
@@ -146,7 +146,7 @@ function CheckoutForm() {
           </div>
 
           <div className="w-1/2 mt-2 mb-6">
-            <label className="block mb-2 text-md font-custom text-gray-90">
+            <label className="block dark:text-gray-200 mb-2 text-md font-custom text-gray-90">
               Security code
             </label>
             <div>
@@ -171,7 +171,7 @@ function CheckoutForm() {
 
         <div className="mt-2 mb-6">
           <label
-            className="block mb-2 text-md font-custom text-gray-90"
+            className="block mb-2 dark:text-gray-200 text-md font-custom text-gray-90"
             htmlFor="cus_address"
           >
             Address
@@ -191,7 +191,7 @@ function CheckoutForm() {
         </div>
         <div className="mt-2 mb-6">
           <label
-            className="block mb-2 text-md font-custom text-gray-90"
+            className="block mb-2 dark:text-gray-200 text-md font-custom text-gray-90"
             htmlFor="cus_city"
           >
             City
@@ -213,7 +213,7 @@ function CheckoutForm() {
         <div className=" flex gap-4">
           <div className="mt-2 mb-6 w-1/2">
             <label
-              className="block mb-2 text-md font-custom text-gray-90"
+              className="block mb-2 dark:text-gray-200 text-md font-custom text-gray-90"
               htmlFor="cus_country"
             >
               Country
@@ -238,7 +238,7 @@ function CheckoutForm() {
 
           <div className="mt-2 mb-6 w-1/2">
             <label
-              className="block mb-2 text-md font-custom text-gray-90"
+              className="block mb-2 dark:text-gray-200 text-md font-custom text-gray-90"
               htmlFor="cus_zip"
             >
               Zip
@@ -264,8 +264,10 @@ function CheckoutForm() {
             }}
             className="w-full md:px-3 py-2 font-semibold mb-1 rounded-md transition-colors cursor-pointer flex items-center"
           >
-            <IoIosArrowBack className="text-black mr-2" />
-            <span className=" text-stone-600">Return to shopping</span>
+            <IoIosArrowBack className="text-black dark:text-white mr-2" />
+            <span className=" text-stone-600 dark:text-gray-200">
+              Return to shopping
+            </span>
           </button>
 
           <button

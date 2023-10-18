@@ -12,7 +12,7 @@ const Filter = ({ filterField, options }) => {
   };
 
   return (
-    <div className="border border-gray-600 max-w-screen-sm justify-center dark:bg-white space-x-2 shadow-md shadow-stone-400 items-center rounded-md p-1 flex gap-1">
+    <div className="border dark:border-gray-600 max-w-screen-sm justify-center dark:bg-white space-x-2 shadow-md shadow-stone-400 items-center rounded-md p-1 flex gap-1">
       {options.map((option) => (
         <button
           key={option.label}
