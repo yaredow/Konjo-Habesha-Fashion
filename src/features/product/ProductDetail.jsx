@@ -48,20 +48,20 @@ const ProductDetail = () => {
           <h1 className="text-gray-700 font-custom font-semibold uppercase text-2xl dark:text-gray-200">
             {name}
           </h1>
-          <span className="text-stone-700 font-semibold mt-3">
+          <span className="text-gray-800 dark:text-gray-200 font-semibold mt-3">
             {formatCurrency(price)}
           </span>
           <hr className="my-3" />
 
-          <div className=" font-custom text-lg mb-4">
+          <div className=" font-custom dark:text-gray-200 text-lg mb-4">
             <p>{description}</p>
           </div>
 
           <div className=" flex flex-row gap-2">
-            <h4 className=" text-md  text-stone-700 font-semibold">
+            <h4 className=" text-md  text-stone-800 dark:text-gray-100 font-semibold">
               Catagory:
             </h4>
-            <h4 className=" text-md italic text-stone-900 font-semibold">
+            <h4 className=" text-md italic text-gray-900 dark:text-gray-200 font-semibold">
               {catagory}
             </h4>
           </div>
@@ -70,7 +70,7 @@ const ProductDetail = () => {
             <div className=" flex md:flex-row flex-col gap-4">
               <div className=" flex-1">
                 <label
-                  className=" text-md text-stone-600 font-medium"
+                  className=" text-md text-stone-600 dark:text-gray-100 font-medium"
                   htmlFor="size"
                 >
                   Size:
@@ -93,7 +93,7 @@ const ProductDetail = () => {
 
               <div className=" flex-1">
                 <label
-                  className=" mb-4 text-md font-medium text-stone-600 "
+                  className=" mb-4 text-md dark:text-gray-100 font-medium text-stone-600 "
                   htmlFor="material"
                 >
                   Material:

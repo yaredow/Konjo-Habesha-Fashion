@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
+import { getCurrentQuantityById } from "./cartSlice";
 import { formatCurrency } from "../../utils/helpers";
 import UpdateItemQuantity from "./UpdateItemQuantity";
-import { getCurrentQuantityById } from "./cartSlice";
 import DeleteItem from "./DeleteItem";
 
 function CartItem({ item, showDelete = true }) {
@@ -20,9 +20,7 @@ function CartItem({ item, showDelete = true }) {
       <div className="ml-4 flex flex-1 flex-col">
         <div>
           <div className="flex justify-between text-base dark:text-gray-100 font-medium text-gray-900">
-            <h3>
-              <a href="#">{name}</a>
-            </h3>
+            <h3>{name}</h3>
             <p className="ml-4">{formatCurrency(totalPrice)}</p>
           </div>
           <p className="mt-1 text-sm text-gray-500 dark:text-gray-300">

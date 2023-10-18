@@ -21,9 +21,11 @@ function CheckoutOrder() {
   }
 
   return (
-    <div className="container mx-auto px-6 my-12">
-      <p className=" font-custom text-2xl border-b">Konjo Habesha Fashion</p>
-      <div className="flex gap-16 flex-col lg:flex-row mt-8">
+    <div className="mx-auto px-12 py-6 h-screen bg-white dark:bg-gray-800 ">
+      <p className=" font-custom text-2xl border-b dark:bg-gray-800">
+        Konjo Habesha Fashion
+      </p>
+      <div className="flex gap-16 dark:bg-gray-800 flex-col lg:flex-row mt-8">
         <div className="w-full md:w-1/2 order-2 flex flex-col">
           <div className="flex items-center justify-center gap-4 md:gap-2">
             <button>
@@ -64,7 +66,7 @@ function CheckoutOrder() {
           <CheckoutForm />
         </div>
 
-        <div className="w-full mb-8 border rounded-md flex-shrink-0 bg-stone-50 order-1 md:w-1/2 lg:mb-0 md:order-2 h-full overflow-hidden">
+        <div className="w-full mb-8 border rounded-md flex-shrink-0 bg-gray-50 dark:bg-gray-600 order-1 md:w-1/2 lg:mb-0 md:order-2 h-full overflow-hidden">
           <div className=" p-6">
             <div className=" flex flex-row justify-between pb-2">
               <h3 className="text-gray-700 font-medium">{`Total order ${totalOrder}`}</h3>

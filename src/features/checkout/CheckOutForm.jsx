@@ -63,215 +63,220 @@ function CheckoutForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit, onErrors)}
-      className="w-full mx-auto m-4  bg-white rounded"
-    >
-      <div className="mt-2 mb-6">
-        <label
-          className="block mb-2 text-md font-custom text-gray-90"
-          htmlFor="cus_email"
-        >
-          Email
-        </label>
-        <input
-          className={`input ${errors.email ? "border-red-500" : ""}`}
-          id="email"
-          name="cus_email"
-          type="text"
-          {...register("email", {
-            required: "This field required",
-          })}
-          placeholder="Your Email"
-          aria-label="Email"
-        />
-      </div>
-      <div className="mt-2 mb-6">
-        <label
-          className="block mb-2 text-md font-custom text-gray-90"
-          htmlFor="cus_name"
-        >
-          Name on card
-        </label>
-        <input
-          className={`input ${errors.name ? "border-red-500" : ""}`}
-          id="name"
-          {...register("name", {
-            required: "This field required",
-          })}
-          name="name"
-          type="text"
-          required=""
-          placeholder="Your Name"
-          aria-label="Name"
-        />
-      </div>
-      <div className="mb-3">
-        <label className="block mb-2 text-md font-custom text-gray-90">
-          Card number
-        </label>
-        <div>
-          <input
-            className={`input ${errors.cardNumber ? "border-red-500" : ""}`}
-            id="cardNumber"
-            {...register("cardNumber", {
-              required: "This field required",
-              max: {
-                value: 16,
-                message: "The number of degits have to be 16",
-              },
-            })}
-            value={displayedCardNumber}
-            onChange={(e) => handleCardNumberChange(e.target.value)}
-            placeholder="0000 0000 0000 0000"
-            type="text"
-          />
-        </div>
-      </div>
-      <div className="flex gap-2">
-        <div className="w-1/2 mt-2 mb-6">
-          <label className="block mb-2 text-md font-custom text-gray-90">
-            Expiration date
+    <div className=" bg-white dark:bg-gray-800">
+      <form
+        onSubmit={handleSubmit(onSubmit, onErrors)}
+        className="w-full mx-auto m-4   rounded"
+      >
+        <div className="mt-2 mb-6">
+          <label
+            className="block mb-2 text-md font-custom text-gray-90"
+            htmlFor="cus_email"
+          >
+            Email
           </label>
-
-          <DatePicker
-            selected={expirationDate}
-            onChange={(date) => setExpirationDate(date)}
-            dateFormat="MM/yyyy"
-            showMonthYearPicker
-            className={`input ${errors.securityCode ? "border-red-500" : ""}`}
+          <input
+            className={`input ${errors.email ? "border-red-500" : ""}`}
+            id="email"
+            name="cus_email"
+            type="text"
+            {...register("email", {
+              required: "This field required",
+            })}
+            placeholder="Your Email"
+            aria-label="Email"
           />
         </div>
-
-        <div className="w-1/2 mt-2 mb-6">
+        <div className="mt-2 mb-6">
+          <label
+            className="block mb-2 text-md font-custom text-gray-90"
+            htmlFor="cus_name"
+          >
+            Name on card
+          </label>
+          <input
+            className={`input ${errors.name ? "border-red-500" : ""}`}
+            id="name"
+            {...register("name", {
+              required: "This field required",
+            })}
+            name="name"
+            type="text"
+            required=""
+            placeholder="Your Name"
+            aria-label="Name"
+          />
+        </div>
+        <div className="mb-3">
           <label className="block mb-2 text-md font-custom text-gray-90">
-            Security code
+            Card number
           </label>
           <div>
             <input
-              className={`input ${errors.securityCode ? "border-red-500" : ""}`}
-              id="securityCode"
-              {...register("securityCode", {
+              className={`input ${errors.cardNumber ? "border-red-500" : ""}`}
+              id="cardNumber"
+              {...register("cardNumber", {
                 required: "This field required",
-                min: {
-                  value: 3,
-                  message: "Security number code has to be three degit",
+                max: {
+                  value: 16,
+                  message: "The number of degits have to be 16",
                 },
               })}
-              placeholder="000"
+              value={displayedCardNumber}
+              onChange={(e) => handleCardNumberChange(e.target.value)}
+              placeholder="0000 0000 0000 0000"
               type="text"
             />
           </div>
         </div>
-      </div>
 
-      <div className="mt-2 mb-6">
-        <label
-          className="block mb-2 text-md font-custom text-gray-90"
-          htmlFor="cus_address"
-        >
-          Address
-        </label>
-        <input
-          className={`input ${errors.address ? "border-red-500" : ""}`}
-          id="address"
-          {...register("address", {
-            required: "This field required",
-          })}
-          name="address"
-          type="text"
-          required=""
-          placeholder="Street"
-          aria-label="Address"
-        />
-      </div>
-      <div className="mt-2 mb-6">
-        <label
-          className="block mb-2 text-md font-custom text-gray-90"
-          htmlFor="cus_city"
-        >
-          City
-        </label>
-        <input
-          className={`input ${errors.city ? "border-red-500" : ""}`}
-          id="city"
-          {...register("city", {
-            required: "This field required",
-          })}
-          name="city"
-          type="text"
-          required=""
-          placeholder="City"
-          aria-label="City"
-        />
-      </div>
+        <div className="flex gap-2">
+          <div className="w-1/2 mt-2 mb-6">
+            <label className="block mb-2 text-md font-custom text-gray-90">
+              Expiration date
+            </label>
 
-      <div className=" flex gap-4">
-        <div className="mt-2 mb-6 w-1/2">
-          <label
-            className="block mb-2 text-md font-custom text-gray-90"
-            htmlFor="cus_country"
-          >
-            Country
-          </label>
+            <DatePicker
+              selected={expirationDate}
+              onChange={(date) => setExpirationDate(date)}
+              dateFormat="MM/yyyy"
+              showMonthYearPicker
+              className={`input ${errors.securityCode ? "border-red-500" : ""}`}
+            />
+          </div>
 
-          <select
-            value={selectedCountry ? selectedCountry.value : ""}
-            id="country"
-            onChange={handleSelect}
-            className={`input ${errors.country ? "border-red-500" : ""}`}
-          >
-            <option value="" disabled>
-              Select a country
-            </option>
-            {countries.map((country) => (
-              <option key={country.value} value={country.value}>
-                {country.label}
-              </option>
-            ))}
-          </select>
+          <div className="w-1/2 mt-2 mb-6">
+            <label className="block mb-2 text-md font-custom text-gray-90">
+              Security code
+            </label>
+            <div>
+              <input
+                className={`input ${
+                  errors.securityCode ? "border-red-500" : ""
+                }`}
+                id="securityCode"
+                {...register("securityCode", {
+                  required: "This field required",
+                  min: {
+                    value: 3,
+                    message: "Security number code has to be three degit",
+                  },
+                })}
+                placeholder="000"
+                type="text"
+              />
+            </div>
+          </div>
         </div>
 
-        <div className="mt-2 mb-6 w-1/2">
+        <div className="mt-2 mb-6">
           <label
             className="block mb-2 text-md font-custom text-gray-90"
-            htmlFor="cus_zip"
+            htmlFor="cus_address"
           >
-            Zip
+            Address
           </label>
           <input
-            className={`input ${errors.zip ? "border-red-500" : ""}`}
-            id="zip"
-            {...register("zip", {
+            className={`input ${errors.address ? "border-red-500" : ""}`}
+            id="address"
+            {...register("address", {
               required: "This field required",
             })}
-            name="zip"
+            name="address"
             type="text"
             required=""
-            placeholder="Zip"
-            aria-label="Zip"
+            placeholder="Street"
+            aria-label="Address"
           />
         </div>
-      </div>
-      <div className=" flex flex-row items-center">
-        <button
-          onClick={() => {
-            navigate("/products");
-          }}
-          className="w-full md:px-3 py-2 font-semibold mb-1 rounded-md transition-colors cursor-pointer flex items-center"
-        >
-          <IoIosArrowBack className="text-black mr-2" />
-          <span className=" text-stone-600">Return to shopping</span>
-        </button>
+        <div className="mt-2 mb-6">
+          <label
+            className="block mb-2 text-md font-custom text-gray-90"
+            htmlFor="cus_city"
+          >
+            City
+          </label>
+          <input
+            className={`input ${errors.city ? "border-red-500" : ""}`}
+            id="city"
+            {...register("city", {
+              required: "This field required",
+            })}
+            name="city"
+            type="text"
+            required=""
+            placeholder="City"
+            aria-label="City"
+          />
+        </div>
 
-        <button
-          type="submit"
-          className="w-full px-3 py-2 font-semibold hover:bg-blue-600 mb-1 bg-blue-500 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
-        >
-          PAY NOW
-        </button>
-      </div>
-    </form>
+        <div className=" flex gap-4">
+          <div className="mt-2 mb-6 w-1/2">
+            <label
+              className="block mb-2 text-md font-custom text-gray-90"
+              htmlFor="cus_country"
+            >
+              Country
+            </label>
+
+            <select
+              value={selectedCountry ? selectedCountry.value : ""}
+              id="country"
+              onChange={handleSelect}
+              className={`input ${errors.country ? "border-red-500" : ""}`}
+            >
+              <option value="" disabled>
+                Select a country
+              </option>
+              {countries.map((country) => (
+                <option key={country.value} value={country.value}>
+                  {country.label}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mt-2 mb-6 w-1/2">
+            <label
+              className="block mb-2 text-md font-custom text-gray-90"
+              htmlFor="cus_zip"
+            >
+              Zip
+            </label>
+            <input
+              className={`input ${errors.zip ? "border-red-500" : ""}`}
+              id="zip"
+              {...register("zip", {
+                required: "This field required",
+              })}
+              name="zip"
+              type="text"
+              required=""
+              placeholder="Zip"
+              aria-label="Zip"
+            />
+          </div>
+        </div>
+        <div className=" flex flex-row items-center">
+          <button
+            onClick={() => {
+              navigate("/products");
+            }}
+            className="w-full md:px-3 py-2 font-semibold mb-1 rounded-md transition-colors cursor-pointer flex items-center"
+          >
+            <IoIosArrowBack className="text-black mr-2" />
+            <span className=" text-stone-600">Return to shopping</span>
+          </button>
+
+          <button
+            type="submit"
+            className="w-full px-3 py-2 font-semibold hover:bg-blue-600 mb-1 bg-blue-500 border rounded-md focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
+          >
+            PAY NOW
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

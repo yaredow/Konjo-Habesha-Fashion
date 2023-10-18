@@ -17,7 +17,7 @@ function Navigation() {
   const sectionNames = ["Home", "Shop", "Contact us", "About us"];
 
   return (
-    <header className=" bg-white dark:bg-gray-900 shadow-md sticky top-0 left-0 z-50">
+    <header className=" bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-600 dark:shadow-sm sticky top-0 left-0 z-50">
       <nav className="w-[90%] mx-auto mt-6">
         <div className="flex items-center justify-between">
           <div>
