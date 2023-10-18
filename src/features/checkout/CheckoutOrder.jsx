@@ -79,12 +79,12 @@ function CheckoutOrder() {
 
             <div className="flex flex-col mt-4">
               <label
-                className="mt-4 dark:text-gray-200 font-custom text-lg font-semibold"
+                className="mt-4 text-center md:text-start dark:text-gray-200 font-custom text-lg font-semibold"
                 htmlFor=""
               >
                 Discount code
               </label>
-              <div className="w-full flex flex-row gap-3 items-center mt-2">
+              <div className="w-full flex flex-col md:flex-row gap-3 items-center mt-2">
                 <input
                   onChange={(e) => setCoupon(e.target.value)}
                   className="px-3 md:flex-grow py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-yellow-500 transition-colors cursor-pointer"
