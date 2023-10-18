@@ -257,7 +257,7 @@ function CheckoutForm() {
             />
           </div>
         </div>
-        <div className=" flex flex-row items-center">
+        <div className=" flex items-center">
           <button
             onClick={() => {
               navigate("/products");
