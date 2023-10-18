@@ -84,7 +84,7 @@ function CheckoutOrder() {
               >
                 Discount code
               </label>
-              <div className="w-full flex flex-row gap-3 items-center mt-2">
+              <div className="md:w-full max-w-md flex flex-row gap-3 items-center mt-2">
                 <input
                   onChange={(e) => setCoupon(e.target.value)}
                   className="px-3 flex-grow py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-yellow-500 transition-colors cursor-pointer"
