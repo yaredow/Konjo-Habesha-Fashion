@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { PAGE_SIZE } from "../utils/Config";
+import { PAGE_SIZE } from "../utils/config";
 
 function useFilterAndSort(originalItems, currentPage) {
   const [filteredAndSortedItems, setFilteredAndSortedItems] = useState([]);
