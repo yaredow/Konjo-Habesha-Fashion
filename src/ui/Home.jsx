@@ -26,7 +26,7 @@ function Home2() {
         <div
           className="relative md:mb-8 mb-3 h-56 rounded-b-lg bg-cover bg-center bg-no-repeat shadow-lg"
           style={{
-            backgroundImage: `url('/images/home-background/background.jpeg')`,
+            backgroundImage: `url('background.jpeg')`,
           }}
         >
           <div className="px-4 pt-8 pb-10">
@@ -40,14 +40,17 @@ function Home2() {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col items-start justify-center space-y-4 py-8 px-4 sm:flex-row sm:space-y-0 md:justify-between lg:px-0">
+        <div className=" my-12 items-center flex flex-col md:items-start justify-center space-y-4 py-8 px-4 sm:flex-row sm:space-y-0 md:justify-between lg:px-0">
           <div className="max-w-lg">
-            <h1 className="text-2xl font-custom font-semibold text-gray-800 dark:text-gray-100">
+            <h1 className="text-2xl text-center md:text-left font-custom font-semibold text-gray-800 dark:text-gray-100">
               Konjo Habesha Clothing
             </h1>
-            <p className="mt-2 text-gray-600 dark:text-gray-200">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Explicabo, alias. Quas necessitatibus exercitationem praesentium.
+            <p className="mt-6 text-center md:text-start  text-gray-600 dark:text-gray-200">
+              Discover the essence of Habesha elegance at Konjo Habesha Fashion
+              in Addis Ababa. Our boutique in Shiromeda unveils finely crafted
+              traditional clothing, weaving together style and Ethiopian
+              heritage. Immerse yourself in the cultural tapestry of Konjo
+              Habesha Fashion.
             </p>
           </div>
           <div className="">
