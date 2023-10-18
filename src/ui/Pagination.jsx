@@ -1,7 +1,7 @@
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { useSearchParams } from "react-router-dom";
-import { PAGE_SIZE } from "../utils/Config";
-import { items } from "./AllData"; // Import your items or fetch them from somewhere
+import { PAGE_SIZE } from "../utils/config";
+import { items } from "./AllData";
 import useFilterAndSort from "../hook/useFilterAndSort";
 
 function Pagination() {
