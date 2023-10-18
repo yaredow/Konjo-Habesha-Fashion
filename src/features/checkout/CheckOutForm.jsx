@@ -264,7 +264,7 @@ function CheckoutForm() {
             }}
             className="w-full md:px-3 py-2 font-semibold mb-1 rounded-md transition-colors cursor-pointer flex items-center"
           >
-            <IoIosArrowBack className="text-black dark:text-white mr-2" />
+            <IoIosArrowBack className="text-black dark:text-white md:mr-2" />
             <span className=" text-stone-600 dark:text-gray-200">
               Return to shopping
             </span>
