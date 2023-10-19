@@ -2,9 +2,9 @@ import { BiSolidPhoneCall } from "react-icons/bi";
 import { items } from "./AllData";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import CollectionItem from "../features/product/ProductsItem";
 import { useEffect } from "react";
 import Carousel from "./Carousel";
+import ProductItem from "../features/product/ProductsItem";
 
 function Home2() {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ function Home2() {
           </div>
         </div>
 
-        <div className=" my-12 items-center flex flex-col md:items-start justify-center space-y-4 py-8 px-4 sm:flex-row sm:space-y-0 md:justify-between lg:px-0">
+        <div className=" mt-12 items-center flex flex-col md:items-start justify-center space-y-4 py-8 px-4 sm:flex-row sm:space-y-0 md:justify-between lg:px-0">
           <div className="max-w-lg">
             <h1 className="text-2xl text-center md:text-left font-custom font-semibold text-gray-800 dark:text-gray-100">
               Konjo Habesha Clothing
@@ -71,20 +71,20 @@ function Home2() {
           </div>
         </div>
 
-        <div className=" w-full md:mt-6 ">
+        <div className=" w-full md:mt-6">
           <h3 className=" mb-6 text-gray-900 text-2xl dark:text-gray-100 text-start font-medium">
             TRENDING NOW
           </h3>
           <Carousel />
         </div>
 
-        <div className="mt-16">
+        <div className="mt-28">
           <h3 className="text-gray-900 text-2xl text-start dark:text-gray-100 font-medium">
             FEATURED COLLECTION
           </h3>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
             {items.slice(0, 8).map((item) => (
-              <CollectionItem key={item.img} item={item} />
+              <ProductItem key={item.img} item={item} />
             ))}
           </div>
         </div>
