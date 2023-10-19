@@ -5,6 +5,7 @@ import { useState } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import useAddToCart from "../../hook/useAddToCart";
 import { useEffect } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ProductDetail = () => {
   const [selectedSize, setSelectedSize] = useState("");
@@ -37,7 +38,7 @@ const ProductDetail = () => {
     <div className="container mx-auto px-6">
       <div className="md:flex md:items-center">
         <div className="h-64 md:w-1/2 lg:h-96">
-          <img
+          <LazyLoadImage
             className="h-full max-w-xl rounded-md object-cover  mx-auto"
             src={img}
             alt={`${name}`}
