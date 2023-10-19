@@ -5,7 +5,7 @@ import UpdateItemQuantity from "./UpdateItemQuantity";
 import DeleteItem from "./DeleteItem";
 
 function CartItem({ item, showDelete = true }) {
-  const { img, id, name, totalPrice, material } = item;
+  const { img, id, name, totalPrice, material, description } = item;
   const currentQuantity = useSelector(getCurrentQuantityById(id));
 
   return (
@@ -13,7 +13,7 @@ function CartItem({ item, showDelete = true }) {
       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
         <img
           src={img}
-          alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
+          alt={`${description}`}
           className="h-full w-full object-cover object-center"
         />
       </div>
