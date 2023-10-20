@@ -65,7 +65,7 @@ function Home2() {
             </button>
             {showPhoneNumber && (
               <p className="mt-4 flex items-center whitespace-nowrap text-gray-500 dark:text-gray-200 sm:justify-end">
-                +251 92 923 0001
+                +251 923 0001
               </p>
             )}
           </div>
