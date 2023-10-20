@@ -60,7 +60,7 @@ function Home2() {
             >
               <div className=" flex flex-row gap-2">
                 <BiSolidPhoneCall className=" text-2xl" />
-                <h4>Call Us</h4>
+                <h4>Call us</h4>
               </div>
             </button>
             {showPhoneNumber && (
