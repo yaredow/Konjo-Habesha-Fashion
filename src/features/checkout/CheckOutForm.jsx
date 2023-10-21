@@ -10,12 +10,14 @@ import { useForm } from "react-hook-form";
 import useMaskedCreditCard from "../../hook/useMaskedCreditCard";
 import toast from "react-hot-toast";
 import { formatCurrency } from "../../utils/helpers";
+import { useCart } from "../../context/cartContext";
 
 function CheckoutForm({ discount }) {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [expirationDate, setExpirationDate] = useState(new Date());
   const { displayedCardNumber, handleCardNumberChange } = useMaskedCreditCard();
+  const { handleCartToggle } = useCart();
   const subTotal = useSelector(getTotalCartPrice);
   const total = discount ? subTotal + discount : subTotal + 0;
 
@@ -61,6 +63,7 @@ function CheckoutForm({ discount }) {
     reset();
     handleClearCart();
     toast.success(`You have paid ${formatCurrency(total)} successfully`);
+    handleCartToggle();
     navigate("/products");
   }
 
