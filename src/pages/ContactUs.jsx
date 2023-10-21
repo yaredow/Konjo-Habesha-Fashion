@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const ContactUs = () => {
@@ -12,6 +13,7 @@ const ContactUs = () => {
 
   function onSubmit() {
     reset();
+    toast.success("Thank you for contacting us");
     navigate("/home");
   }
 

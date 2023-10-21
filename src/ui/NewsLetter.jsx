@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -9,10 +10,9 @@ const Newsletter = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your logic for handling the submitted email
     console.log("Submitted email:", email);
-    // Reset the email input after submission
     setEmail("");
+    toast.success("Thank you for subscribing to our newsletter");
   };
 
   return (
