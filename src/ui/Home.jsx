@@ -72,14 +72,14 @@ function Home2() {
         </div>
 
         <div className=" w-full mt-8">
-          <h3 className=" md:mb-6 text-gray-900 text-2xl dark:text-gray-100 text-start font-medium">
+          <h3 className=" md:mb-6  text-center text-gray-900 text-2xl dark:text-gray-100 md:text-start font-medium">
             TRENDING NOW
           </h3>
           <Carousel />
         </div>
 
         <div className="mt-28">
-          <h3 className="text-gray-900 text-2xl text-start dark:text-gray-100 font-medium">
+          <h3 className="text-gray-900 text-2xl text-center md:text-start dark:text-gray-100 font-medium">
             FEATURED COLLECTION
           </h3>
           <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mt-6">
