@@ -53,7 +53,8 @@ function Home2() {
               Habesha Fashion.
             </p>
           </div>
-          <div className="">
+
+          <div className=" h-12">
             <button
               onClick={handleShowPhoneNumber}
               className="flex whitespace-nowrap rounded-lg bg-blue-500 px-6 py-2 font-bold text-white transition hover:translate-y-1"
