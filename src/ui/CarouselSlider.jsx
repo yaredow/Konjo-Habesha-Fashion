@@ -3,7 +3,6 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import { useNavigate } from "react-router-dom";
 
 import { items } from "./AllData";
-import useAddToCart from "../hook/useAddToCart";
 
 const CarouselSlider = () => {
   const navigate = useNavigate();

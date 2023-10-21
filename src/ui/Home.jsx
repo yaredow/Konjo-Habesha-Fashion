@@ -71,8 +71,8 @@ function Home2() {
           </div>
         </div>
 
-        <div className=" w-full md:mt-6">
-          <h3 className=" mb-6 text-gray-900 text-2xl dark:text-gray-100 text-start font-medium">
+        <div className=" w-full mt-8">
+          <h3 className=" md:mb-6 text-gray-900 text-2xl dark:text-gray-100 text-start font-medium">
             TRENDING NOW
           </h3>
           <Carousel />
