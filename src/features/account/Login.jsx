@@ -1,11 +1,25 @@
 // Login.jsx
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom"; // If using React Router for navigation
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = () => {
+    reset();
+    toast.success("You have logged in successfully");
+    navigate("/products");
+  };
 
   return (
     <div className="flex fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800">
@@ -13,7 +27,7 @@ const Login = () => {
         <h2 className="text-4xl font-bold text-center mb-8 font-custom text-gray-800 dark:text-gray-200">
           Login
         </h2>
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <label
             htmlFor="email"
             className="block text-sm font-medium text-gray-800 dark:text-gray-200"
@@ -23,7 +37,10 @@ const Login = () => {
           <input
             type="email"
             id="email"
-            className="w-full p-2 border border-gray-300 rounded mt-1"
+            {...register("email", {
+              required: "This field is required",
+            })}
+            className={`input ${errors.email ? "border-red-500" : ""}`}
             placeholder="Your Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -38,7 +55,10 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            className="w-full p-2 border border-gray-300 rounded mt-1"
+            {...register("password", {
+              required: "This field is required",
+            })}
+            className={`input ${errors.email ? "border-red-500" : ""}`}
             placeholder="Your Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

@@ -1,7 +1,8 @@
 // CreateAccount.jsx
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [firstName, setFirstName] = useState("");
@@ -17,8 +18,10 @@ function Register() {
   } = useForm();
 
   const onSubmit = () => {
+    console.log(errors);
     reset();
-    navigate("/home");
+    toast.success("You have registered succesfully");
+    navigate(-1);
   };
 
   return (
@@ -45,6 +48,7 @@ function Register() {
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
+
           <label
             htmlFor="lastName"
             className="block text-sm dark:text-gray-200 font-medium text-gray-700 mt-4"
