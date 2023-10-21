@@ -58,7 +58,7 @@ function CheckoutOrder() {
             </span>
             <div className="border-t border-gray-300 flex-grow"></div>
           </div>
-          <CheckoutForm />
+          <CheckoutForm discount={discount} />
         </div>
 
         <div className="w-full mb-8 border left-0 rounded-md flex-shrink-0 bg-gray-50 dark:bg-gray-600 order-1 md:w-1/2 lg:mb-0 md:order-2 h-full overflow-hidden">

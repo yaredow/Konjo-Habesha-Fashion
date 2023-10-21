@@ -1,19 +1,23 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { clearCart } from "../cart/cartSlice";
+import { clearCart, getTotalCartPrice } from "../cart/cartSlice";
 import { IoIosArrowBack } from "react-icons/io";
 import "react-datepicker/dist/react-datepicker.css";
 import { useForm } from "react-hook-form";
 import useMaskedCreditCard from "../../hook/useMaskedCreditCard";
+import toast from "react-hot-toast";
+import { formatCurrency } from "../../utils/helpers";
 
-function CheckoutForm() {
+function CheckoutForm({ discount }) {
   const [countries, setCountries] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [expirationDate, setExpirationDate] = useState(new Date());
   const { displayedCardNumber, handleCardNumberChange } = useMaskedCreditCard();
+  const subTotal = useSelector(getTotalCartPrice);
+  const total = discount ? subTotal + discount : subTotal + 0;
 
   const {
     register,
@@ -52,12 +56,14 @@ function CheckoutForm() {
     setSelectedCountry(country);
     onselect(country);
   };
-  function onSubmit(data) {
-    console.log("Form data submitted:", data);
-    navigate("/products");
-    handleClearCart();
+
+  function onSubmit() {
     reset();
+    handleClearCart();
+    toast.success(`You have paid ${formatCurrency(total)} successfully`);
+    navigate("/products");
   }
+
   function onErrors(errors) {
     console.error(errors);
   }
