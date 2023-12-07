@@ -1,10 +1,10 @@
-import { BiSolidPhoneCall } from "react-icons/bi";
-import { items } from "./AllData";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
-import Carousel from "./Carousel";
-import ProductItem from "../features/product/ProductsItem";
+import { BiSolidPhoneCall } from 'react-icons/bi';
+import { items } from './AllData';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import Carousel from './Carousel';
+import ProductItem from '../features/product/ProductsItem';
 
 function Home2() {
   const navigate = useNavigate();
@@ -73,7 +73,7 @@ function Home2() {
         </div>
 
         <div className=" w-full mt-8">
-          <h3 className=" md:mb-6  text-center text-gray-900 text-2xl dark:text-gray-100 md:text-start font-medium">
+          <h3 className=" md:mb-6 text-gray-900 text-2xl dark:text-gray-100 md:text-start font-medium">
             TRENDING NOW
           </h3>
           <Carousel />
@@ -93,7 +93,7 @@ function Home2() {
 
       <div className=" mt-12 flex justify-center">
         <a
-          onClick={() => navigate("/products")}
+          onClick={() => navigate('/products')}
           href="#"
           className=" rounded-md transition-all border border-transparent bg-blue-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-blue-600"
         >
