@@ -3,12 +3,15 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom'; // If using React Router for navigation
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setToken } from './accountSlice';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch;
 
   const {
     register,
@@ -27,15 +30,14 @@ const Login = () => {
           password,
         },
       });
-
-      const data = res.data;
-      if (data.token) {
+      if (res.data.status === 'success') {
         toast.success('you have logged in successfully');
-        reset();
+        dispatch(setToken(res.data.token));
+
+        navigate('/account/order-history');
       }
-      reset();
     } catch (err) {
-      toast.error(err.response.data.message);
+      console.error(err);
     }
   };
 
