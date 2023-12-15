@@ -1,13 +1,15 @@
 // Login.jsx
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import { Link, useNavigate } from "react-router-dom"; // If using React Router for navigation
+import axios from 'axios';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { Link, useNavigate } from 'react-router-dom'; // If using React Router for navigation
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -15,10 +17,26 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = () => {
-    reset();
-    toast.success("You have logged in successfully");
-    navigate("/products");
+  const onSubmit = async () => {
+    try {
+      const res = await axios({
+        method: 'POST',
+        url: 'https://konjo-habesha-fashion.onrender.com/api/v1/users/signin',
+        data: {
+          email,
+          password,
+        },
+      });
+
+      const data = res.data;
+      if (data.token) {
+        toast.success('you have logged in successfully');
+        reset();
+      }
+      reset();
+    } catch (err) {
+      toast.error(err.response.data.message);
+    }
   };
 
   return (
@@ -37,10 +55,10 @@ const Login = () => {
           <input
             type="email"
             id="email"
-            {...register("email", {
-              required: "This field is required",
+            {...register('email', {
+              required: 'This field is required',
             })}
-            className={`input ${errors.email ? "border-red-500" : ""}`}
+            className={`input ${errors.email ? 'border-red-500' : ''}`}
             placeholder="Your Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -55,10 +73,10 @@ const Login = () => {
           <input
             type="password"
             id="password"
-            {...register("password", {
-              required: "This field is required",
+            {...register('password', {
+              required: 'This field is required',
             })}
-            className={`input ${errors.email ? "border-red-500" : ""}`}
+            className={`input ${errors.email ? 'border-red-500' : ''}`}
             placeholder="Your Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -73,7 +91,7 @@ const Login = () => {
         </form>
 
         <p className="text-sm mt-4 text-gray-600 dark:text-gray-200">
-          Don&apos;t have an account?{" "}
+          Don&apos;t have an account?{' '}
           <Link
             to="/account/register"
             className="text-blue-500 hover:underline"
@@ -83,7 +101,7 @@ const Login = () => {
         </p>
 
         <button
-          onClick={() => navigate("/products")}
+          onClick={() => navigate('/products')}
           className=" text-gray-600 dark:text-gray-200 hover:text-blue-600 mt-4 text-sm"
         >
           Return to store
