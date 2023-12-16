@@ -11,7 +11,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
 
   const {
     register,
@@ -37,7 +37,7 @@ const Login = () => {
         navigate('/account/order-history');
       }
     } catch (err) {
-      console.error(err);
+      toast.error(err.response.data.message);
     }
   };
 

@@ -5,14 +5,14 @@ import { useSelector } from 'react-redux';
 import { selectToken } from '../features/account/accountSlice';
 
 const OrderHistory = () => {
-  const [accountDetails, setAccountDetails] = useState({});
+  const [userDetails, setUserDetails] = useState({});
   const authToken = useSelector(selectToken);
 
   useEffect(() => {
     // Fetch order history and account details when the component mounts
     const fetchData = async () => {
       try {
-        const accountDetailsResponse = await axios.get(
+        const userDetailsResponse = await axios.get(
           'https://konjo-habesha-fashion.onrender.com/api/v1/users/me',
           {
             headers: {
@@ -20,16 +20,14 @@ const OrderHistory = () => {
             },
           }
         );
-        setAccountDetails(accountDetailsResponse.data);
-
-        console.log(accountDetails);
+        setUserDetails(userDetailsResponse.data);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
 
     fetchData();
-  }, [accountDetails, authToken]);
+  }, [userDetails, authToken]);
 
   return (
     <div className="container mx-auto mt-8 flex">
@@ -46,8 +44,8 @@ const OrderHistory = () => {
         <h2 className="text-2xl font-bold mb-4">Account Details</h2>
         <div className="p-4 border border-gray-300 rounded">
           {/* Display account details here */}
-          <p>Name: {accountDetails.name}</p>
-          <p>Email: {accountDetails.email}</p>
+          <p>Name: {userDetails.name}</p>
+          <p>Email: {userDetails.email}</p>
           {/* Add more account details as needed */}
         </div>
       </div>
