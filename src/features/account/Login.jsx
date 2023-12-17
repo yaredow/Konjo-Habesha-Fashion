@@ -1,49 +1,35 @@
-// Login.jsx
-import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setToken } from './accountSlice';
+import useSignin from '../../hook/useSigin';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { signin, error, isLoading, isSuccess } = useSignin();
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async () => {
-    try {
-      const res = await axios({
-        method: 'POST',
-        url: 'https://konjo-habesha-fashion.onrender.com/api/v1/users/signin',
-        data: {
-          email,
-          password,
-        },
-      });
-      if (res.data.status === 'success') {
-        toast.success('you have logged in successfully');
-        dispatch(setToken(res.data.token));
+    await signin(email, password);
 
-        navigate('/account/order-history');
-      }
-    } catch (err) {
-      toast.error(err.response.data.message);
+    if (isSuccess) {
+      toast.success('You are logged in successfully');
+      navigate('/account/order-history');
+    } else {
+      toast.error(error);
     }
   };
 
   return (
     <div className="flex fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800">
-      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg  w-96">
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg w-96">
         <h2 className="text-4xl font-bold text-center mb-8 font-custom text-gray-800 dark:text-gray-200">
           Login
         </h2>
@@ -57,14 +43,19 @@ const Login = () => {
           <input
             type="email"
             id="email"
+            disabled={isLoading}
             {...register('email', {
               required: 'This field is required',
             })}
             className={`input ${errors.email ? 'border-red-500' : ''}`}
             placeholder="Your Email"
+            autoComplete="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onInput={(e) => setEmail(e.target.value)}
           />
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+          )}
 
           <label
             htmlFor="password"
@@ -75,14 +66,21 @@ const Login = () => {
           <input
             type="password"
             id="password"
+            autoComplete="password"
+            disabled={isLoading}
             {...register('password', {
               required: 'This field is required',
             })}
-            className={`input ${errors.email ? 'border-red-500' : ''}`}
+            className={`input ${errors.password ? 'border-red-500' : ''}`}
             placeholder="Your Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onInput={(e) => setPassword(e.target.value)}
           />
+          {errors.password && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.password.message}
+            </p>
+          )}
 
           <button
             type="submit"
