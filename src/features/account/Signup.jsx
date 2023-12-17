@@ -1,14 +1,14 @@
 // CreateAccount.jsx
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const {
     register,
@@ -20,7 +20,7 @@ function Register() {
   const onSubmit = () => {
     console.log(errors);
     reset();
-    toast.success("You have registered succesfully");
+    toast.success('You have registered succesfully');
     navigate(-1);
   };
 
@@ -40,10 +40,10 @@ function Register() {
           <input
             type="text"
             id="firstName"
-            {...register("firstName", {
-              required: "This field required",
+            {...register('firstName', {
+              required: 'This field required',
             })}
-            className={`input ${errors.email ? "border-red-500" : ""}`}
+            className={`input ${errors.email ? 'border-red-500' : ''}`}
             placeholder=" "
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -58,10 +58,10 @@ function Register() {
           <input
             type="text"
             id="lastName"
-            {...register("lastName", {
-              required: "This field required",
+            {...register('lastName', {
+              required: 'This field required',
             })}
-            className={`input ${errors.email ? "border-red-500" : ""}`}
+            className={`input ${errors.email ? 'border-red-500' : ''}`}
             placeholder=" "
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -76,10 +76,10 @@ function Register() {
           <input
             type="email"
             id="email"
-            {...register("email", {
-              required: "This field required",
+            {...register('email', {
+              required: 'This field required',
             })}
-            className={`input ${errors.email ? "border-red-500" : ""}`}
+            className={`input ${errors.email ? 'border-red-500' : ''}`}
             placeholder=" "
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -94,10 +94,10 @@ function Register() {
           <input
             type="password"
             id="password"
-            {...register("password", {
-              required: "This field required",
+            {...register('password', {
+              required: 'This field required',
             })}
-            className={`input ${errors.email ? "border-red-500" : ""}`}
+            className={`input ${errors.email ? 'border-red-500' : ''}`}
             placeholder=" "
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -112,7 +112,7 @@ function Register() {
         </form>
 
         <p className="text-sm mt-4 dark:text-gray-300 text-gray-600">
-          Already have an account?{" "}
+          Already have an account?{' '}
           <button
             onClick={() => navigate(-1)}
             className="text-blue-500 hover:underline"

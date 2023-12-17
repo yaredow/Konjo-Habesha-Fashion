@@ -1,7 +1,7 @@
-import axios from 'axios';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { setToken, setUser } from '../features/account/accountSlice';
+import { useDispatch } from 'react-redux';
+import axios from 'axios';
 
 const useSignin = () => {
   const [error, setError] = useState('');
@@ -19,20 +19,27 @@ const useSignin = () => {
         data: { email: email, password: password },
       });
 
-      if (res.status !== 200) {
-        setIsLoading(false);
-        setError(res.response.data.message);
-      }
-      console.log(res);
+      console.log(res.data);
 
       if (res.status === 200) {
         dispatch(setToken(res.data.token));
         dispatch(setUser(res.data.user));
         setIsSuccess(true);
+      } else {
+        setIsLoading(false);
+        setError('An error occurred during sign-in.');
       }
     } catch (err) {
       setIsLoading(false);
-      setError('An error occurred during sign-in.');
+      if (err.response) {
+        setError(err.response.data.message); // Server-side error
+      } else if (err.request) {
+        setError('An error occurred. Please check your internet connection.'); // Client-side error
+      } else {
+        setError('An error occurred during sign-in.');
+      }
+    } finally {
+      setIsLoading(false);
     }
   };
 

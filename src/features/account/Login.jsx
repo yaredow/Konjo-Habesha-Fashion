@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import useSignin from '../../hook/useSigin';
+import GreenSpinner from '../../ui/SpinnerMini';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -17,13 +18,20 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async () => {
-    await signin(email, password);
+    console.log('Submitting form');
+    try {
+      await signin(email, password);
+      console.log('Signin completed');
 
-    if (isSuccess) {
-      toast.success('You are logged in successfully');
-      navigate('/account/order-history');
-    } else {
-      toast.error(error);
+      if (isSuccess) {
+        toast.success('You are logged in successfully');
+        navigate('/account/order-history');
+      } else {
+        toast.error(error);
+      }
+    } catch (error) {
+      console.error('An error occurred during signin:', error);
+      toast.error('An error occurred during signin.');
     }
   };
 
@@ -86,10 +94,9 @@ const Login = () => {
             type="submit"
             className="w-full mt-4 p-2 bg-blue-700 text-white rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
           >
-            Login
+            {isLoading ? <GreenSpinner /> : 'Login'}
           </button>
         </form>
-
         <p className="text-sm mt-4 text-gray-600 dark:text-gray-200">
           Don&apos;t have an account?{' '}
           <Link
