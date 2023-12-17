@@ -14,9 +14,9 @@ import ContactUs from './pages/ContactUs';
 import AboutUs from './pages/AboutUs';
 import Home from './ui/Home';
 import Account from './pages/Account';
-import Register from './features/account/Register';
 import Login from './features/account/Login';
 import OrderHistory from './ui/OrderHistory';
+import Signup from './features/account/Signup';
 
 function App() {
   return (
@@ -37,7 +37,7 @@ function App() {
                 <Route path="account" element={<Account />}>
                   <Route index element={<Login />} />
                   <Route path="order-history" element={<OrderHistory />} />
-                  <Route path="register" element={<Register />} />
+                  <Route path="signup" element={<Signup />} />
                 </Route>
               </Route>
               <Route path="checkout" element={<Checkout />} />

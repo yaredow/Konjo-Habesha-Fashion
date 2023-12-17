@@ -1,14 +1,17 @@
-// CreateAccount.jsx
+import axios from 'axios';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import useSignup from '../../hook/useSignup';
+import SpinnerMini from '../../ui/SpinnerMini';
 
-function Register() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+function Signup() {
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const { signup, error, isLoading, isSuccess } = useSignup();
   const navigate = useNavigate();
   const {
     register,
@@ -17,11 +20,15 @@ function Register() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = () => {
-    console.log(errors);
-    reset();
-    toast.success('You have registered succesfully');
-    navigate(-1);
+  const onSubmit = async () => {
+    await signup(fullName, email, password, confirmPassword);
+
+    if (isSuccess) {
+      toast.success('Account created successfully');
+      navigate('/account/order-history');
+    } else {
+      toast.error(error);
+    }
   };
 
   return (
@@ -32,39 +39,22 @@ function Register() {
         </h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label
-            htmlFor="firstName"
+            htmlFor="fullName"
             className="block text-sm font-medium dark:text-gray-200 text-gray-700"
           >
-            First Name
+            Full Name
           </label>
           <input
             type="text"
-            id="firstName"
-            {...register('firstName', {
-              required: 'This field required',
+            id="fullName"
+            {...register('fullName', {
+              required: 'This field is required',
             })}
-            className={`input ${errors.email ? 'border-red-500' : ''}`}
+            className={`input ${errors.fullName ? 'border-red-500' : ''}`}
             placeholder=" "
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-          />
-
-          <label
-            htmlFor="lastName"
-            className="block text-sm dark:text-gray-200 font-medium text-gray-700 mt-4"
-          >
-            Last Name
-          </label>
-          <input
-            type="text"
-            id="lastName"
-            {...register('lastName', {
-              required: 'This field required',
-            })}
-            className={`input ${errors.email ? 'border-red-500' : ''}`}
-            placeholder=" "
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            disabled={isLoading}
+            value={fullName}
+            onInput={(e) => setFullName(e.target.value)}
           />
 
           <label
@@ -76,13 +66,14 @@ function Register() {
           <input
             type="email"
             id="email"
+            disabled={isLoading}
             {...register('email', {
-              required: 'This field required',
+              required: 'This field is required',
             })}
             className={`input ${errors.email ? 'border-red-500' : ''}`}
             placeholder=" "
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onInput={(e) => setEmail(e.target.value)}
           />
 
           <label
@@ -94,20 +85,42 @@ function Register() {
           <input
             type="password"
             id="password"
+            disabled={isLoading}
             {...register('password', {
-              required: 'This field required',
+              required: 'This field is required',
             })}
-            className={`input ${errors.email ? 'border-red-500' : ''}`}
+            className={`input ${errors.password ? 'border-red-500' : ''}`}
             placeholder=" "
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onInput={(e) => setPassword(e.target.value)}
+          />
+
+          <label
+            htmlFor="confirmPassword"
+            className="block dark:text-gray-200 text-sm font-medium text-gray-700 mt-4"
+          >
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            id="confirmPassword"
+            disabled={isLoading}
+            {...register('confirmPassword', {
+              required: 'This field is required',
+            })}
+            className={`input ${
+              errors.confirmPassword ? 'border-red-500' : ''
+            }`}
+            placeholder=" "
+            value={confirmPassword}
+            onInput={(e) => setConfirmPassword(e.target.value)}
           />
 
           <button
             type="submit"
             className="w-full mt-4 p-2 bg-blue-700 text-white rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
           >
-            Create Account
+            {isLoading ? <SpinnerMini /> : 'Create Account'}
           </button>
         </form>
 
@@ -125,4 +138,4 @@ function Register() {
   );
 }
 
-export default Register;
+export default Signup;

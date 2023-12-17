@@ -9,25 +9,30 @@ const useSignup = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const dispatch = useDispatch();
 
-  const signin = async (email, password) => {
+  const signup = async (fullName, email, password, confirmPassword) => {
     setIsLoading(true);
 
     try {
       const res = await axios({
         method: 'POST',
-        url: 'https://konjo-habesha-fashion.onrender.com/api/v1/users/signup',
-        data: { email, password },
+        url: 'http://konjo-habesha-fashion.onrender.com/api/v1/users/signup',
+        data: {
+          fullName,
+          email,
+          password,
+          confirmPassword,
+        },
       });
 
       console.log(res.data);
 
-      if (res.status === 200) {
+      if (res.status.token) {
         dispatch(setToken(res.data.token));
         dispatch(setUser(res.data.user));
         setIsSuccess(true);
       } else {
         setIsLoading(false);
-        setError('An error occurred during sign-in.');
+        setError('An error occurred during sign-up.');
       }
     } catch (err) {
       setIsLoading(false);
@@ -36,14 +41,14 @@ const useSignup = () => {
       } else if (err.request) {
         setError('An error occurred. Please check your internet connection.'); // Client-side error
       } else {
-        setError('An error occurred during sign-in.');
+        setError('An error occurred during sign-up.');
       }
     } finally {
       setIsLoading(false);
     }
   };
 
-  return { signin, error, isLoading, isSuccess };
+  return { signup, error, isLoading, isSuccess };
 };
 
 export default useSignup;

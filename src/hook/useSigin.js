@@ -11,17 +11,18 @@ const useSignin = () => {
 
   const signin = async (email, password) => {
     setIsLoading(true);
+    setError(null);
 
     try {
       const res = await axios({
         method: 'POST',
         url: 'https://konjo-habesha-fashion.onrender.com/api/v1/users/signin',
-        data: { email: email, password: password },
+        data: { email, password },
       });
 
       console.log(res.data);
 
-      if (res.status === 200) {
+      if (res.data.token) {
         dispatch(setToken(res.data.token));
         dispatch(setUser(res.data.user));
         setIsSuccess(true);
