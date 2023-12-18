@@ -46,7 +46,7 @@ function Navigation() {
               sectionName={sectionNames}
             />
           </div>
-          <div className=" flex flex-row gap-8 relative">
+          <div className=" flex flex-row gap-8 relative mr-2">
             <div className="flex flex-row gap-4 md:gap-6">
               <ToggleSearchForm />
               <div className=" relative">
@@ -58,10 +58,15 @@ function Navigation() {
                 )}
               </div>
 
-              <AiOutlineUser
-                onClick={handleUserIconClick}
-                className="text-2xl hover:text-blue-500 dark:hover:text-blue-400 dark:text-white cursor-pointer"
-              />
+              <div className=" flex flex-row gap-2 mr-4">
+                <AiOutlineUser
+                  onClick={handleUserIconClick}
+                  className="text-2xl hover:text-blue-500 dark:hover:text-blue-400 dark:text-white cursor-pointer"
+                />
+                <span className=" dark:text-gray-100">
+                  {user ? user.name : ''}
+                </span>
+              </div>
               <DarkModeToggle />
             </div>
 

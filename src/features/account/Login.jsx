@@ -34,11 +34,11 @@ const Login = () => {
 
   return (
     <div className="flex fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800">
-      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg w-96">
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg w-1/3">
         <h2 className="text-4xl font-bold text-center mb-8 font-custom text-gray-800 dark:text-gray-200">
           Login
         </h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form className=" flex flex-col" onSubmit={handleSubmit(onSubmit)}>
           <label
             htmlFor="email"
             className="block text-sm font-medium text-gray-800 dark:text-gray-200"
@@ -91,7 +91,7 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full mt-4 p-2 bg-blue-700 text-white rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+            className=" flex-none mt-12 px-6 py-2 bg-blue-700 text-white rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
           >
             {isLoading ? <GreenSpinner /> : 'Login'}
           </button>
