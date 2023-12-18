@@ -35,7 +35,7 @@ function App() {
                 <Route path="contact-us" element={<ContactUs />} />
                 <Route path="about-us" element={<AboutUs />} />
                 <Route path="account" element={<Account />}>
-                  <Route index element={<Login />} />
+                  <Route path="signin" element={<Login />} />
                   <Route path="order-history" element={<OrderHistory />} />
                   <Route path="signup" element={<Signup />} />
                 </Route>

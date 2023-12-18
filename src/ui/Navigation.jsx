@@ -22,7 +22,7 @@ function Navigation() {
     if (user) {
       navigate('/account/order-history');
     } else {
-      navigate('/account');
+      navigate('/account/signin');
     }
   };
 

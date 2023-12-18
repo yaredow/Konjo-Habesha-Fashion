@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,21 +19,18 @@ const Login = () => {
 
   const onSubmit = async () => {
     console.log('Submitting form');
-    try {
-      await signin(email, password);
-      console.log('Signin completed');
-
-      if (isSuccess) {
-        toast.success('You are logged in successfully');
-        navigate('/account/order-history');
-      } else {
-        toast.error(error);
-      }
-    } catch (error) {
-      console.error('An error occurred during signin:', error);
-      toast.error('An error occurred during signin.');
-    }
+    await signin(email, password);
+    console.log('Signin completed');
   };
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success('You are logged in successfully');
+      navigate('/account/order-history');
+    } else if (error) {
+      toast.error(error);
+    }
+  }, [isSuccess, error, navigate]);
 
   return (
     <div className="flex fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800">
@@ -48,6 +45,7 @@ const Login = () => {
           >
             Email
           </label>
+
           <input
             type="email"
             id="email"
@@ -71,6 +69,7 @@ const Login = () => {
           >
             Password
           </label>
+
           <input
             type="password"
             id="password"

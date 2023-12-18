@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { setToken, setUser } from '../features/account/accountSlice';
-import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setToken, setUser } from '../features/account/accountSlice';
 
 const useSignin = () => {
   const [error, setError] = useState('');
@@ -22,7 +22,7 @@ const useSignin = () => {
 
       console.log(res.data);
 
-      if (res.data.token) {
+      if (res.status === 200) {
         dispatch(setToken(res.data.token));
         dispatch(setUser(res.data.user));
         setIsSuccess(true);
@@ -42,6 +42,8 @@ const useSignin = () => {
     } finally {
       setIsLoading(false);
     }
+
+    // Return a resolved promise after the sign-in process
   };
 
   return { signin, error, isLoading, isSuccess };

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -10,26 +10,32 @@ function Signup() {
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const { signup, error, isLoading, isSuccess } = useSignup();
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm();
 
   const onSubmit = async () => {
-    await signup(fullName, email, password, confirmPassword);
+    console.log('submitting form');
+    await signup(fullName, email, password, passwordConfirm);
+    console.log('finished signing up');
+  };
+
+  useEffect(() => {
+    console.log('useEffect - isSuccess:', isSuccess);
+    console.log('useEffect - error:', error);
 
     if (isSuccess) {
-      toast.success('Account created successfully');
+      toast.success('Account was successfully created.');
       navigate('/account/order-history');
-    } else {
+    } else if (error) {
       toast.error(error);
     }
-  };
+  }, [isSuccess, error, navigate]);
 
   return (
     <div className="fixed inset-0 top-12 flex items-center justify-center h-screen dark:bg-gray-800 bg-white">
@@ -112,8 +118,8 @@ function Signup() {
               errors.confirmPassword ? 'border-red-500' : ''
             }`}
             placeholder=" "
-            value={confirmPassword}
-            onInput={(e) => setConfirmPassword(e.target.value)}
+            value={passwordConfirm}
+            onInput={(e) => setPasswordConfirm(e.target.value)}
           />
 
           <button

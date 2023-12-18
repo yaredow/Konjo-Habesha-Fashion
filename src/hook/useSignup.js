@@ -9,24 +9,24 @@ const useSignup = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const dispatch = useDispatch();
 
-  const signup = async (fullName, email, password, confirmPassword) => {
+  const signup = async (fullName, email, password, passwordConfirm) => {
     setIsLoading(true);
 
     try {
       const res = await axios({
         method: 'POST',
-        url: 'http://konjo-habesha-fashion.onrender.com/api/v1/users/signup',
+        url: 'https://konjo-habesha-fashion.onrender.com/api/v1/users/signup',
         data: {
-          fullName,
+          name: fullName,
           email,
           password,
-          confirmPassword,
+          passwordConfirm,
         },
       });
 
-      console.log(res.data);
+      console.log(res.status);
 
-      if (res.status.token) {
+      if (res.data.token) {
         dispatch(setToken(res.data.token));
         dispatch(setUser(res.data.user));
         setIsSuccess(true);
@@ -37,7 +37,7 @@ const useSignup = () => {
     } catch (err) {
       setIsLoading(false);
       if (err.response) {
-        setError(err.response.data.message); // Server-side error
+        setError(err.response.data.message);
       } else if (err.request) {
         setError('An error occurred. Please check your internet connection.'); // Client-side error
       } else {
