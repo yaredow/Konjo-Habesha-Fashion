@@ -24,7 +24,7 @@ const useSignup = () => {
         },
       });
 
-      console.log(res.status);
+      console.log(res.data);
 
       if (res.data.token) {
         dispatch(setToken(res.data.token));

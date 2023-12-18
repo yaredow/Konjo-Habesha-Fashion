@@ -13,7 +13,7 @@ function Logout() {
   };
 
   return (
-    <div className=" flex gap-1 items-center mt-8 ">
+    <div className=" flex dark:text-gray-100 gap-1 items-center mt-8 ">
       <AiOutlineUser className="text-xl text-red-500 dark:text-white" />
       <button
         className=" underline underline-offset-4  hover:text-blue-500 dark:hover:text-blue-400"

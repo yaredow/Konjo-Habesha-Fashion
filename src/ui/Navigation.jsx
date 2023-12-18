@@ -49,10 +49,6 @@ function Navigation() {
           <div className=" flex flex-row gap-8 relative">
             <div className="flex flex-row gap-4 md:gap-6">
               <ToggleSearchForm />
-              <AiOutlineUser
-                onClick={handleUserIconClick}
-                className="text-2xl hover:text-blue-500 dark:hover:text-blue-400 dark:text-white cursor-pointer"
-              />
               <div className=" relative">
                 <CartToggle />
                 {cartQuantity > 0 && (
@@ -62,6 +58,10 @@ function Navigation() {
                 )}
               </div>
 
+              <AiOutlineUser
+                onClick={handleUserIconClick}
+                className="text-2xl hover:text-blue-500 dark:hover:text-blue-400 dark:text-white cursor-pointer"
+              />
               <DarkModeToggle />
             </div>
 
