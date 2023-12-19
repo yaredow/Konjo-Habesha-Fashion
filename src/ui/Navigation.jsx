@@ -58,7 +58,7 @@ function Navigation() {
                 )}
               </div>
 
-              <div className=" flex flex-row gap-2 mr-4">
+              <div className=" flex flex-row gap-2 md:mr-4">
                 <AiOutlineUser
                   onClick={handleUserIconClick}
                   className="text-2xl hover:text-blue-500 dark:hover:text-blue-400 dark:text-white cursor-pointer"

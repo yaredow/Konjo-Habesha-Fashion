@@ -50,17 +50,12 @@ const Login = () => {
               {...register('email', {
                 required: 'This field is required',
               })}
-              className={`block rounded-t-lg px-2.5 pb-2.5 pt-5 text-sm text-gray-900 flex-grow bg-gray-100 dark:bg-gray-700 border-0 border-b-2 w-full  dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer ${
-                errors.email ? 'border-red-500' : ''
-              }`}
+              className={`input peer ${errors.email ? 'border-red-500' : ''}`}
               placeholder=" "
               value={email}
               onInput={(e) => setEmail(e.target.value)}
             />
-            <label
-              htmlFor="email"
-              className="absolute text-sm text-gray-600 dark:text-gray-100 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-6 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-            >
+            <label htmlFor="email" className="label">
               Email
             </label>
             {errors.email && (
@@ -79,17 +74,14 @@ const Login = () => {
               {...register('password', {
                 required: 'This field is required',
               })}
-              className={`block rounded-t-lg px-2.5 pb-2.5 pt-5 text-sm text-gray-900 w-full bg-gray-100 dark:bg-gray-700 border-0 border-b-2 appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer ${
+              className={`input peer ${
                 errors.password ? 'border-red-500 mt-1' : ''
               }`}
               placeholder=""
               value={password}
               onInput={(e) => setPassword(e.target.value)}
             />
-            <label
-              htmlFor="password"
-              className="absolute text-sm text-gray-600 dark:text-gray-100 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-6 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
-            >
+            <label htmlFor="password" className="label">
               Password
             </label>
             {errors.password && (
