@@ -1,8 +1,7 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useSignup from '../../hook/useSignup';
 import SpinnerMini from '../../ui/SpinnerMini';
 
@@ -38,107 +37,122 @@ function Signup() {
   }, [isSuccess, error, navigate]);
 
   return (
-    <div className="fixed inset-0 top-12 flex items-center justify-center h-screen dark:bg-gray-800 bg-white">
-      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg  w-96">
-        <h2 className="text-4xl font-bold mb-4 text-gray-800 dark:text-gray-200 text-center font-custom">
-          Create Account
+    <div className="flex fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800">
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg w-2/3">
+        <h2 className="text-4xl font-bold text-center mb-8 font-custom text-gray-800 dark:text-gray-200">
+          Signup
         </h2>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label
-            htmlFor="fullName"
-            className="block text-sm font-medium dark:text-gray-200 text-gray-700"
-          >
-            Full Name
-          </label>
-          <input
-            type="text"
-            id="fullName"
-            {...register('fullName', {
-              required: 'This field is required',
-            })}
-            className={`input ${errors.fullName ? 'border-red-500' : ''}`}
-            placeholder=" "
-            disabled={isLoading}
-            value={fullName}
-            onInput={(e) => setFullName(e.target.value)}
-          />
 
-          <label
-            htmlFor="email"
-            className="block text-sm dark:text-gray-200 font-medium text-gray-700 mt-4"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            id="email"
-            disabled={isLoading}
-            {...register('email', {
-              required: 'This field is required',
-            })}
-            className={`input ${errors.email ? 'border-red-500' : ''}`}
-            placeholder=" "
-            value={email}
-            onInput={(e) => setEmail(e.target.value)}
-          />
+        <form
+          className="flex flex-col items-center"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="relative mb-6 w-2/4">
+            <input
+              type="text"
+              id="fullName"
+              disabled={isLoading}
+              {...register('fullName', {
+                required: 'This field is required',
+              })}
+              className={`input peer ${
+                errors.fullName ? 'border-red-500' : ''
+              }`}
+              placeholder=" "
+              value={fullName}
+              onInput={(e) => setFullName(e.target.value)}
+            />
+            <label htmlFor="fullName" className="label">
+              Name
+            </label>
 
-          <label
-            htmlFor="password"
-            className="block dark:text-gray-200 text-sm font-medium text-gray-700 mt-4"
-          >
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            disabled={isLoading}
-            {...register('password', {
-              required: 'This field is required',
-            })}
-            className={`input ${errors.password ? 'border-red-500' : ''}`}
-            placeholder=" "
-            value={password}
-            onInput={(e) => setPassword(e.target.value)}
-          />
+            {errors.fullName && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.fullName.message}
+              </p>
+            )}
+          </div>
 
-          <label
-            htmlFor="confirmPassword"
-            className="block dark:text-gray-200 text-sm font-medium text-gray-700 mt-4"
-          >
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            id="confirmPassword"
-            disabled={isLoading}
-            {...register('confirmPassword', {
-              required: 'This field is required',
-            })}
-            className={`input ${
-              errors.confirmPassword ? 'border-red-500' : ''
-            }`}
-            placeholder=" "
-            value={passwordConfirm}
-            onInput={(e) => setPasswordConfirm(e.target.value)}
-          />
+          <div className="relative mb-6 w-2/4">
+            <input
+              type="email"
+              id="email"
+              autoComplete="email"
+              disabled={isLoading}
+              {...register('email', {
+                required: 'This field is required',
+              })}
+              className={`input peer ${
+                errors.email ? 'border-red-500 mt-1' : ''
+              }`}
+              placeholder=""
+              value={email}
+              onInput={(e) => setEmail(e.target.value)}
+            />
+            <label htmlFor="email" className="label">
+              Email
+            </label>
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
 
-          <button
-            type="submit"
-            className="w-full mt-4 p-2 bg-blue-700 text-white rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-          >
-            {isLoading ? <SpinnerMini /> : 'Create Account'}
+          <div className="relative mb-6 w-2/4">
+            <input
+              type="password"
+              id="password"
+              disabled={isLoading}
+              {...register('password', {
+                required: 'This field is required',
+              })}
+              className={`input peer ${
+                errors.password ? 'border-red-500 mt-1' : ''
+              }`}
+              placeholder=""
+              value={password}
+              onInput={(e) => setPassword(e.target.value)}
+            />
+            <label htmlFor="password" className="label">
+              Password
+            </label>
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
+
+          <div className="relative mb-6 w-2/4">
+            <input
+              type="password"
+              id="passwordConfirm"
+              disabled={isLoading}
+              {...register('passwordConfirm', {
+                required: 'This field is required',
+              })}
+              className={`input peer ${
+                errors.passwordConfirm ? 'border-red-500' : ''
+              }`}
+              placeholder=""
+              value={passwordConfirm}
+              onInput={(e) => setPasswordConfirm(e.target.value)}
+            />
+            <label htmlFor="passwordConfirm" className="label">
+              Confirm password
+            </label>
+            {errors.passwordConfirm && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.passwordConfirm.message}
+              </p>
+            )}
+          </div>
+
+          <button type="submit" className="button">
+            {isLoading ? <SpinnerMini /> : 'Sign Up'}
           </button>
         </form>
-
-        <p className="text-sm mt-4 dark:text-gray-300 text-gray-600">
-          Already have an account?{' '}
-          <button
-            onClick={() => navigate(-1)}
-            className="text-blue-500 hover:underline"
-          >
-            Login here
-          </button>
-        </p>
       </div>
     </div>
   );

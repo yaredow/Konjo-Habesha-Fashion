@@ -34,81 +34,82 @@ const Login = () => {
 
   return (
     <div className="flex fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800">
-      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg w-1/3">
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg w-2/3">
         <h2 className="text-4xl font-bold text-center mb-8 font-custom text-gray-800 dark:text-gray-200">
           Login
         </h2>
-        <form className=" flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-800 dark:text-gray-200"
-          >
-            Email
-          </label>
+        <form
+          className="flex flex-col items-center"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className="relative mb-6 w-2/4">
+            <input
+              type="email"
+              id="email"
+              disabled={isLoading}
+              {...register('email', {
+                required: 'This field is required',
+              })}
+              className={`block rounded-t-lg px-2.5 pb-2.5 pt-5 text-sm text-gray-900 flex-grow bg-gray-100 dark:bg-gray-700 border-0 border-b-2 w-full  dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer ${
+                errors.email ? 'border-red-500' : ''
+              }`}
+              placeholder=" "
+              value={email}
+              onInput={(e) => setEmail(e.target.value)}
+            />
+            <label
+              htmlFor="email"
+              className="absolute text-sm text-gray-600 dark:text-gray-100 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-6 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+            >
+              Email
+            </label>
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
+          </div>
 
-          <input
-            type="email"
-            id="email"
-            disabled={isLoading}
-            {...register('email', {
-              required: 'This field is required',
-            })}
-            className={`input ${errors.email ? 'border-red-500' : ''}`}
-            placeholder="Your Email"
-            autoComplete="email"
-            value={email}
-            onInput={(e) => setEmail(e.target.value)}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
-          )}
+          <div className="relative mb-6 w-2/4">
+            <input
+              type="password"
+              id="password"
+              autoComplete="password"
+              disabled={isLoading}
+              {...register('password', {
+                required: 'This field is required',
+              })}
+              className={`block rounded-t-lg px-2.5 pb-2.5 pt-5 text-sm text-gray-900 w-full bg-gray-100 dark:bg-gray-700 border-0 border-b-2 appearance-none dark:text-white dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer ${
+                errors.password ? 'border-red-500 mt-1' : ''
+              }`}
+              placeholder=""
+              value={password}
+              onInput={(e) => setPassword(e.target.value)}
+            />
+            <label
+              htmlFor="password"
+              className="absolute text-sm text-gray-600 dark:text-gray-100 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-800 px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-6 start-1 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto"
+            >
+              Password
+            </label>
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
+          </div>
 
-          <label
-            htmlFor="password"
-            className="block text-sm font-medium text-gray-800 dark:text-gray-200 mt-4"
-          >
-            Password
-          </label>
-
-          <input
-            type="password"
-            id="password"
-            autoComplete="password"
-            disabled={isLoading}
-            {...register('password', {
-              required: 'This field is required',
-            })}
-            className={`input ${errors.password ? 'border-red-500' : ''}`}
-            placeholder="Your Password"
-            value={password}
-            onInput={(e) => setPassword(e.target.value)}
-          />
-          {errors.password && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.password.message}
-            </p>
-          )}
-
-          <button
-            type="submit"
-            className=" flex-none mt-12 px-6 py-2 bg-blue-700 text-white rounded hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
-          >
-            {isLoading ? <GreenSpinner /> : 'Login'}
+          <button type="submit" className="button">
+            {isLoading ? <GreenSpinner /> : 'Log in'}
           </button>
-        </form>
-        <p className="text-sm mt-4 text-gray-600 dark:text-gray-200">
-          Don&apos;t have an account?{' '}
-          <Link to="/account/signup" className="text-blue-500 hover:underline">
+
+          <Link
+            to="/account/signup"
+            className="text-gray-800 font-custom font-thin mt-2 hover:italic underline-offset-4 underline"
+          >
             Register here
           </Link>
-        </p>
-
-        <button
-          onClick={() => navigate('/products')}
-          className=" text-gray-600 dark:text-gray-200 hover:text-blue-600 mt-4 text-sm"
-        >
-          Return to store
-        </button>
+        </form>
       </div>
     </div>
   );
