@@ -8,9 +8,9 @@ const OrderHistory = () => {
   return (
     <>
       <Logout />
-      <div className="container mx-auto mt-8 flex">
+      <div className="container items-start mx-auto flex md:flex-row flex-col gap-8 md:">
         {/* Order History */}
-        <div className="w-2/3 pr-8">
+        <div className="w-2/3 pr-8 mt-8">
           <h2 className="text-xl dark:text-gray-100 font-bold mb-4">
             Order History
           </h2>
@@ -20,7 +20,7 @@ const OrderHistory = () => {
         </div>
 
         {/* Account Details */}
-        <div className="w-1/3">
+        <div className="md:w-1/3">
           <h2 className="text-xl dark:text-gray-100 font-bold mb-4">
             Account Details
           </h2>

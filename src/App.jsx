@@ -17,6 +17,8 @@ import Account from './pages/Account';
 import Login from './features/account/Login';
 import OrderHistory from './ui/OrderHistory';
 import Signup from './features/account/Signup';
+import ForgotPassword from './features/account/ForgotPassword';
+import ResetPassword from './features/account/ResetPassword';
 
 function App() {
   return (
@@ -38,6 +40,8 @@ function App() {
                   <Route path="signin" element={<Login />} />
                   <Route path="order-history" element={<OrderHistory />} />
                   <Route path="signup" element={<Signup />} />
+                  <Route path="forgot-password" element={<ForgotPassword />} />
+                  <Route path="reset-password" element={<ResetPassword />} />
                 </Route>
               </Route>
               <Route path="checkout" element={<Checkout />} />

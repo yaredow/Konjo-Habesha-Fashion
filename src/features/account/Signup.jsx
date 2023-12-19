@@ -47,7 +47,7 @@ function Signup() {
           className="flex flex-col items-center"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="relative mb-6 w-2/4">
+          <div className="relative mb-6 md:w-2/4 w-full">
             <input
               type="text"
               id="fullName"
@@ -73,7 +73,7 @@ function Signup() {
             )}
           </div>
 
-          <div className="relative mb-6 w-2/4">
+          <div className="relative mb-6 md:w-2/4 w-full">
             <input
               type="email"
               id="email"
@@ -99,7 +99,7 @@ function Signup() {
             )}
           </div>
 
-          <div className="relative mb-6 w-2/4">
+          <div className="relative mb-6 md:w-2/4 w-full">
             <input
               type="password"
               id="password"
@@ -124,7 +124,7 @@ function Signup() {
             )}
           </div>
 
-          <div className="relative mb-6 w-2/4">
+          <div className="relative mb-6 md:w-2/4 w-full">
             <input
               type="password"
               id="passwordConfirm"

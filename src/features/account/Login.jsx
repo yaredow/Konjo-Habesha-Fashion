@@ -42,7 +42,7 @@ const Login = () => {
           className="flex flex-col items-center"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="relative mb-6 w-2/4">
+          <div className="relative mb-6 md:w-2/4 w-full">
             <input
               type="email"
               id="email"
@@ -65,7 +65,7 @@ const Login = () => {
             )}
           </div>
 
-          <div className="relative mb-6 w-2/4">
+          <div className="relative mb-6 md:w-2/4 w-full">
             <input
               type="password"
               id="password"
@@ -97,9 +97,15 @@ const Login = () => {
 
           <Link
             to="/account/signup"
-            className="text-gray-800 font-custom font-thin mt-2 hover:italic underline-offset-4 underline"
+            className="text-gray-800 font-custom mb-2 font-thin mt-2 hover:italic underline-offset-4 underline"
           >
             Register here
+          </Link>
+          <Link
+            to="/account/forgot-password"
+            className=" underline underline-offset-4 hover:italic"
+          >
+            Forgot your password?
           </Link>
         </form>
       </div>
