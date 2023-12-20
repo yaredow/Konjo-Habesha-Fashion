@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import InputField from '../../ui/InputField';
 import toast from 'react-hot-toast';
 import SpinnerMini from '../../ui/SpinnerMini';
-import useUpdateSettings from '../../hook/useUpdateData';
+import useUpdateSettings from '../../hook/useUpdateSettings';
 
 const UpdateMe = () => {
   // State for email and name form

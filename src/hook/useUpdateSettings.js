@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectToken, setUser } from '../features/account/accountSlice';
 
-const useUpdateData = () => {
+const useUpdateSettings = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -11,17 +11,19 @@ const useUpdateData = () => {
 
   const token = useSelector(selectToken);
 
-  const updateData = async (name, email) => {
+  const updateData = async (data, type) => {
     setIsLoading(true);
     setError(null);
 
+    const url =
+      type === 'password'
+        ? 'https://konjo-habesha-fashion.onrender.com/api/v1/users/updateMyPassword'
+        : 'https://konjo-habesha-fashion.onrender.com/api/v1/users/updateMe';
+
     const res = await axios({
       method: 'PATCH',
-      url: 'https://konjo-habesha-fashion.onrender.com/api/v1/users/updateMe',
-      data: {
-        name,
-        email,
-      },
+      url,
+      data,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -53,4 +55,4 @@ const useUpdateData = () => {
   return { updateData, isLoading, isSuccess, error };
 };
 
-export default useUpdateData;
+export default useUpdateSettings;
