@@ -15,10 +15,11 @@ import AboutUs from './pages/AboutUs';
 import Home from './ui/Home';
 import Account from './pages/Account';
 import Login from './features/account/Login';
-import OrderHistory from './ui/OrderHistory';
 import Signup from './features/account/Signup';
 import ForgotPassword from './features/account/ForgotPassword';
 import ResetPassword from './features/account/ResetPassword';
+import UserDetails from './features/account/UserDetails';
+import UpdateMe from './features/account/UpdateMe';
 
 function App() {
   return (
@@ -38,10 +39,11 @@ function App() {
                 <Route path="about-us" element={<AboutUs />} />
                 <Route path="account" element={<Account />}>
                   <Route path="signin" element={<Login />} />
-                  <Route path="order-history" element={<OrderHistory />} />
+                  <Route path="user-details" element={<UserDetails />} />
                   <Route path="signup" element={<Signup />} />
                   <Route path="forgot-password" element={<ForgotPassword />} />
                   <Route path="reset-password" element={<ResetPassword />} />
+                  <Route path="update-account" element={<UpdateMe />} />
                 </Route>
               </Route>
               <Route path="checkout" element={<Checkout />} />

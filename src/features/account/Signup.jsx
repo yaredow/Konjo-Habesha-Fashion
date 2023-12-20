@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import useSignup from '../../hook/useSignup';
 import SpinnerMini from '../../ui/SpinnerMini';
 
@@ -30,7 +30,7 @@ function Signup() {
 
     if (isSuccess) {
       toast.success('Account was successfully created.');
-      navigate('/account/order-history');
+      navigate('/account/user-details');
     } else if (error) {
       toast.error(error);
     }

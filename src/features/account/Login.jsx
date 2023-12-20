@@ -26,7 +26,7 @@ const Login = () => {
   useEffect(() => {
     if (isSuccess) {
       toast.success('You are logged in successfully');
-      navigate('/account/order-history');
+      navigate('/account/user-details');
     } else if (error) {
       toast.error(error);
     }

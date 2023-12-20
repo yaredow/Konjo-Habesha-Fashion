@@ -1,13 +1,20 @@
 // OrderHistory.jsx
 import { useSelector } from 'react-redux';
-import { selectUser } from '../features/account/accountSlice';
-import Logout from '../features/account/Logout';
+import { selectUser } from './accountSlice';
+import Logout from './Logout';
+import { Link } from 'react-router-dom';
 
-const OrderHistory = () => {
+const UserDetails = () => {
   const user = useSelector(selectUser);
   return (
-    <>
+    <div className=" container">
       <Logout />
+      <Link
+        to="/account/update-account"
+        className=" underline underline-offset-4 hover:italic font-light"
+      >
+        Update your account
+      </Link>
       <div className="container items-start mx-auto flex md:flex-row flex-col gap-8 md:">
         {/* Order History */}
         <div className="w-2/3 pr-8 mt-8">
@@ -32,8 +39,8 @@ const OrderHistory = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
-export default OrderHistory;
+export default UserDetails;

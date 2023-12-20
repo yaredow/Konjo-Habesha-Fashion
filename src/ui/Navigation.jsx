@@ -20,7 +20,7 @@ function Navigation() {
 
   const handleUserIconClick = () => {
     if (user) {
-      navigate('/account/order-history');
+      navigate('/account/user-details');
     } else {
       navigate('/account/signin');
     }
