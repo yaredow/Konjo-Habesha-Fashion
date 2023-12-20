@@ -4,6 +4,7 @@ import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import useSignup from '../../hook/useSignup';
 import SpinnerMini from '../../ui/SpinnerMini';
+import InputField from '../../ui/InputField';
 
 function Signup() {
   const [fullName, setFullName] = useState('');
@@ -47,108 +48,42 @@ function Signup() {
           className="flex flex-col items-center"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="relative mb-6 md:w-2/4 w-full">
-            <input
-              type="text"
-              id="fullName"
-              disabled={isLoading}
-              {...register('fullName', {
-                required: 'This field is required',
-              })}
-              className={`input peer ${
-                errors.fullName ? 'border-red-500' : ''
-              }`}
-              placeholder=" "
-              value={fullName}
-              onInput={(e) => setFullName(e.target.value)}
-            />
-            <label htmlFor="fullName" className="label">
-              Name
-            </label>
-
-            {errors.fullName && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.fullName.message}
-              </p>
-            )}
-          </div>
-
-          <div className="relative mb-6 md:w-2/4 w-full">
-            <input
-              type="email"
-              id="email"
-              autoComplete="email"
-              disabled={isLoading}
-              {...register('email', {
-                required: 'This field is required',
-              })}
-              className={`input peer ${
-                errors.email ? 'border-red-500 mt-1' : ''
-              }`}
-              placeholder=""
-              value={email}
-              onInput={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="email" className="label">
-              Email
-            </label>
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
-
-          <div className="relative mb-6 md:w-2/4 w-full">
-            <input
-              type="password"
-              id="password"
-              disabled={isLoading}
-              {...register('password', {
-                required: 'This field is required',
-              })}
-              className={`input peer ${
-                errors.password ? 'border-red-500 mt-1' : ''
-              }`}
-              placeholder=""
-              value={password}
-              onInput={(e) => setPassword(e.target.value)}
-            />
-            <label htmlFor="password" className="label">
-              Password
-            </label>
-            {errors.password && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.password.message}
-              </p>
-            )}
-          </div>
-
-          <div className="relative mb-6 md:w-2/4 w-full">
-            <input
-              type="password"
-              id="passwordConfirm"
-              disabled={isLoading}
-              {...register('passwordConfirm', {
-                required: 'This field is required',
-              })}
-              className={`input peer ${
-                errors.passwordConfirm ? 'border-red-500' : ''
-              }`}
-              placeholder=""
-              value={passwordConfirm}
-              onInput={(e) => setPasswordConfirm(e.target.value)}
-            />
-            <label htmlFor="passwordConfirm" className="label">
-              Confirm password
-            </label>
-            {errors.passwordConfirm && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.passwordConfirm.message}
-              </p>
-            )}
-          </div>
-
+          <InputField
+            label="Name"
+            id="fullName"
+            value={fullName}
+            onChange={setFullName}
+            isLoading={isLoading}
+            register={register}
+            errors={errors}
+          />
+          <InputField
+            label="Email"
+            id="email"
+            value={email}
+            onChange={setEmail}
+            isLoading={isLoading}
+            register={register}
+            errors={errors}
+          />
+          <InputField
+            label="Password"
+            id="password"
+            value={password}
+            onChange={setPassword}
+            isLoading={isLoading}
+            register={register}
+            errors={errors}
+          />
+          <InputField
+            label="Confirm Password"
+            id="passwordConfirm"
+            value={passwordConfirm}
+            onChange={setPasswordConfirm}
+            isLoading={isLoading}
+            register={register}
+            errors={errors}
+          />
           <button type="submit" className="button">
             {isLoading ? <SpinnerMini /> : 'Sign Up'}
           </button>

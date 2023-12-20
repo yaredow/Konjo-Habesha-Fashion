@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import InputField from '../../ui/InputField';
+import SpinnerMini from '../../ui/SpinnerMini';
 
 const UpdateMe = () => {
   // State for email and name form
@@ -10,121 +13,90 @@ const UpdateMe = () => {
   const [newPassword, setNewPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
-  const handleEmailNameUpdate = (e) => {
-    e.preventDefault();
-    // Add logic to update email and name data
-    console.log('Updating email and name:', email, name);
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handlePasswordUpdate = (e) => {
-    e.preventDefault();
-    // Add logic to update password data
-    console.log(
-      'Updating password:',
-      currentPassword,
-      newPassword,
-      passwordConfirm
-    );
-  };
+  const onSubmit = () => {};
 
   return (
-    <div className="max-w-md inset-0 mx-auto mt-8 p-6 bg-white">
-      <h2 className="text-2xl font-semibold mb-4">Update your user data</h2>
+    <div className="flex mt-12 fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800">
+      <div className="bg-white dark:bg-gray-800 p-8 rounded-lg w-2/3">
+        <h2 className="text-2xl font-bold text-center mb-4 font-custom text-gray-800 dark:text-gray-200">
+          Update your data
+        </h2>
 
-      {/* Email and Name Update Form */}
-      <form onSubmit={handleEmailNameUpdate} className="mb-8">
-        <div className="mb-4">
-          <label
-            htmlFor="email"
-            className="block text-gray-600 text-sm font-medium mb-2"
-          >
-            Email
-          </label>
-          <input
-            type="email"
+        {/* Email and Name Update Form */}
+        <form
+          className="flex flex-col items-center"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <InputField
+            label="Email"
             id="email"
-            className="w-full border rounded-md p-2"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={setEmail}
+            register={register}
+            errors={errors}
           />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="name"
-            className="block text-gray-600 text-sm font-medium mb-2"
-          >
-            Name
-          </label>
-          <input
-            type="text"
+          <InputField
+            label="Name"
             id="name"
-            className="w-full border rounded-md p-2"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={setName}
+            register={register}
+            errors={errors}
           />
-        </div>
-        <button
-          type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none"
-        >
-          Update Email/Name
-        </button>
-      </form>
 
-      {/* Password Update Form */}
-      <form onSubmit={handlePasswordUpdate}>
-        <div className="mb-4">
-          <label
-            htmlFor="currentPassword"
-            className="block text-gray-600 text-sm font-medium mb-2"
+          <button type="submit" className="button">
+            Update
+          </button>
+        </form>
+
+        {/* Password Update Form */}
+        <div className=" mt-8">
+          <h2 className="text-2xl font-bold text-center mb-4 font-custom text-gray-800 dark:text-gray-200">
+            Update your password
+          </h2>
+          <form
+            className="flex flex-col items-center"
+            onSubmit={handleSubmit(onSubmit)}
           >
-            Current Password
-          </label>
-          <input
-            type="password"
-            id="currentPassword"
-            className="w-full border rounded-md p-2"
-            value={currentPassword}
-            onChange={(e) => setCurrentPassword(e.target.value)}
-          />
+            <InputField
+              label="Current Password"
+              id="currentPassword"
+              value={currentPassword}
+              onChange={setCurrentPassword}
+              register={register}
+              errors={errors}
+            />
+
+            <InputField
+              label="New Password"
+              id="newPassword"
+              value={newPassword}
+              onChange={setNewPassword}
+              register={register}
+              errors={errors}
+            />
+
+            <InputField
+              label="Confirm Password"
+              id="passwordConfirm"
+              value={passwordConfirm}
+              onChange={setPasswordConfirm}
+              register={register}
+              errors={errors}
+            />
+
+            <button type="submit" className="button">
+              Update
+            </button>
+          </form>
         </div>
-        <div className="mb-4">
-          <label
-            htmlFor="newPassword"
-            className="block text-gray-600 text-sm font-medium mb-2"
-          >
-            New Password
-          </label>
-          <input
-            type="password"
-            id="newPassword"
-            className="w-full border rounded-md p-2"
-            value={newPassword}
-            onChange={(e) => setNewPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-4">
-          <label
-            htmlFor="passwordConfirm"
-            className="block text-gray-600 text-sm font-medium mb-2"
-          >
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            id="passwordConfirm"
-            className="w-full border rounded-md p-2"
-            value={passwordConfirm}
-            onChange={(e) => setPasswordConfirm(e.target.value)}
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 focus:outline-none"
-        >
-          Update Password
-        </button>
-      </form>
+      </div>
     </div>
   );
 };

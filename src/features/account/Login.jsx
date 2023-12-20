@@ -4,6 +4,8 @@ import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import useSignin from '../../hook/useSigin';
 import GreenSpinner from '../../ui/SpinnerMini';
+import InputField from '../../ui/InputField';
+import { isAllOf } from '@reduxjs/toolkit';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -42,54 +44,24 @@ const Login = () => {
           className="flex flex-col items-center"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <div className="relative mb-6 md:w-2/4 w-full">
-            <input
-              type="email"
-              id="email"
-              disabled={isLoading}
-              {...register('email', {
-                required: 'This field is required',
-              })}
-              className={`input peer ${errors.email ? 'border-red-500' : ''}`}
-              placeholder=" "
-              value={email}
-              onInput={(e) => setEmail(e.target.value)}
-            />
-            <label htmlFor="email" className="label">
-              Email
-            </label>
-            {errors.email && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.email.message}
-              </p>
-            )}
-          </div>
-
-          <div className="relative mb-6 md:w-2/4 w-full">
-            <input
-              type="password"
-              id="password"
-              autoComplete="password"
-              disabled={isLoading}
-              {...register('password', {
-                required: 'This field is required',
-              })}
-              className={`input peer ${
-                errors.password ? 'border-red-500 mt-1' : ''
-              }`}
-              placeholder=""
-              value={password}
-              onInput={(e) => setPassword(e.target.value)}
-            />
-            <label htmlFor="password" className="label">
-              Password
-            </label>
-            {errors.password && (
-              <p className="text-red-500 text-sm mt-1">
-                {errors.password.message}
-              </p>
-            )}
-          </div>
+          <InputField
+            label="Email"
+            id="email"
+            value={email}
+            onChange={setEmail}
+            isLoading={isLoading}
+            register={register}
+            errors={errors}
+          />
+          <InputField
+            label="Password"
+            id="password"
+            value={password}
+            onChange={setPassword}
+            isLoading={isLoading}
+            register={register}
+            errors={errors}
+          />
 
           <button type="submit" className="button">
             {isLoading ? <GreenSpinner /> : 'Log in'}
