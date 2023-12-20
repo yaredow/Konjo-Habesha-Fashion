@@ -1,14 +1,14 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectToken } from '../features/account/accountSlice';
 
-const UseUpdatePassword = () => {
+const UseUpdateUserData = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const { token } = useDispatch(selectToken);
+  const token = useSelector(selectToken);
 
   const updatePassword = async (
     passwordCurrent,
@@ -26,10 +26,12 @@ const UseUpdatePassword = () => {
         newPassword,
         passwordConfirm,
       },
-      withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
-    console.log(res.status, error);
+    console.log(res.status);
     try {
       if (res.status === 200) {
         setIsSuccess(true);
@@ -53,4 +55,4 @@ const UseUpdatePassword = () => {
   return { updatePassword, isLoading, isSuccess, error };
 };
 
-export default UseUpdatePassword;
+export default UseUpdateUserData;

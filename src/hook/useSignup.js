@@ -11,6 +11,7 @@ const useSignup = () => {
 
   const signup = async (fullName, email, password, passwordConfirm) => {
     setIsLoading(true);
+    setError(null);
 
     try {
       const res = await axios({

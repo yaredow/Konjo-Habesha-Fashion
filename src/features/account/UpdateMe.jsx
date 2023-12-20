@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import InputField from '../../ui/InputField';
-import UseUpdatePassword from '../../hook/useUpdatePassword';
-import { BrowserRouter } from 'react-router-dom';
+import UseUpdatePassword from '../../hook/useUpdateUserData';
 import toast from 'react-hot-toast';
 import SpinnerMini from '../../ui/SpinnerMini';
+import { useNavigate } from 'react-router-dom';
+import UseUpdateUserData from '../../hook/useUpdateUserData';
 
 const UpdateMe = () => {
   // State for email and name form
@@ -16,7 +17,7 @@ const UpdateMe = () => {
   const [newPassword, setNewPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
-  const { updatePassword, isLoading, isSuccess, error } = UseUpdatePassword();
+  const { updatePassword, isLoading, isSuccess, error } = UseUpdateUserData();
 
   // Separate instances of useForm for each form
   const {
@@ -37,13 +38,15 @@ const UpdateMe = () => {
 
   const onSubmitPassword = async () => {
     await updatePassword(passwordCurrent, newPassword, passwordConfirm);
+  };
 
+  useEffect(() => {
     if (isSuccess) {
-      toast.success('Your password has been updated');
-    } else {
+      toast.success('Account was updated successful.');
+    } else if (error) {
       toast.error(error);
     }
-  };
+  }, [isSuccess, error]);
 
   return (
     <div className="flex mt-12 fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800">
