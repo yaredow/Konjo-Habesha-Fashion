@@ -1,3 +1,6 @@
+import { useSelector } from 'react-redux';
+import { selectUser } from '../features/account/accountSlice';
+
 function InputField({
   label,
   id,
@@ -6,7 +9,9 @@ function InputField({
   isLoading,
   register,
   errors,
+  isRequired = true,
 }) {
+  const user = useSelector(selectUser);
   return (
     <div className="relative mb-6 md:w-2/4 w-full">
       <input
@@ -14,12 +19,14 @@ function InputField({
         id={id}
         disabled={isLoading}
         {...register(id, {
-          required: 'This field is required',
+          required: isRequired ? 'This field is required' : false,
         })}
-        className={`input peer ${errors[id] ? 'border-red-500' : ''}`}
+        className={`input ${isRequired ? 'peer' : ''}  ${
+          errors[id] ? 'border-red-500' : ''
+        }`}
         value={value}
-        placeholder=""
-        onInput={(e) => onChange(e.target.value)} // Use onChange instead of onInput
+        placeholder={!isRequired ? user[id] : ''}
+        onInput={(e) => onChange(e.target.value)}
       />
       <label htmlFor={id} className="label">
         {label}

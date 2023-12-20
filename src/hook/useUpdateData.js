@@ -1,40 +1,38 @@
 import axios from 'axios';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { selectToken } from '../features/account/accountSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectToken, setUser } from '../features/account/accountSlice';
 
-const UseUpdateUserData = () => {
+const useUpdateData = () => {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const dispatch = useDispatch();
 
   const token = useSelector(selectToken);
 
-  const updatePassword = async (
-    passwordCurrent,
-    newPassword,
-    passwordConfirm
-  ) => {
+  const updateData = async (name, email) => {
     setIsLoading(true);
     setError(null);
 
     const res = await axios({
       method: 'PATCH',
-      url: 'https://konjo-habesha-fashion.onrender.com/api/v1/users/updateMyPassword',
+      url: 'https://konjo-habesha-fashion.onrender.com/api/v1/users/updateMe',
       data: {
-        passwordCurrent,
-        newPassword,
-        passwordConfirm,
+        name,
+        email,
       },
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-    console.log(res.status);
+    console.log(res);
+
     try {
       if (res.status === 200) {
         setIsSuccess(true);
+        dispatch(setUser(res.data.user));
       } else {
         setIsLoading(false);
         setError('An error occurred during sign-in.');
@@ -52,7 +50,7 @@ const UseUpdateUserData = () => {
       setIsLoading(false);
     }
   };
-  return { updatePassword, isLoading, isSuccess, error };
+  return { updateData, isLoading, isSuccess, error };
 };
 
-export default UseUpdateUserData;
+export default useUpdateData;

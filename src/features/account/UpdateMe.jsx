@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import InputField from '../../ui/InputField';
-import UseUpdatePassword from '../../hook/useUpdateUserData';
 import toast from 'react-hot-toast';
 import SpinnerMini from '../../ui/SpinnerMini';
-import { useNavigate } from 'react-router-dom';
-import UseUpdateUserData from '../../hook/useUpdateUserData';
+import useUpdateSettings from '../../hook/useUpdateData';
 
 const UpdateMe = () => {
   // State for email and name form
@@ -17,7 +15,7 @@ const UpdateMe = () => {
   const [newPassword, setNewPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
 
-  const { updatePassword, isLoading, isSuccess, error } = UseUpdateUserData();
+  const { updateData, isLoading, isSuccess, error } = useUpdateSettings();
 
   // Separate instances of useForm for each form
   const {
@@ -32,12 +30,15 @@ const UpdateMe = () => {
     formState: { errors: errorsPassword },
   } = useForm();
 
-  const onSubmitUserData = () => {
-    // Your logic for updating user data
+  const onSubmitUserData = async () => {
+    await updateData({ email, name }, 'data');
   };
 
   const onSubmitPassword = async () => {
-    await updatePassword(passwordCurrent, newPassword, passwordConfirm);
+    await updateData(
+      { passwordCurrent, newPassword, passwordConfirm },
+      'password'
+    );
   };
 
   useEffect(() => {
@@ -63,6 +64,7 @@ const UpdateMe = () => {
             onChange={setEmail}
             register={registerUserData}
             errors={errorsUserData}
+            isRequired={false}
           />
           <InputField
             label="Name"
@@ -71,6 +73,7 @@ const UpdateMe = () => {
             onChange={setName}
             register={registerUserData}
             errors={errorsUserData}
+            isRequired={false}
           />
 
           <button type="submit" className="button">
