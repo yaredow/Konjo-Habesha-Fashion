@@ -2,7 +2,7 @@
 import { useSelector } from 'react-redux';
 import { selectUser } from './accountSlice';
 import Logout from './Logout';
-import Update from './Update';
+import Update from '../../ui/Update';
 
 const UserDetails = () => {
   const user = useSelector(selectUser);
