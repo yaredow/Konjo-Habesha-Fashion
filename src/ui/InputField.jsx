@@ -24,11 +24,11 @@ function InputField({
         {...register(id, {
           required: isRequired ? 'This field is required' : false,
         })}
-        className={`input ${isRequired ? 'peer' : ''}  ${
+        className={`input ${isRequired && !isPassword ? 'peer' : ''}  ${
           errors[id] ? 'border-red-500' : ''
         }`}
         value={value}
-        placeholder={!isRequired ? user[id] : ''}
+        placeholder={isPassword ? '*******' : !isRequired ? user?.[id] : ''}
         onInput={(e) => onChange(e.target.value)}
       />
       <label htmlFor={id} className="label">

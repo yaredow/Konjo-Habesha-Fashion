@@ -67,6 +67,7 @@ function Signup() {
             errors={errors}
           />
           <InputField
+            type="password"
             label="Password"
             id="password"
             value={password}
@@ -76,6 +77,7 @@ function Signup() {
             errors={errors}
           />
           <InputField
+            type="password"
             label="Confirm Password"
             id="passwordConfirm"
             value={passwordConfirm}

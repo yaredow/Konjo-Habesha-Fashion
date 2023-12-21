@@ -19,7 +19,7 @@ import Signup from './features/account/Signup';
 import ForgotPassword from './features/account/ForgotPassword';
 import ResetPassword from './features/account/ResetPassword';
 import UserDetails from './features/account/UserDetails';
-import UpdateMe from './features/account/UpdateMe';
+import UpdateUserData from './features/account/UpdateUserData';
 
 function App() {
   return (
@@ -43,7 +43,7 @@ function App() {
                   <Route path="signup" element={<Signup />} />
                   <Route path="forgot-password" element={<ForgotPassword />} />
                   <Route path="reset-password" element={<ResetPassword />} />
-                  <Route path="update-account" element={<UpdateMe />} />
+                  <Route path="update-account" element={<UpdateUserData />} />
                 </Route>
               </Route>
               <Route path="checkout" element={<Checkout />} />
