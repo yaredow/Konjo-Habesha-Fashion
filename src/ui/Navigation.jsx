@@ -64,7 +64,7 @@ function Navigation() {
                   className="text-2xl hover:text-blue-500 dark:hover:text-blue-400 dark:text-white cursor-pointer"
                 />
                 <span className=" dark:text-gray-100">
-                  {user ? user.name : ''}
+                  {user ? user.name.split(' ')[0] : ''}
                 </span>
               </div>
               <DarkModeToggle />
