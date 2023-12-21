@@ -35,7 +35,7 @@ const Login = () => {
   }, [isSuccess, error, navigate]);
 
   return (
-    <div className="flex fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800">
+    <div className="flex fixed inset-0 top-0 items-center justify-center h-screen bg-white dark:bg-gray-800 overflow-hidden">
       <div className="bg-white dark:bg-gray-800 p-8 rounded-lg w-2/3">
         <h2 className="text-4xl font-bold text-center mb-8 font-custom text-gray-800 dark:text-gray-200">
           Login
