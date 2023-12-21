@@ -45,6 +45,7 @@ const Login = () => {
           onSubmit={handleSubmit(onSubmit)}
         >
           <InputField
+            type="email"
             label="Email"
             id="email"
             value={email}
@@ -54,6 +55,7 @@ const Login = () => {
             errors={errors}
           />
           <InputField
+            type="password"
             label="Password"
             id="password"
             value={password}
@@ -61,6 +63,7 @@ const Login = () => {
             isLoading={isLoading}
             register={register}
             errors={errors}
+            isPasswordUpdate={false}
           />
 
           <button type="submit" className="button">

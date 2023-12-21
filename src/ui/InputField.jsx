@@ -9,13 +9,16 @@ function InputField({
   isLoading,
   register,
   errors,
+  type,
   isRequired = true,
+  isPassword = false,
 }) {
   const user = useSelector(selectUser);
+
   return (
     <div className="relative mb-6 md:w-2/4 w-full">
       <input
-        type={id}
+        type={type}
         id={id}
         disabled={isLoading}
         {...register(id, {

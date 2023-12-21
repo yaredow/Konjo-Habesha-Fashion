@@ -8,8 +8,10 @@ const UserDetails = () => {
   const user = useSelector(selectUser);
   return (
     <div className=" container">
-      <Logout />
-      <Update />
+      <div className=" flex flex-row justify-between items-center mb-6">
+        <Logout />
+        <Update />
+      </div>
       <div className="container items-start mx-auto flex md:flex-row flex-col gap-8 md:">
         {/* Order History */}
         <div className="w-2/3 pr-8 mt-8">
