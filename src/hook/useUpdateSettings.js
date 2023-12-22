@@ -46,7 +46,7 @@ const useUpdateSettings = () => {
     } catch (err) {
       setIsLoading(false);
       if (err.response) {
-        setError(err.response.data.message); // Server-side error
+        setError(err.response.data.message);
       } else if (err.request) {
         setError('An error occurred. Please check your internet connection.');
       } else {

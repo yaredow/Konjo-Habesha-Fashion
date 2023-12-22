@@ -20,6 +20,7 @@ import ForgotPassword from './features/account/ForgotPassword';
 import ResetPassword from './features/account/ResetPassword';
 import UserDetails from './features/account/UserDetails';
 import UpdateUserData from './features/account/UpdateUserData';
+import ProductForm from './ui/productForm';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                 <Route index element={<Navigate replace to="home" />} />
                 <Route path="home" element={<Home />} />
                 <Route path="products" element={<Products />} />
+                <Route path="create-product" element={<ProductForm />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="order" element={<Order />} />
                 <Route path="product/:id" element={<ProductDetail />} />
