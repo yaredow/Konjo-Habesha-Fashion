@@ -9,11 +9,11 @@ const useCreateProduct = () => {
   const [isSuccess, setIsSuccess] = useState(false);
   const token = useSelector(selectToken);
 
-  const createProduct = (formData) => {
+  const createProduct = async (formData) => {
     try {
-      const res = axios({
+      const res = await axios({
         method: 'POST',
-        url: 'https://konjo-habesha-fashion.onrender.com/api/v1/admin/createProduct',
+        url: 'https://konjo-habesha-fashion.onrender.com/api/v1/admin',
         data: formData,
         headers: {
           Authorization: `Bearer ${token}`,
@@ -21,11 +21,12 @@ const useCreateProduct = () => {
       });
 
       console.log(res);
-      if (res.data.token) {
+
+      if (res.data.data.status === 200) {
         setIsSuccess(true);
       } else {
         setIsLoading(false);
-        setError('An error occurred during sign-up.');
+        setError('An error occurred during product creation.');
       }
     } catch (err) {
       setIsLoading(false);
@@ -34,7 +35,7 @@ const useCreateProduct = () => {
       } else if (err.request) {
         setError('An error occurred. Please check your internet connection.'); // Client-side error
       } else {
-        setError('An error occurred during sign-in.');
+        setError('An error occurred during product creation.');
       }
     } finally {
       setIsLoading(false);

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useCreateProduct from '../hook/useCreateProduct';
+import toast from 'react-hot-toast';
 
 const ProductForm = () => {
   const { register, handleSubmit, setValue } = useForm();
@@ -11,19 +12,37 @@ const ProductForm = () => {
   const [size, setSize] = useState('');
   const [description, setDescription] = useState('');
   const [images, setImages] = useState([]);
+  const [selectedImages, setSelectedImages] = useState([]);
 
   const { createProduct, isLoading, isSuccess, error } = useCreateProduct();
 
   const onSubmit = async (data) => {
-    const formData = { ...data, images };
+    const formData = {
+      ...data,
+      price: Number(data.price), // Convert price to number
+      stockQuantity: Number(data.stockQuantity), // Convert stockQuantity to number
+      images,
+    };
+    console.log(formData);
     await createProduct(formData);
   };
 
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success('Product created successfully');
+    } else if (error) {
+      toast.error(error);
+    }
+  }, [isSuccess, error]);
+
   // Handle image upload
   const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    setImages(files);
-    setValue('images', files);
+    const files = e.target.files;
+    const fileArray = Array.from(files);
+    const fileNames = fileArray.map((file) => file.name);
+
+    setSelectedImages(fileNames);
+    setImages(fileNames);
   };
 
   return (
@@ -32,7 +51,11 @@ const ProductForm = () => {
         <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
           Add a new product
         </h2>
-        <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          encType="multipart/form-data"
+          method="post"
+        >
           <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
             <div className="sm:col-span-2">
               <label
@@ -46,8 +69,9 @@ const ProductForm = () => {
                 id="name"
                 {...register('name', { required: 'A product needs a name' })}
                 value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                disabled={isLoading}
+                onInput={(e) => setName(e.target.value)}
+                className="admin-input"
                 placeholder="Type product name"
               />
             </div>
@@ -63,9 +87,12 @@ const ProductForm = () => {
                 type="number"
                 id="price"
                 {...register('price', { required: 'A product needs a price' })}
+                disabled={isLoading}
                 value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                onInput={(e) => {
+                  setPrice(parseInt(e.target.value, 10));
+                }}
+                className="admin-input"
                 placeholder="$2999"
               />
             </div>
@@ -82,13 +109,14 @@ const ProductForm = () => {
                   required: 'A product needs a category',
                 })}
                 value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                disabled={isLoading}
+                onInput={(e) => setCategory(e.target.value)}
+                className="admin-input"
               >
                 <option value="">Select category</option>
-                <option value="female">Female</option>
-                <option value="male">Male</option>
-                <option value="kids">Kids</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Kids">Kids</option>
               </select>
             </div>
 
@@ -103,8 +131,9 @@ const ProductForm = () => {
                 id="size"
                 {...register('size', { required: 'A product needs a size' })}
                 value={size}
-                onChange={(e) => setSize(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                disabled={isLoading}
+                onInput={(e) => setSize(e.target.value)}
+                className="admin-input"
               >
                 <option value="">Select size</option>
                 <option value="XS">XS</option>
@@ -124,13 +153,16 @@ const ProductForm = () => {
               </label>
               <input
                 type="number"
-                id="stock-quantity"
+                id="stockQuantity"
                 {...register('stockQuantity', {
                   required: 'A product needs stock quantity',
                 })}
                 value={stockQuantity}
-                onChange={(e) => setStockQuantity(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                disabled={isLoading}
+                onInput={(e) => {
+                  setStockQuantity(parseInt(e.target.value, 10));
+                }}
+                className="admin-input"
                 placeholder="Stock quantity"
               />
             </div>
@@ -147,10 +179,10 @@ const ProductForm = () => {
                   required: 'A product needs a description',
                 })}
                 value={description}
-                onChange={(e) => setDescription(e.target.value)}
+                disabled={isLoading}
+                onInput={(e) => setDescription(e.target.value)}
                 rows="8"
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Your description here"
+                className="admin-input"
               ></textarea>
             </div>
 
@@ -164,18 +196,20 @@ const ProductForm = () => {
               <input
                 type="file"
                 id="images"
+                name="images"
+                disabled={isLoading}
                 {...register('images')}
-                onChange={handleImageChange}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                onInput={handleImageChange}
+                className="admin-input"
                 multiple
               />
+              <div className="mt-2 text-gray-700 dark:text-gray-300">
+                Selected Images: {selectedImages.join(', ')}
+              </div>
             </div>
           </div>
-          <button
-            type="submit"
-            className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800"
-          >
-            Add product
+          <button type="submit" className="button">
+            {isLoading ? <spinnerMini /> : 'Create'}
           </button>
         </form>
       </div>
